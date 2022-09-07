@@ -349,6 +349,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 | Azure Arc overview | <https://docs.microsoft.com/azure/azure-arc/overview> |
 | What is Azure SQL Managed Instance? | https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview |
 | Azure Database Migration Service | <https://azure.microsoft.com/products/database-migration/#overview> |
+| Overview of Data Migration Assistant | <https://docs.microsoft.com/sql/dma/dma-overview> |
 
 # Building a resilient IaaS architecture whiteboard design session trainer guide
 
@@ -401,7 +402,11 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 1. How will you migrate the on-premises workloads to Azure?
 
+   Since it is recommended to upgrade the version of Windows Server from 2012 to 2022, it will be necessary to create new servers. In this case, Azure Migrate wont be able to be used to lift and shift the on-premises VMs into Azure. For this reason, the Azure VMs will be created new and the application workloads will be installed and configured on the new VMs.
+
 2. How will you migrate the SQL Server workloads to Azure?
+
+   For the SQL Server databases, Tailspin should use the Microsoft Data Migration Assistant (DMA) to assess database migration readiness. Using DMA to examine the existing on-premises databases will report any compatibility issues ahead of attempting the migration. Typically, SQL Server databases can be migrated to Azure SQL Database or Azure SQL Database Managed Instances. Also, Azure SQL Managed Instances offers greater compatibility with the on-premises SQL Server. SQL Server in Azure VMs could be used, however this will negate the advantages of using a managed service that eliminates the requirement for on-going VM maintenance.
 
 3. How will they reduce the burden of managing both on-premises and Azure workloads?
 
