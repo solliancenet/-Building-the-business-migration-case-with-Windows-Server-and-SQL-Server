@@ -222,13 +222,13 @@ The first workload they want to migrate to Azure consists of:
     - Database 2: 435 GB
     - Database 3: 50 GB
 
-They have the following workloads that may not be migrated at this time:
+They have identified the following workloads that may not be migrated to Azure, but would like some advice on how to handle these:
 
 - Windows Domain Controllers
 - 3x Network File Shares hosted on Windows Server 2012
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 
-The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V.
+The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
 
 In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
 
@@ -280,9 +280,9 @@ Directions: With your team, respond to the following questions:
 
 2. How will you migrate the SQL Server workloads to Azure?
 
-3. How will they reduce the burden of managing both on-premises and Azure workloads?
+3. Which workloads should remain on-premises and which should be considered to be migrated at a later time?
 
-4. How will Azure VMs be secured in their connections to the on-premises network?
+4. How will they reduce the burden of managing both on-premises and Azure workloads?
 
 **Pricing**
 
@@ -408,9 +408,21 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
    For the SQL Server databases, Tailspin should use the Microsoft Data Migration Assistant (DMA) to assess database migration readiness. Using DMA to examine the existing on-premises databases will report any compatibility issues ahead of attempting the migration. Typically, SQL Server databases can be migrated to Azure SQL Database or Azure SQL Database Managed Instances. Also, Azure SQL Managed Instances offers greater compatibility with the on-premises SQL Server. SQL Server in Azure VMs could be used, however this will negate the advantages of using a managed service that eliminates the requirement for on-going VM maintenance.
 
-3. How will they reduce the burden of managing both on-premises and Azure workloads?
+3. Which workloads should remain on-premises and which should be considered to be migrated at a later time?
 
-4. How will Azure VMs be secured in their connections to the on-premises network?
+   Among the workloads that have identified for advice on migration to Azure, the Windows Domain Controllers are recommended to keep in the on-premises data center at this time.
+
+   It is recommended to migrate the on-premises Network File Shares and Ubuntu VMs to Azure in a later phase of their Azure adoption. A phased approach to the migration process will enable each workload to be methodically migrated to Azure while limiting the risk of downtime across the organization.
+
+   It is recommended to migrate the on-premises Network File Shares to Azure Storage File Shares. This would allow for a fully managed service to host the file shares without the requirement for on-going VM maintenance. However, the configuration and usage of the File Shares will need to be assessed and discussed with Tailspin to ensure Azure Storage File Shares offer the features they need. If not, the Network File Shares could be migrated to Azure VMs if necessary.
+
+   It is recommended to migrate the on-premises Ubuntu 18.04 Linux VMs to Azure. These could be migrated similarly to the Windows Server VMs, and the server requirements will need to be discussed with Tailspin. As was mentioned, they may be phasing out some of their web applications, as a result it may not be necessary to migrate all their on-premises servers.
+
+4. How will they reduce the burden of managing both on-premises and Azure workloads?
+
+   After some of their VMs are migrated to Azure, and others are still on-premises, it may be more burdensome to manage all their workloads in one place. For this, the use of Azure Arc is recommended. Azure Arc will enable Tailspin to centrally manage all their VMs in Azure and on-premises. Azure Arc supports managing both Windows and Linux servers and VMs.
+
+   The on-premises Windows and Linux VMs can be Azure Arc-enabled by installing the Azure Connected Machine agent. The agent brings with it the ability to manage the VMs with Azure Arc, as well as all the great features the service has to offer.
 
 **Pricing**
 
@@ -481,6 +493,6 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Customer quote (to be read back to the attendees at the end)
 
-"?"
+"[TODO]"
 
 ---Kaylee Frye, CTO, Tailspin Toys
