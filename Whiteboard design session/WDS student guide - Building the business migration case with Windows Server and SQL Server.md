@@ -69,9 +69,9 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 ### Customer situation
 
-Tailspin Toys is a global manufacturer of children’s toys. Their mission critical workloads are currently hosted in an on-premises data center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with their global headquarters located in Milwaukee, WI. Their mission critical workloads are currently hosted in an on-premises data center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
-The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamline operations, and simplify their DevOps workflow.
+The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamline operations, and simplify their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
 Tailspin has already completed their first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
 
@@ -82,7 +82,7 @@ The first workload they want to migrate to Azure consists of:
 - Web Application Front-end
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
-    - each with 2 CPU cores and 32 GB memory
+    - each with 2 CPU cores and 16 GB memory
 - REST API Back-end
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
@@ -96,15 +96,15 @@ The first workload they want to migrate to Azure consists of:
     - Database 2: 435 GB
     - Database 3: 50 GB
 
-The workloads they believe must be retained on-premises consist of:
+They have identified the following workloads that may not be migrated to Azure, but would like some advice on how to handle these:
 
 - Windows Domain Controllers
-- File Shares hosted on Windows Server 2012
-- Multiple Ubuntu 18.04 Linux servers
+- 3x Network File Shares hosted on Windows Server 2012
+- 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 
-The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V.
+The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
 
-In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their data center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
+In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
 
 ### Customer needs
 
@@ -112,9 +112,7 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 2. Lower the management burden with a consolidated view to manage all VMs and Servers cross Azure and on-premises.
 
-3. ?
-
-4. ?
+3. Network security is extremely important as we integrate on on-premises network with Microsoft Azure.
 
 ### Customer objections
 
@@ -123,8 +121,6 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 2. Will we be able to rollback to the on-premises VMs if the migration fails?
 
 3. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
-
-4. ?
 
 ### Infographic for common scenarios
 
@@ -156,13 +152,11 @@ Directions: With your team, respond to the following questions:
 
 1. How will you migrate the on-premises workloads to Azure?
 
-2. What is the appropriate pricing tier for the workloads in Azure?
+2. How will you migrate the SQL Server workloads to Azure?
 
-3. How will you migrate the SQL Server workloads to Azure?
+3. Which workloads should remain on-premises and which should be considered to be migrated at a later time?
 
-4. How will you ensure as little downtime during the migration as possible?
-
-5. How will they reduce the burden of managing both on-premises and Azure workloads?
+4. How will they reduce the burden of managing both on-premises and Azure workloads?
 
 **Pricing**
 
@@ -228,3 +222,5 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 | Extend an on-premises network using ExpressRoute | <https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute> |
 | Azure Arc overview | <https://docs.microsoft.com/azure/azure-arc/overview> |
 | What is Azure SQL Managed Instance? | https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview |
+| Azure Database Migration Service | <https://azure.microsoft.com/products/database-migration/#overview> |
+| Overview of Data Migration Assistant | <https://docs.microsoft.com/sql/dma/dma-overview> |

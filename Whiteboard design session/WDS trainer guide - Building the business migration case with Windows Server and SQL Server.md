@@ -493,6 +493,6 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Customer quote (to be read back to the attendees at the end)
 
-"[TODO]"
+"We recognized the need and benefits to migrating our aging infrastructure to Azure. I know this migration is going to help us increase reliability while lowering operation and maintenance costs. I'm really looking forward to the shiny new capabilities we are now able to take advantage of, including the ability to manage our on-premises and Azure VMs using Azure Arc."
 
 ---Kaylee Frye, CTO, Tailspin Toys
