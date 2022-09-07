@@ -440,7 +440,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
     | **Component** | **Region** | **Details / Assumptions** | **Est. Monthly Cost (USD)** |
     | Web VMs | North Central US | 2x D8s v5 VMs (8 vCores, 32 GiB RAM) & Windows Server 2022 | $280.00 each|
 
-    > **NOTE:** Some discussion with Tailspin Toys may be needed to determine if additional changes to the choice of VM sizes and number of VMs could further lower hosting cost. Load balancing across a larger number of smaller VMs may help lower cost. Also, it's possible Azure App Service (PaaS services) could be an additional options for hosting the Front-end Web application and the Back-end REST API depending on the clients needs.
+    > **Note:** Some discussion with Tailspin Toys may be needed to determine if additional changes to the choice of VM sizes and number of VMs could further lower hosting cost. Load balancing across a larger number of smaller VMs may help lower cost. Also, it's possible Azure App Service (PaaS services) could be an additional options for hosting the Front-end Web application and the Back-end REST API depending on the clients needs.
 
     _Application Databases_
     |     |            |            |            |
@@ -448,7 +448,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
     | **Component** | **Region** | **Details / Assumptions** | **Est. Monthly Cost (USD)** |
     | Azure SQL Managed Instance | North Central US | 16 vCores Premium-series General Purpose (7 GB RAM/vCore) & 2 TB storage| $1,265.92 |
 
-    > **NOTE:** Azure SQL Managed Instance should be configured with the Azure Hybrid Benefit to save up to 55% with the SQL Server licenses they already own.
+    > **Note:** Azure SQL Managed Instance should be configured with the Azure Hybrid Benefit to save up to 55% with the SQL Server licenses they already own.
 
     _Total Cost of Migrated Workloads to Azure_
 
