@@ -111,9 +111,9 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 1. Migrate existing workloads to Azure as efficiently as possible.
 
-2. Lower the management burden with a consolidated view to manage all VMs and Servers cross Azure and on-premises.
+2. Lower the management burden with a consolidated view to manage all VMs and Servers across Azure and on-premises.
 
-3. Network security is extremely important as we integrate on on-premises network with Microsoft Azure.
+3. Network security is extremely important as we integrate on-premises networking with Microsoft Azure.
 
 ### Customer objections
 
