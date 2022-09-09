@@ -248,6 +248,8 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 3. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
+4. Would there be further savings from the use of PaaS services?
+
 ### Infographic for common scenarios
 
 **Hub-spoke network topology in Azure**
@@ -490,6 +492,14 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 3. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
    We absolutely want to take advantage of these savings for them! The cost estimates from the Azure Pricing Calculator can be tailored to reflect their EA discount.
+
+4. Would there be further savings from the use of PaaS services?
+
+   Further evaluation of the front-end and back-end .NET Core applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs, and does support hosting applications build with .NET Core among other development languages.
+
+   Azure Kubernetes Service (AKS) is another potential option for hosting applications. For Tailspin Toys, this may not be the best option as it would require further redesign and architecture of the applications to host in AKS. If Azure App Service doesn't meet the requirements of Tailspin Toys applications, then AKS may offer an alternative that fits better.
+
+   If Tailspin Toys is looking to redesign their back-end REST API applications, then Azure Functions would be a service to consider. The applications would not be able to be hosted in Azure Functions as they are currently written. Redesigning and rewriting the REST APIs would be required to move them to serverless Azure Functions hosting.
 
 ## Customer quote (to be read back to the attendees at the end)
 
