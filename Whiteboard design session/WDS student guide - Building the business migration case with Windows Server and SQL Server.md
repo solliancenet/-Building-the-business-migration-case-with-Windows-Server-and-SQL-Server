@@ -116,11 +116,15 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 ### Customer objections
 
-1. What kind of downtime will be incurred when migrating the Windows Server and SQL Server VMs to Azure?
+1. It appears there are multiple options of hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
 
-2. Will we be able to rollback to the on-premises VMs if the migration fails?
+2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
-3. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+3. Will we be able to rollback to the on-premises VMs if the migration fails?
+
+4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+
+5. Would there be further savings from the use of PaaS services?
 
 ### Infographic for common scenarios
 

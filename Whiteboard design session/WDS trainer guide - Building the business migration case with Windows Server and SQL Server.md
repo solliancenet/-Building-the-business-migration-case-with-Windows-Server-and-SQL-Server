@@ -242,13 +242,15 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 ### Customer objections
 
-1. What kind of downtime will be incurred when migrating the Windows Server and SQL Server VMs to Azure?
+1. It appears there are multiple options of hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
 
-2. Will we be able to rollback to the on-premises VMs if the migration fails?
+2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
-3. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+3. Will we be able to rollback to the on-premises VMs if the migration fails?
 
-4. Would there be further savings from the use of PaaS services?
+4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+
+5. Would there be further savings from the use of PaaS services?
 
 ### Infographic for common scenarios
 
@@ -477,23 +479,37 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Checklist of preferred objection handling
 
-1. What kind of downtime will be incurred when migrating the Windows Server and SQL Server VMs to Azure?
+1. It appears there are multiple options of hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
+
+   Microsoft Azure does provide multiple options for hosting SQL databases. Azure SQL refers to a family of managed, secure, and intelligent products that use the SQL Server database engine in the Azure cloud. There is some overlap between the different options available, with each targeting different use cases, scenarios and business motivations.
+
+   For Tailspin Toys, it is recommended to use Azure SQL Managed Instances (SQL MI) for migrating the SQL Server databases to Azure. SQL MI provides near 100% compatibility with on-premises SQL Server database instances, and includes features to best handle the common isolation and security concerns required by Tailspins organization.
+
+   Here is a summary of the different options available:
+
+   Azure SQL Database is a fully-managed general-purpose relational database-as-a-service (DBaaS) platform. Built on the latest stable version of the Microsoft SQL Server Database Engine, it provides a high-performance, easy-to-use, reliable, and secure database that you can use without needing to manage infrastructure. It is available as a single database or an elastic pool, which is a collection of databases with a shared set of resources.
+
+   Azure SQL Managed Instances (SQL MI) is a fully-managed PaaS SQL Server Database Engine Instance that provides near 100% compatibility with on-premises SQL Server database instances. Unlike SQL DB, it does not use an isolated multi-tenant model. Instead, it supplies a native virtual network (VNet) implementation that addresses many common isolation and security concerns of on-premises SQL Server customers. As such, it is the best PaaS option for migrating existing SQL Server databases to the cloud.
+
+   Running SQL Server on Azure VMs is an IaaS approach that would allow a 100% compatible transition of existing databases to the cloud, without any need for application changes. It works with any SQL Server version and edition on any machine size on Windows and Linux. SQL Server on an Azure VM provides a seamless, no-hassle method for moving SQL Server workloads from on-premises to the cloud. Teams will be freed from needing to manage on-premises hardware, but it does require teams to continue to manage the underlying infrastructure, including OS, database, and application patching. This option can also be more expensive with multiple databases and is more challenging to scale. High availability would come from using SQL Server Availability Groups.
+
+2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
    All application tiers and database will be deployed to the Azure VMs in parallel to the on-premises VMs. This will enable minimal downtime when application load is redirected to the new VMs.
 
    To ensure data consistency during the migration, there will be a short window of downtime required at the database level when the cut over to the new servers is performed. Data migration using DMS supports online migration, allowing the applications to be kept online while data is synchronized.
 
-2. Will we be able to rollback to the on-premises VMs if the migration fails?
+3. Will we be able to rollback to the on-premises VMs if the migration fails?
 
    The migration process will be designed to create new application deployments within their CI/CD pipelines to release to the new Windows Server 2022 VMs in Azure in parallel to the existing on-premises VMs. This will allow traffic to be cut over to the new VMs when ready.
 
    In the event of an unexpected issue during migration, the existing on-premises VMs, application deployments and databases will remain in place as a fall back. If there is an issue detected during the cut over process, the on-premises servers will be able to immediately pick up where they left off.
 
-3. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
    We absolutely want to take advantage of these savings for them! The cost estimates from the Azure Pricing Calculator can be tailored to reflect their EA discount.
 
-4. Would there be further savings from the use of PaaS services?
+5. Would there be further savings from the use of PaaS services?
 
    Further evaluation of the front-end and back-end .NET Core applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs, and does support hosting applications build with .NET Core among other development languages.
 
