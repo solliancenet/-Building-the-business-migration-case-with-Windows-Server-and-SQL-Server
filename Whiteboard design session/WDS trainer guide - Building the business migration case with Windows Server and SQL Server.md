@@ -226,6 +226,7 @@ They have identified the following workloads that may not be migrated to Azure, 
 
 - Windows Domain Controllers
 - 3x Network File Shares hosted on Windows Server 2012
+- 8x Windows Server VMs hosting .NET Core and .NET Framework applications hosted using IIS
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 
 The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
@@ -511,7 +512,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 5. Would there be further savings from the use of PaaS services?
 
-   Further evaluation of the front-end and back-end .NET Core applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs, and does support hosting applications build with .NET Core among other development languages.
+   Further evaluation of the front-end and back-end .NET Framework applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs, and does support hosting applications build with .NET Framework, and .NET Core, among other development languages.
 
    Azure Kubernetes Service (AKS) is another potential option for hosting applications. For Tailspin Toys, this may not be the best option as it would require further redesign and architecture of the applications to host in AKS. If Azure App Service doesn't meet the requirements of Tailspin Toys applications, then AKS may offer an alternative that fits better.
 

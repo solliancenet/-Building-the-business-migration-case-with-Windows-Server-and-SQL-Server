@@ -100,6 +100,7 @@ They have identified the following workloads that may not be migrated to Azure, 
 
 - Windows Domain Controllers
 - 3x Network File Shares hosted on Windows Server 2012
+- 8x Windows Server VMs hosting .NET Core and .NET Framework applications hosted using IIS
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 
 The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
