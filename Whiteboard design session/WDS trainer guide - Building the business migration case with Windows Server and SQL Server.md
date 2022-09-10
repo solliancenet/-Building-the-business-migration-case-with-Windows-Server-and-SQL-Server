@@ -484,7 +484,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
    Microsoft Azure does provide multiple options for hosting SQL databases. Azure SQL refers to a family of managed, secure, and intelligent products that use the SQL Server database engine in the Azure cloud. There is some overlap between the different options available, with each targeting different use cases, scenarios and business motivations.
 
-   For Tailspin Toys, it is recommended to use Azure SQL Managed Instances (SQL MI) for migrating the SQL Server databases to Azure. SQL MI provides near 100% compatibility with on-premises SQL Server database instances, and includes features to best handle the common isolation and security concerns required by Tailspins organization.
+   For Tailspin Toys, it is recommended to use Azure SQL Managed Instances (SQL MI) for migrating the SQL Server databases to Azure. SQL MI provides near 100% compatibility with on-premises SQL Server database instances and includes features to best handle the common isolation and security concerns required by Tailspins organization.
 
    Here is a summary of the different options available:
 
