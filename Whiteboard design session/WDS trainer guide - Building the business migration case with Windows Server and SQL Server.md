@@ -195,7 +195,7 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 
 ### Customer situation
 
-Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with their global headquarters located in Milwaukee, WI. Their mission critical workloads are currently hosted in an on-premises data center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with their global headquarters located in Milwaukee, WI. Their mission critical workloads are currently hosted in an on-premises data-center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
 The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamline operations, and simplify their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
@@ -229,9 +229,9 @@ They have identified the following workloads that may not be migrated to Azure, 
 - 8x Windows Server VMs hosting .NET Core and .NET Framework applications hosted using IIS
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 
-The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
+The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
 
-In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
+In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data-center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
 
 ### Customer needs
 
@@ -415,7 +415,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 3. Which workloads should remain on-premises and which should be considered to be migrated at a later time?
 
-   Among the workloads that have identified for advice on migration to Azure, the Windows Domain Controllers are recommended to keep in the on-premises data center at this time.
+   Among the workloads that have identified for advice on migration to Azure, the Windows Domain Controllers are recommended to keep in the on-premises data-center at this time.
 
    It is recommended to migrate the on-premises Network File Shares and Ubuntu VMs to Azure in a later phase of their Azure adoption. A phased approach to the migration process will enable each workload to be methodically migrated to Azure while limiting the risk of downtime across the organization.
 
@@ -443,7 +443,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
     Pricing Azure solutions is a complex task. The example solution below includes many assumptions, for example on virtual machine size. These need to be validated with Tailspin Toys.
 
-    Since Tailspin Toys and their current on-premises data center is in Milwaukee, WI. The nearest Azure Region to use will be North Central US.
+    Since Tailspin Toys and their current on-premises data-center is in Milwaukee, WI. The nearest Azure Region to use will be North Central US.
 
     _Web Application Front-end_
     |    |            |            |            |
