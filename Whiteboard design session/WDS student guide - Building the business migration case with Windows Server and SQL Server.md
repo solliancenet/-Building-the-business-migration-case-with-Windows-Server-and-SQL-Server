@@ -47,9 +47,9 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 In this whiteboard design session, you will look at how to design for converting/extending an existing IaaS deployment for resiliency. Throughout the whiteboard design session, you will look at the various configuration options and services to help build resilient architectures.
 
-At the end of the workshop, you will be better able to design and use resiliency concepts including high availability with Availability Zones, disaster recovery for virtual machines to another region using Azure Site Recovery, and SQL Server high availability and disaster recovery using Always On Availability Groups. You will also learn how to assess the availability SLA, RPO and RTO of your design, and how to use Azure Backup to protect and secure your SQL data and VMs against corruption and loss.
+At the end of the workshop, you will be better able to design and use resiliency concepts including high availability with Availability Zones, disaster recovery for virtual machines to another region using Azure Site Recovery, and SQL Server high availability and disaster recovery using Always On Availability Groups. You will also learn how to assess the availability SLA, RPO, and RTO of your design, and how to use Azure Backup to protect and secure your SQL data and VMs against corruption and loss.
 
-You will also discuss how to achieve a similar level of resiliency for a PaaS-based implementation the same application, based on Azure App Service and Azure SQL Database. Finally, you will consider the costs associated with both approaches.
+You will also discuss how to achieve a similar level of resiliency for a PaaS-based implementation of the same application, based on Azure App Service and Azure SQL Database. Finally, you will consider the costs associated with both approaches.
 
 ## Step 1: Review the customer case study
 
@@ -69,11 +69,11 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 ### Customer situation
 
-Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with their global headquarters located in Milwaukee, WI. Their mission critical workloads are currently hosted in an on-premises data center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
-The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamline operations, and simplify their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
+The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
-Tailspin has already completed their first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
+Tailspin has already completed the first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
 
 Their on-premises environment consists of over 250 servers and VMs, although, they don't plan to migrate all of them to Azure. The fear of breaking an existing system during their migration is the reason they've identified just a few servers / VMs to begin the migration.
 
@@ -82,7 +82,7 @@ The first workload they want to migrate to Azure consists of:
 - Web Application Front-end
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
-    - each with 2 CPU cores and 16 GB memory
+    - each with 2 CPU cores and 16 GB Memory
 - REST API Back-end
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
@@ -117,11 +117,11 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 ### Customer objections
 
-1. It appears there are multiple options of hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
+1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
 
 2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
-3. Will we be able to rollback to the on-premises VMs if the migration fails?
+3. Will we be able to roll back to the on-premises VMs if the migration fails?
 
 4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
@@ -147,7 +147,7 @@ Timeframe: 60 minutes
 
 Directions:  With your team, answer the following questions and be prepared to present your solution to others:
 
-1. Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who will you present this solution to? Who is your target customer audience? Who are the decision-makers?
 
 2. What customer business needs do you need to address with your solution?
 
