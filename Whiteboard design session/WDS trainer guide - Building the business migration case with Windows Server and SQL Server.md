@@ -352,7 +352,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 | Hub-spoke network topology in Azure | <https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke> |
 | Extend an on-premises network using ExpressRoute | <https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute> |
 | Azure Arc overview | <https://docs.microsoft.com/azure/azure-arc/overview> |
-| What is Azure SQL Managed Instance? | https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview |
+| What is Azure SQL Managed Instance? | <https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview> |
 | Azure Database Migration Service | <https://azure.microsoft.com/products/database-migration/#overview> |
 | Overview of Data Migration Assistant | <https://docs.microsoft.com/sql/dma/dma-overview> |
 

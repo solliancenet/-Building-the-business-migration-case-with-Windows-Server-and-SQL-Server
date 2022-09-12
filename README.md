@@ -1,5 +1,9 @@
 # Building the business migration case with Windows Server and SQL Server
 
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+
+The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
+
 September 2022
 
 ## Target audience
@@ -13,16 +17,25 @@ September 2022
 
 ### Whiteboard Design Session
 
-In this whiteboard design session, you will...
+In this whiteboard design session, you will look at how to design a strategy for migrating existing on-premises Windows Server and SQL Server workloads to Azure. Throughout the whiteboard design session, you will look at the Virtual Machine pricing, integrated management of cloud and on-premises workloads using Azure Arc, and migrating SQL Server workloads to Azure.
 
-At the end of the workshop, you will be better able to...
+At the end of the workshop, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL MI, and simplifying workload management using Azure Arc.
 
 ## Azure services and related products
 
+- Azure VMs
+- Azure Arc
+- Azure SQL Managed Instance
+- Azure Networking
+
 ## Azure solutions
+
+DC Migration
 
 ## Related references
 - [MCW](https://github.com/Microsoft/MCW)
+- [Azure Arc](https://docs.microsoft.com/azure/azure-arc/overview)
+- [Azure SQL Managed Instance](https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview)
 
 ## Help & Support
 
