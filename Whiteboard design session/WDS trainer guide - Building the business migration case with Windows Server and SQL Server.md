@@ -75,7 +75,7 @@ An amazing trainer:
 
 - Ties it all together for the participant.
 
-- Provides insight and experience to the learning process.
+- Provides insight and experience into the learning process.
 
 - Effectively leads the whiteboard design session discussion.
 
@@ -173,7 +173,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 In this whiteboard design session, you will look at how to design for converting/extending an existing IaaS deployment for resiliency. Throughout the whiteboard design session, you will look at the various configuration options and services to help build resilient architectures.
 
-At the end of the workshop, you will be better able to design and use resiliency concepts including high availability with Availability Zones, disaster recovery for virtual machines to another region using Azure Site Recovery, and SQL Server high availability and disaster recovery using Always On Availability Groups. You will also learn how to assess the availability SLA, RPO and RTO of your design, and how to use Azure Backup to protect and secure your SQL data and VMs against corruption and loss.
+At the end of the workshop, you will be better able to design and use resiliency concepts including high availability with Availability Zones, disaster recovery for virtual machines to another region using Azure Site Recovery, and SQL Server high availability and disaster recovery using Always On Availability Groups. You will also learn how to assess the availability SLA, RPO, and RTO of your design, and how to use Azure Backup to protect and secure your SQL data and VMs against corruption and loss.
 
 You will also discuss how to achieve a similar level of resiliency for a PaaS-based implementation of the same application, based on Azure App Service and Azure SQL Database. Finally, you will consider the costs associated with both approaches.
 
@@ -197,9 +197,9 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 
 Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
-The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamline operations, and simplify their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
+The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
-Tailspin has already completed their first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
+Tailspin has already completed the first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
 
 Their on-premises environment consists of over 250 servers and VMs, although, they don't plan to migrate all of them to Azure. The fear of breaking an existing system during their migration is the reason they've identified just a few servers / VMs to begin the migration.
 
@@ -208,7 +208,7 @@ The first workload they want to migrate to Azure consists of:
 - Web Application Front-end
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
-    - each with 2 CPU cores and 16 GB memory
+    - each with 2 CPU cores and 16 GB Memory
 - REST API Back-end
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
@@ -229,7 +229,7 @@ They have identified the following workloads that may not be migrated to Azure, 
 - 8x Windows Server VMs hosting .NET Core and .NET Framework applications hosted using IIS
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 
-The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
+The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premise workloads to Azure.
 
 In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data-center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
 
@@ -239,15 +239,15 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 2. Lower the management burden with a consolidated view to manage all VMs and Servers cross Azure and on-premises.
 
-3. Network security is extremely important as we integrate on on-premises network with Microsoft Azure.
+3. Network security is extremely important as we integrate the on-premises network with Microsoft Azure.
 
 ### Customer objections
 
-1. It appears there are multiple options of hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
+1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
 
 2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
-3. Will we be able to rollback to the on-premises VMs if the migration fails?
+3. Will we be able to roll back to the on-premises VMs if the migration fails?
 
 4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
@@ -273,7 +273,7 @@ Timeframe: 60 minutes
 
 Directions: With your team, answer the following questions and be prepared to present your solution to others:
 
-1. Who will you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who will you present this solution to? Who is your target customer audience? Who are the decision-makers?
 
 2. What customer business needs do you need to address with your solution?
 
@@ -360,7 +360,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Step 1: Review the customer case study
 
-- Check in with your participants to introduce yourself as the trainer.
+- Check-in with your participants to introduce yourself as the trainer.
 
 - Ask, "What questions do you have about the customer case study?"
 
@@ -370,15 +370,15 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Step 2: Design a proof of concept solution
 
-- Check in with your teams to ensure that they are transitioning from step to step on time.
+- Check-in with your teams to ensure that they are transitioning from step to step on time.
 
 - Provide feedback on their responses to the business needs and design.
 
-  - Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first which will lead the participants to discover the answers on their own.
 
 - Provide feedback for their responses to the customer's objections.
 
-  - Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first which will lead the participants to discover the answers on their own.
 
 ## Step 3: Present the solution
 
@@ -407,25 +407,25 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 1. How will you migrate the on-premises workloads to Azure?
 
-   Since it is recommended to upgrade the version of Windows Server from 2012 to 2022, it will be necessary to create new servers. In this case, Azure Migrate wont be able to be used to lift and shift the on-premises VMs into Azure. For this reason, the Azure VMs will be created new and the application workloads will be installed and configured on the new VMs.
+   Since it is recommended to upgrade the version of Windows Server from 2012 to 2022, it will be necessary to create new servers. In this case, Azure Migrate won't be able to be used to lift and shift the on-premises VMs into Azure. For this reason, the Azure VMs will be created new and the application workloads will be installed and configured on the new VMs.
 
 2. How will you migrate the SQL Server workloads to Azure?
 
-   For the SQL Server databases, Tailspin should use the Microsoft Data Migration Assistant (DMA) to assess database migration readiness. Using DMA to examine the existing on-premises databases will report any compatibility issues ahead of attempting the migration. Typically, SQL Server databases can be migrated to Azure SQL Database or Azure SQL Database Managed Instances. Also, Azure SQL Managed Instances offers greater compatibility with the on-premises SQL Server. SQL Server in Azure VMs could be used, however this will negate the advantages of using a managed service that eliminates the requirement for on-going VM maintenance.
+   For the SQL Server databases, Tailspin should use the Microsoft Data Migration Assistant (DMA) to assess database migration readiness. Using DMA to examine the existing on-premises databases will report any compatibility issues ahead of attempting the migration. Typically, SQL Server databases can be migrated to Azure SQL Database or Azure SQL Database Managed Instances. Also, Azure SQL Managed Instances offers greater compatibility with the on-premises SQL Server. SQL Server in Azure VMs could be used, however this will negate the advantages of using a managed service that eliminates the requirement for ongoing VM maintenance.
 
 3. Which workloads should remain on-premises and which should be considered to be migrated at a later time?
 
-   Among the workloads that have identified for advice on migration to Azure, the Windows Domain Controllers are recommended to keep in the on-premises data-center at this time.
+   Among the workloads that have been identified for advice on migration to Azure, the Windows Domain Controllers are recommended to keep in the on-premises data-center at this time.
 
    It is recommended to migrate the on-premises Network File Shares and Ubuntu VMs to Azure in a later phase of their Azure adoption. A phased approach to the migration process will enable each workload to be methodically migrated to Azure while limiting the risk of downtime across the organization.
 
-   It is recommended to migrate the on-premises Network File Shares to Azure Storage File Shares. This would allow for a fully managed service to host the file shares without the requirement for on-going VM maintenance. However, the configuration and usage of the File Shares will need to be assessed and discussed with Tailspin to ensure Azure Storage File Shares offer the features they need. If not, the Network File Shares could be migrated to Azure VMs if necessary.
+   It is recommended to migrate the on-premises Network File Shares to Azure Storage File Shares. This would allow for a fully managed service to host the file shares without the requirement for ongoing VM maintenance. However, the configuration and usage of the File Shares will need to be assessed and discussed with Tailspin to ensure Azure Storage File Shares offer the features they need. If not, the Network File Shares could be migrated to Azure VMs if necessary.
 
    It is recommended to migrate the on-premises Ubuntu 18.04 Linux VMs to Azure. These could be migrated similarly to the Windows Server VMs, and the server requirements will need to be discussed with Tailspin. As was mentioned, they may be phasing out some of their web applications, as a result it may not be necessary to migrate all their on-premises servers.
 
 4. How will they reduce the burden of managing both on-premises and Azure workloads?
 
-   After some of their VMs are migrated to Azure, and others are still on-premises, it may be more burdensome to manage all their workloads in one place. For this, the use of Azure Arc is recommended. Azure Arc will enable Tailspin to centrally manage all their VMs in Azure and on-premises. Azure Arc supports managing both Windows and Linux servers and VMs.
+   After some of the VMs are migrated to Azure, and others are still on-premises, it may be more burdensome to manage all their workloads in one place. For this, the use of Azure Arc is recommended. Azure Arc will enable Tailspin to centrally manage all their VMs in Azure and on-premises. Azure Arc supports managing both Windows and Linux servers and VMs.
 
    The on-premises Windows and Linux VMs can be Azure Arc-enabled by installing the Azure Connected Machine agent. The agent brings with it the ability to manage the VMs with Azure Arc, as well as all the great features the service has to offer.
 
@@ -457,7 +457,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
     | **Component** | **Region** | **Details / Assumptions** | **Est. Monthly Cost (USD)** |
     | Web VMs | North Central US | 2x D8s v5 VMs (8 vCores, 32 GiB RAM) & Windows Server 2022 | $280.00 each|
 
-    > **Note:** Some discussion with Tailspin Toys may be needed to determine if additional changes to the choice of VM sizes and number of VMs could further lower hosting cost. Load balancing across a larger number of smaller VMs may help lower cost. Also, it's possible Azure App Service (PaaS services) could be an additional options for hosting the Front-end Web application and the Back-end REST API depending on the clients needs.
+    > **Note:** Some discussion with Tailspin Toys may be needed to determine if additional changes to the choice of VM sizes and number of VMs could further lower hosting costs. Load balancing across a larger number of smaller VMs may help lower costs. Also, it's possible Azure App Service (PaaS services) could be an additional option for hosting the Front-end Web application and the Back-end REST API depending on the client's needs.
 
     _Application Databases_
     |     |            |            |            |
@@ -480,9 +480,9 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Checklist of preferred objection handling
 
-1. It appears there are multiple options of hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
+1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
 
-   Microsoft Azure does provide multiple options for hosting SQL databases. Azure SQL refers to a family of managed, secure, and intelligent products that use the SQL Server database engine in the Azure cloud. There is some overlap between the different options available, with each targeting different use cases, scenarios and business motivations.
+   Microsoft Azure does provide multiple options for hosting SQL databases. Azure SQL refers to a family of managed, secure, and intelligent products that use the SQL Server database engine in the Azure cloud. There is some overlap between the different options available, with each targeting different use cases, scenarios, and business motivations.
 
    For Tailspin Toys, it is recommended to use Azure SQL Managed Instances (SQL MI) for migrating the SQL Server databases to Azure. SQL MI provides near 100% compatibility with on-premises SQL Server database instances and includes features to best handle the common isolation and security concerns required by Tailspins organization.
 
@@ -496,15 +496,15 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
-   All application tiers and database will be deployed to the Azure VMs in parallel to the on-premises VMs. This will enable minimal downtime when application load is redirected to the new VMs.
+   All application tiers and databases will be deployed to the Azure VMs in parallel to the on-premises VMs. This will enable minimal downtime when the application load is redirected to the new VMs.
 
-   To ensure data consistency during the migration, there will be a short window of downtime required at the database level when the cut over to the new servers is performed. Data migration using DMS supports online migration, allowing the applications to be kept online while data is synchronized.
+   To ensure data consistency during the migration, there will be a short window of downtime required at the database level when the cutover to the new servers is performed. Data migration using DMS supports online migration, allowing the applications to be kept online while data is synchronized.
 
 3. Will we be able to rollback to the on-premises VMs if the migration fails?
 
    The migration process will be designed to create new application deployments within their CI/CD pipelines to release to the new Windows Server 2022 VMs in Azure in parallel to the existing on-premises VMs. This will allow traffic to be cut over to the new VMs when ready.
 
-   In the event of an unexpected issue during migration, the existing on-premises VMs, application deployments and databases will remain in place as a fall back. If there is an issue detected during the cut over process, the on-premises servers will be able to immediately pick up where they left off.
+   In the event of an unexpected issue during migration, the existing on-premises VMs, application deployments, and databases will remain in place as a fallback. If there is an issue detected during the cutover process, the on-premises servers will be able to immediately pick up where they left off.
 
 4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
@@ -512,14 +512,14 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 5. Would there be further savings from the use of PaaS services?
 
-   Further evaluation of the front-end and back-end .NET Framework applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs, and does support hosting applications build with .NET Framework, and .NET Core, among other development languages.
+   Further evaluation of the front-end and back-end .NET Framework applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs and does support hosting applications build with .NET Framework, and .NET Core, among other development languages.
 
    Azure Kubernetes Service (AKS) is another potential option for hosting applications. For Tailspin Toys, this may not be the best option as it would require further redesign and architecture of the applications to host in AKS. If Azure App Service doesn't meet the requirements of Tailspin Toys applications, then AKS may offer an alternative that fits better.
 
-   If Tailspin Toys is looking to redesign their back-end REST API applications, then Azure Functions would be a service to consider. The applications would not be able to be hosted in Azure Functions as they are currently written. Redesigning and rewriting the REST APIs would be required to move them to serverless Azure Functions hosting.
+   If Tailspin Toys is looking to redesign the back-end REST API applications, then Azure Functions would be a service to consider. The applications would not be able to be hosted in Azure Functions as they are currently written. Redesigning and rewriting the REST APIs would be required to move them to serverless Azure Functions hosting.
 
 ## Customer quote (to be read back to the attendees at the end)
 
-"We recognized the need and benefits to migrating our aging infrastructure to Azure. I know this migration is going to help us increase reliability while lowering operation and maintenance costs. I'm really looking forward to the shiny new capabilities we are now able to take advantage of, including the ability to manage our on-premises and Azure VMs using Azure Arc."
+"We recognized the need and benefits of migrating our aging infrastructure to Azure. I know this migration is going to help us increase reliability while lowering operation and maintenance costs. I'm really looking forward to the shiny new capabilities we are now able to take advantage of, including the ability to manage our on-premises and Azure VMs using Azure Arc."
 
----Kaylee Frye, CTO, Tailspin Toys
+-Kaylee Frye, CTO, Tailspin Toys
