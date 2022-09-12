@@ -32,7 +32,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Whiteboard design session flow](#whiteboard-design-session-flow)
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Building a resilient IaaS architecture whiteboard design session student guide](#building-a-resilient-iaas-architecture-whiteboard-design-session-student-guide)
+- [Building the business migration case with Windows Server and SQL Server whiteboard design session student guide](#building-the-business-migration-case-with-windows-server-and-sql-server-whiteboard-design-session-student-guide)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
         - [Customer situation](#customer-situation)
@@ -43,7 +43,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Step 3: Present the solution](#step-3-present-the-solution)
     - [Wrap-up](#wrap-up)
     - [Additional references](#additional-references)
-- [Building a resilient IaaS architecture whiteboard design session trainer guide](#building-a-resilient-iaas-architecture-whiteboard-design-session-trainer-guide)
+- [Building the business migration case with Windows Server and SQL Server whiteboard design session trainer guide](#building-the-business-migration-case-with-windows-server-and-sql-server-whiteboard-design-session-trainer-guide)
     - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
     - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
     - [Step 3: Present the solution](#step-3-present-the-solution-1)
@@ -167,13 +167,13 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What is your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-# Building a resilient IaaS architecture whiteboard design session student guide
+# Building the business migration case with Windows Server and SQL Server whiteboard design session student guide
 
 ## Abstract and learning objectives
 
 In this whiteboard design session, you will look at how to design a strategy for migrating existing on-premises Windows Server and SQL Server workloads to Azure. Throughout the whiteboard design session, you will look at the Virtual Machine pricing, integrated management of cloud and on-premises workloads using Azure Arc, and migrating SQL Server workloads to Azure.
 
-At the end of the workshop, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL MI, and simplifying workload management using Azure Arc.
+At the end of the workshop, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL Managed Instance (SQL MI), and simplifying workload management using Azure Arc.
 
 ## Step 1: Review the customer case study
 
@@ -354,7 +354,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 | Azure Database Migration Service | <https://azure.microsoft.com/products/database-migration/#overview> |
 | Overview of Data Migration Assistant | <https://docs.microsoft.com/sql/dma/dma-overview> |
 
-# Building a resilient IaaS architecture whiteboard design session trainer guide
+# Building the business migration case with Windows Server and SQL Server whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
