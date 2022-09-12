@@ -197,9 +197,9 @@ Tailspin Toys is a global manufacturer of children’s toys that was founded in 
 
 The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
-Tailspin has already completed the first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
+Tailspin has already completed the first round of analysis to identify the applications and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises.
 
-Their on-premises environment consists of over 250 servers and VMs, although, they don't plan to migrate all of them to Azure. The fear of breaking an existing system during their migration is the reason they've identified just a few servers / VMs to begin the migration.
+Their on-premises environment consists of over 250 servers and VMs, although, they don't plan to migrate all of them to Azure. They want to implement a phased approach to the migration, so they've identified just a few VMs to begin with.
 
 The first workload they want to migrate to Azure consists of:
 
@@ -213,7 +213,7 @@ The first workload they want to migrate to Azure consists of:
     - each with 4 CPU cores and 32 GB Memory
 - Application Databases
   - SQL Server 2012
-  - Data replication across 2x Windows Server 2012 VMs
+  - Data replication using SQL Availability Groups across 2x Windows Server 2012 VMs
     - each with 8 CPU cores and 64 GB Memory
   - 3x databases with the following storage sizes
     - Database 1: 1.2 TB
@@ -226,6 +226,7 @@ They have identified the following workloads that may not be migrated to Azure, 
 - 3x Network File Shares hosted on Windows Server 2012
 - 8x Windows Server VMs hosting .NET Core and .NET Framework applications hosted using IIS
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
+- Legacy applications for supply chain management and other business critical systems that must remain on-premises until we can rebuild them to run in the cloud.
 
 The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premise workloads to Azure.
 
@@ -237,7 +238,9 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 2. Lower the management burden with a consolidated view to manage all VMs and Servers cross Azure and on-premises.
 
-3. Network security is extremely important as we integrate the on-premises network with Microsoft Azure.
+3. Security is extremely important when integrating the on-premises network and workloads with Microsoft Azure.
+
+4. With Windows Server 2012 extended support ending October 10, 2023, the new Azure VMs will need to be deployed using a newer version of Windows Server.
 
 ### Customer objections
 
@@ -247,9 +250,13 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 3. Will we be able to roll back to the on-premises VMs if the migration fails?
 
-4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+4. We know there are workloads that will not be migrated to Azure. What's the best way to handle managing all our VMs across on-premises and Azure?
 
-5. Would there be further savings from the use of PaaS services?
+5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+
+6. Securing and monitoring our on-premises workloads is extremely important. What options does Azure offer to extend this into the cloud?
+
+7. Would there be further savings from the use of PaaS services?
 
 ### Infographic for common scenarios
 
@@ -508,11 +515,19 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
    In the event of an unexpected issue during migration, the existing on-premises VMs, application deployments, and databases will remain in place as a fallback. If there is an issue detected during the cutover process, the on-premises servers will be able to immediately pick up where they left off.
 
-4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+4. We know there are workloads that will not be migrated to Azure. What's the best way to handle managing all our VMs across on-premises and Azure?
+
+   ???
+
+5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
    We absolutely want to take advantage of these savings for them! The cost estimates from the Azure Pricing Calculator can be tailored to reflect their EA discount.
 
-5. Would there be further savings from the use of PaaS services?
+6. Securing and monitoring our on-premises workloads is extremely important. What options does Azure offer to extend this into the cloud?
+
+   ??? - (Defender and Azure Monitor? integration with Arc?)
+
+7. Would there be further savings from the use of PaaS services?
 
    Further evaluation of the front-end and back-end .NET Framework applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs and does support hosting applications build with .NET Framework, and .NET Core, among other development languages.
 

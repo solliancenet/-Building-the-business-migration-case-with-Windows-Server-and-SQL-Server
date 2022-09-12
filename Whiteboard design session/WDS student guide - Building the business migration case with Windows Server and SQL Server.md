@@ -67,13 +67,13 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 ### Customer situation
 
-Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and they are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
 The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
-Tailspin has already completed the first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
+Tailspin has already completed the first round of analysis to identify the applications and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises.
 
-Their on-premises environment consists of over 250 servers and VMs, although, they don't plan to migrate all of them to Azure. The fear of breaking an existing system during their migration is the reason they've identified just a few servers / VMs to begin the migration.
+Their on-premises environment consists of over 250 servers and VMs, although, they don't plan to migrate all of them to Azure. They want to implement a phased approach to the migration, so they've identified just a few VMs to begin with.
 
 The first workload they want to migrate to Azure consists of:
 
@@ -87,7 +87,7 @@ The first workload they want to migrate to Azure consists of:
     - each with 4 CPU cores and 32 GB Memory
 - Application Databases
   - SQL Server 2012
-  - Data replication across 2x Windows Server 2012 VMs
+  - Data replication using SQL Availability Groups across 2x Windows Server 2012 VMs
     - each with 8 CPU cores and 64 GB Memory
   - 3x databases with the following storage sizes
     - Database 1: 1.2 TB
@@ -100,18 +100,21 @@ They have identified the following workloads that may not be migrated to Azure, 
 - 3x Network File Shares hosted on Windows Server 2012
 - 8x Windows Server VMs hosting .NET Core and .NET Framework applications hosted using IIS
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
+- Legacy applications for supply chain management and other business critical systems that must remain on-premises until we can rebuild them to run in the cloud.
 
-The Virtual Machines hosted in their on-premises data center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premises workloads to Azure.
+The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premise workloads to Azure.
 
-In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
+In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data-center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
 
 ### Customer needs
 
 1. Migrate existing workloads to Azure as efficiently as possible.
 
-2. Lower the management burden with a consolidated view to manage all VMs and Servers across Azure and on-premises.
+2. Lower the management burden with a consolidated view to manage all VMs and Servers cross Azure and on-premises.
 
-3. Network security is extremely important as we integrate on-premises networking with Microsoft Azure.
+3. Security is extremely important when integrating the on-premises network and workloads with Microsoft Azure.
+
+4. With Windows Server 2012 extended support ending October 10, 2023, the new Azure VMs will need to be deployed using a newer version of Windows Server.
 
 ### Customer objections
 
@@ -121,9 +124,13 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 3. Will we be able to roll back to the on-premises VMs if the migration fails?
 
-4. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+4. We know there are workloads that will not be migrated to Azure. What's the best way to handle managing all our VMs across on-premises and Azure?
 
-5. Would there be further savings from the use of PaaS services?
+5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+
+6. Securing and monitoring our on-premises workloads is extremely important. What options does Azure offer to extend this into the cloud?
+
+7. Would there be further savings from the use of PaaS services?
 
 ### Infographic for common scenarios
 
