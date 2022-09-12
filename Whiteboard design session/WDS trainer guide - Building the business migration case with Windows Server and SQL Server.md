@@ -193,7 +193,7 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 
 ### Customer situation
 
-Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and they are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
 The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
@@ -291,7 +291,7 @@ Directions: With your team, respond to the following questions:
 
 Provide an estimated cost for the workloads being migrated in your solution.
 
-- Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, and monitoring costs
+- Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, and Azure resource costs
 
 - What's the best option for hosting the SQL Server workloads?
 
@@ -431,7 +431,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 1. Provide an estimated cost for the workloads being migrated in your solution.
 
-    - Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, and monitoring costs
+    - Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, and Azure resource costs
 
     - What's the best option for hosting the SQL Server workloads?
 
@@ -441,7 +441,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
     Pricing Azure solutions is a complex task. The example solution below includes many assumptions, for example on virtual machine size. These need to be validated with Tailspin Toys.
 
-    Since Tailspin Toys and their current on-premises data-center is in Milwaukee, WI. The nearest Azure Region to use will be North Central US.
+    Since Tailspin Toys and their current on-premises data-center is in Milwaukee, WI. The nearest Azure Region to use will be North Central US. Their secondary Azure region for DR will be South Central US, as that's the Azure region pair for North Central US.
 
     _Web Application Front-end_
     |    |            |            |            |
