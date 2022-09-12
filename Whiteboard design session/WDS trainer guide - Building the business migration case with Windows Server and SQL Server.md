@@ -57,7 +57,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 # Trainer information
 
-Thank you for taking time to support the whiteboard design sessions as a trainer!
+Thank you for taking the time to support the whiteboard design sessions as a trainer!
 
 ## Role of the trainer
 
@@ -93,11 +93,11 @@ Outcome
 
 Analyze your customer's needs.
 
-- Customer's background, situation, needs and technical requirements
+- Customer's background, situation, needs, and technical requirements
 
 - Current customer infrastructure and architecture
 
-- Potential issues, objectives and blockers
+- Potential issues, objectives, and blockers
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
@@ -107,7 +107,7 @@ Design a solution and prepare to present the solution to the target customer aud
 
 - Determine your target customer audience.
 
-- Determine customer's business needs to address your solution.
+- Determine the customer's business needs to address your solution.
 
 - Design and diagram your solution.
 
@@ -117,7 +117,7 @@ Design a solution and prepare to present the solution to the target customer aud
 
 Outcome
 
-Present solution to your customer.
+Present the solution to your customer.
 
 - Present solution
 
@@ -175,7 +175,7 @@ In this whiteboard design session, you will look at how to design for converting
 
 At the end of the workshop, you will be better able to design and use resiliency concepts including high availability with Availability Zones, disaster recovery for virtual machines to another region using Azure Site Recovery, and SQL Server high availability and disaster recovery using Always On Availability Groups. You will also learn how to assess the availability SLA, RPO and RTO of your design, and how to use Azure Backup to protect and secure your SQL data and VMs against corruption and loss.
 
-You will also discuss how to achieve a similar level of resiliency for a PaaS-based implementation the same application, based on Azure App Service and Azure SQL Database. Finally, you will consider the costs associated with both approaches.
+You will also discuss how to achieve a similar level of resiliency for a PaaS-based implementation of the same application, based on Azure App Service and Azure SQL Database. Finally, you will consider the costs associated with both approaches.
 
 ## Step 1: Review the customer case study
 
@@ -195,9 +195,9 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 
 ### Customer situation
 
-Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with their global headquarters located in Milwaukee, WI. Their mission critical workloads are currently hosted in an on-premises data-center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
-The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamline operations, and simplify their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
+The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamline operations, and simplify their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
 Tailspin has already completed their first round of analysis to identify the apps and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises for now.
 
