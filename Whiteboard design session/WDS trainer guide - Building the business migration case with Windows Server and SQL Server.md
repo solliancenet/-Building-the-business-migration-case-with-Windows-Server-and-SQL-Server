@@ -407,6 +407,8 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
    Since it is recommended to upgrade the version of Windows Server from 2012 to 2022, it will be necessary to create new servers. In this case, Azure Migrate won't be able to be used to lift and shift the on-premises VMs into Azure. For this reason, the Azure VMs will be created new and the application workloads will be installed and configured on the new VMs.
 
+   Application deployment automation is already being done using Azure DevOps Pipelines, so there should be minimal effort necessary to extend those pipelines to deploy to the new Azure VMs.
+
 2. How will you migrate the SQL Server workloads to Azure?
 
    For the SQL Server databases, Tailspin should use the Microsoft Data Migration Assistant (DMA) to assess database migration readiness. Using DMA to examine the existing on-premises databases will report any compatibility issues ahead of attempting the migration. Typically, SQL Server databases can be migrated to Azure SQL Database or Azure SQL Database Managed Instances. Also, Azure SQL Managed Instances offers greater compatibility with the on-premises SQL Server. SQL Server in Azure VMs could be used, however this will negate the advantages of using a managed service that eliminates the requirement for ongoing VM maintenance.
