@@ -195,7 +195,7 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 
 Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and they are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
-The CTO, Kaylee Frye, has already had the Technical Architects at Tailspin Toys assess their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
+During the Envision Workshop, Kaylee Frye, CTO of Tailspin Toys, see the value of digital transformation, adopting the Microsoft Azure cloud, and modernizing their infrastructure. She has already had the Technical Architects at Tailspin Toys begin assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
 Tailspin has already completed the first round of analysis to identify the applications and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises.
 
@@ -220,7 +220,7 @@ The first workload they want to migrate to Azure consists of:
     - Database 2: 435 GB
     - Database 3: 50 GB
 
-They have identified the following workloads that may not be migrated to Azure, but would like some advice on how to handle these:
+They have identified several different types of on-premises workloads that may not be migrated to Azure, but would like some advice on how to handle these:
 
 - Windows Domain Controllers
 - 3x Network File Shares hosted on Windows Server 2012
@@ -228,7 +228,7 @@ They have identified the following workloads that may not be migrated to Azure, 
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 - Legacy applications for supply chain management and other business critical systems that must remain on-premises until we can rebuild them to run in the cloud.
 
-The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Also, some of the smaller .NET Core web applications are included in a plan to be phased out, so there may be limited benefit from migrating all their on-premise workloads to Azure.
+The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Some of the smaller .NET Core web applications in the identified workloads are planned to be phased out, so the VMs hosting those workloads will remain on-premises.
 
 In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data-center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
 
@@ -517,7 +517,9 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 4. We know there are workloads that will not be migrated to Azure. What's the best way to handle managing all our VMs across on-premises and Azure?
 
-   ???
+   Azure Arc provides the ability to use a single pane of glass to manage all your VMs and servers across on-premises and Azure.
+
+   Azure Arc-enabled servers lets you manage Windows and Linux physical servers and virtual machines hosted outside of Azure, such as on-premises VMs. This management experience is designed to be consistent with how you manage native Azure virtual machines, using standard Azure constructs such as Azure Policy and applying tags.
 
 5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
 
@@ -525,7 +527,9 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 6. Securing and monitoring our on-premises workloads is extremely important. What options does Azure offer to extend this into the cloud?
 
-   ??? - (Defender and Azure Monitor? integration with Arc?)
+   Microsoft Defender for Cloud is a solution for cloud security posture management (CSPM) and cloud workload protection (CWP) that finds weak spots across your cloud configuration, helps strengthen the overall security posture of your environment, and can protect workloads across multicloud and hybrid environments from evolving threats.
+
+   Azure Monitor collects monitoring telemetry from a variety of on-premises and Azure sources. Management tools, such as those in Azure Security Center and Azure Automation, also push log data to Azure Monitor. The service aggregates and stores this telemetry in a log data store that’s optimized for cost and performance. Analyze data, set up alerts, get end-to-end views of your applications, and use machine learning–driven insights to quickly identify and resolve problems.
 
 7. Would there be further savings from the use of PaaS services?
 
