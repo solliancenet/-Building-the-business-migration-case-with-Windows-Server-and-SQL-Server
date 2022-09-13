@@ -413,6 +413,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 ![Preferred Solution Diagram](images/PreferredSolutionDiagram.png "Diagram showing on-premises network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.")
 
 These are the components of the preferred solution diagram:
+
 - Tailspin has Hub and Spoke networking setup with Azure ExpressRoute connected to Azure.
 - The Web application front-end, REST API back-end, and SQL Server Databases have been migrated to Azure and are running in Virtual Machines hosted within a Spoke Vnet in Azure that is peered with the Hub Vnet.
 - Each application in Azure is contained within its own Subnet with Network Security Groups securing them accordingly.
@@ -422,6 +423,12 @@ These are the components of the preferred solution diagram:
   - Azure Firewall to protect the Web Application front-end (a common component to use in a secure Azure networking model)
   - Azure Monitor setup to implement monitoring of Azure VMs
 
+These are some reasons for the chosen options in the preferred solution:
+
+- New Azure VMs for the Web application front-end and REST API back-end workloads migrated to Azure are used since they also need to be upgraded to the latest version of Windows Server.
+- The SQL Server databases are migrated to Azure SQL Managed Instance (SQL MI) so moving the existing SQL Server VMs does not apply to this scenario. Also, SQL MI provides near 100% compatibility with on-premises SQL Server while providing a managed VM, in addition to Virtual Network integration support for security.
+- The Network File Share and Ubuntu VMs are not migrated to Azure, as Tailspin Toys expressed that some of these servers either will not be migrated, or they will be in a future phase of the overall migration plan.
+- The Windows Domain Controllers are kept on-premises as this likely is the best solution for Tailspin Toys. Doing otherwise, would require additional scoping and work as part of a future phase of the overall migration plan.
 
 1. How will you migrate the on-premises workloads to Azure?
 
