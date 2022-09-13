@@ -261,10 +261,10 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 ### Infographic for common scenarios
 
 **Hub-spoke network topology in Azure**
-![Hub-spoke network topology in Azure](images/diagram-azure-vnet-hub-spoke.png "Hub-spoke network topology in Azure")
+![Hub-spoke network topology in Azure](images/diagram-azure-vnet-hub-spoke.png "The hub virtual network acts as a central point of connectivity to many spoke virtual networks. The hub can also be used as the connectivity point to your on-premises networks. The spoke virtual networks peer with the hub and can be used to isolate workloads.")
 
 **Azure Arc control plan**
-![Azure Arc control plan](images/diagram-azure-arc-control-plane.png "Azure Arc control plan")
+![Azure Arc control plan](images/diagram-azure-arc-control-plane.png "Azure Arc simplifies governance and management by delivering a consistent multi-cloud and on-premises management platform.")
 
 ## Step 2: Design a proof of concept solution
 
@@ -452,7 +452,7 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
     Since Tailspin Toys and their current on-premises data-center is in Milwaukee, WI. The nearest Azure Region to use will be North Central US. Their secondary Azure region for DR will be South Central US, as that's the Azure region pair for North Central US.
 
-   The following pricing estimates are for their primary region. There is some additional discussion with Tailspin Toys to determine the extent of Disaster Recover (DR) they require for this initial set of workloads being migrated to Azure.
+    The following pricing estimates are for their primary region. There is some additional discussion with Tailspin Toys to determine the extent of Disaster Recover (DR) they require for this initial set of workloads being migrated to Azure.
 
     _Web Application Front-end_
     |    |            |            |            |
