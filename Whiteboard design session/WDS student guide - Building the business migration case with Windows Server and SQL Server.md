@@ -135,10 +135,10 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 ### Infographic for common scenarios
 
 **Hub-spoke network topology in Azure**
-![Hub-spoke network topology in Azure](images/diagram-azure-vnet-hub-spoke.png "Hub-spoke network topology in Azure")
+![Hub-spoke network topology in Azure](images/diagram-azure-vnet-hub-spoke.png "The hub virtual network acts as a central point of connectivity to many spoke virtual networks. The hub can also be used as the connectivity point to your on-premises networks. The spoke virtual networks peer with the hub and can be used to isolate workloads.")
 
 **Azure Arc control plan**
-![Azure Arc control plan](images/diagram-azure-arc-control-plane.png "Azure Arc control plan")
+![Azure Arc control plan](images/diagram-azure-arc-control-plane.png "Azure Arc simplifies governance and management by delivering a consistent multi-cloud and on-premises management platform. Azure Arc provides a centralized, unified way to manage your entire environment together by projecting your existing on-premises resources into Azure Resource Manager.")
 
 ## Step 2: Design a proof of concept solution
 
