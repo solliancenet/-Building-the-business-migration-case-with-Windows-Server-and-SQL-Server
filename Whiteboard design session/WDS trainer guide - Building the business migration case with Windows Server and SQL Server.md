@@ -472,7 +472,7 @@ These are some reasons for the chosen options in the preferred solution:
 
     Since Tailspin Toys and their current on-premises data-center is in Milwaukee, WI. The nearest Azure Region to use will be North Central US. Their secondary Azure region for DR will be South Central US, as that's the Azure region pair for North Central US.
 
-    The following pricing estimates are for their primary region. There is some additional discussion with Tailspin Toys to determine the extent of Disaster Recover (DR) they require for this initial set of workloads being migrated to Azure.
+    The following pricing estimates are for their primary region. There is some additional discussion with Tailspin Toys to determine the extent of Disaster Recovery (DR) they require for this initial set of workloads being migrated to Azure.
 
     _Web Application Front-end_
     |    |            |            |            |
