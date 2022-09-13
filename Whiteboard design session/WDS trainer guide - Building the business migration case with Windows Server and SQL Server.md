@@ -410,6 +410,19 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Preferred solution
 
+![Preferred Solution Diagram](images/PreferredSolutionDiagram.png "Diagram showing on-premises network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.")
+
+These are the components of the preferred solution diagram:
+- Tailspin has Hub and Spoke networking setup with Azure ExpressRoute connected to Azure.
+- The Web application front-end, REST API back-end, and SQL Server Databases have been migrated to Azure and are running in Virtual Machines hosted within a Spoke Vnet in Azure that is peered with the Hub Vnet.
+- Each application in Azure is contained within its own Subnet with Network Security Groups securing them accordingly.
+- The on-premises VMs are Azure Arc-enabled so they can be managed with a single pane of glass along with the Azure VMs using the Azure Portal.
+- Other components that may be setup according to the clients requirements are:
+  - Azure Bastion for secure Remote Desktop access to Azure VMs
+  - Azure Firewall to protect the Web Application front-end (a common component to use in a secure Azure networking model)
+  - Azure Monitor setup to implement monitoring of Azure VMs
+
+
 1. How will you migrate the on-premises workloads to Azure?
 
    Since it is recommended to upgrade the version of Windows Server from 2012 to 2022, it will be necessary to create new servers. In this case, Azure Migrate won't be able to be used to lift and shift the on-premises VMs into Azure. For this reason, the Azure VMs will be created new and the application workloads will be installed and configured on the new VMs.
