@@ -553,7 +553,7 @@ _Pricing_
 
 4. What's the best way to handle managing all our VMs across on-premises and Azure? We do have workloads that will not be migrated to Azure.
 
-   Azure Arc provides the ability manage all your VMs and servers across both on-premises and Azure from a single place.
+   Azure Arc provides the ability manage all your on-premises and Azure VMs from a single place.
 
    Azure Arc-enabled servers let you manage Windows and Linux physical servers and virtual machines hosted outside of Azure, such as on-premises VMs. This management experience is designed to be consistent with how you manage native Azure virtual machines, using standard Azure constructs such as Azure Policy and applying tags.
 

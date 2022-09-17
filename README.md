@@ -17,7 +17,7 @@ September 2022
 
 ### Whiteboard Design Session
 
-In this whiteboard design session, you will learn to design a strategy for migrating existing on-premises Windows Server and SQL Server workloads to Azure. Throughout the whiteboard design session, you will look at the Virtual Machine (VM) pricing, integrated management of cloud, and on-premises workloads using Azure Arc, and migrating SQL Server workloads to Azure.
+In this whiteboard design session, you will learn to design a strategy for migrating existing on-premises Windows Server and SQL Server workloads to Azure. Throughout the whiteboard design session, you will look at the virtual machine (VM) pricing, integrated management of cloud, and on-premises workloads using Azure Arc, and migrating SQL Server workloads to Azure.
 
 At the end of the workshop, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL Managed Instance (SQL MI), and simplify workload management using Azure Arc.
 

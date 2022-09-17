@@ -120,9 +120,9 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to ensure compatibility?
 
-2. What are the options to roll back to the on-premises VMs if the migration fails?
+2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
-3. Will we be able to roll back to the on-premises VMs if the migration fails?
+3. What are the options to roll back to the on-premises VMs if the migration fails?
 
 4. What's the best way to handle managing all our VMs across on-premises and Azure? We do have workloads that will not be migrated to Azure.
 
