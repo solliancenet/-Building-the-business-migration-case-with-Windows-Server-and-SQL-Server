@@ -49,15 +49,7 @@ Duration: 30 minutes
 
 In this task, you will leverage a custom Azure Resource Manager (ARM) template to deploy the existing Azure resources and a simulated on-premises environment for Tailspin Toys.
 
-This ARM Template will provision the following resources:
-
-- Azure Virtual Network
-    - Hub and Spoke VNets to represent Tailspin Toys existing Azure environment
-    - A simulated On-premises environment will be provisioned within a VNet
-- Azure Bastion
-    - An Azure Bastion instance will be deployed to the Hub VNet that will be used to remotely connection VMs within the Hub and Spoke Virtual Network environment.
-
-1.  Open a browser using "InPrivate" or "Incognito" mode, and navigate to the ARM template: [ARM Template on GitHub](https://)
+1.  Open a browser using "InPrivate" or "Incognito" mode, and navigate to the ARM template: [ARM Template on GitHub](https://github.com/solliancenet/Building-the-business-migration-case-with-Windows-Server-and-SQL-Server/tree/lab/Hands-on%20lab/resources/deployment)
 
     -  Insert content here
 
