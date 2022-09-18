@@ -1,12 +1,12 @@
 @description('The prefix base used to name resources created.')
-param resourceGroupNameBase string = 'tailspin'
+param resourceNameBase string = 'tailspin'
 
 
 var location = resourceGroup().location
 
-var onpremNamePrefix = '${resourceGroupNameBase}-onprem-'
-var hubNamePrefix = '${resourceGroupNameBase}-hub-'
-var spokeNamePrefix = '${resourceGroupNameBase}-spoke-'
+var onpremNamePrefix = '${resourceNameBase}-onprem-'
+var hubNamePrefix = '${resourceNameBase}-hub-'
+var spokeNamePrefix = '${resourceNameBase}-spoke-'
 
 var tags = {
     purpose: 'MCW'

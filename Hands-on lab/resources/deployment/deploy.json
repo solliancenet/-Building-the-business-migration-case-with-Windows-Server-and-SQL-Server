@@ -5,11 +5,11 @@
     "_generator": {
       "name": "bicep",
       "version": "0.10.61.36676",
-      "templateHash": "17181312079398915420"
+      "templateHash": "5423682835494096109"
     }
   },
   "parameters": {
-    "resourceGroupNameBase": {
+    "resourceNameBase": {
       "type": "string",
       "defaultValue": "tailspin",
       "metadata": {
@@ -19,9 +19,9 @@
   },
   "variables": {
     "location": "[resourceGroup().location]",
-    "onpremNamePrefix": "[format('{0}-onprem-', parameters('resourceGroupNameBase'))]",
-    "hubNamePrefix": "[format('{0}-hub-', parameters('resourceGroupNameBase'))]",
-    "spokeNamePrefix": "[format('{0}-spoke-', parameters('resourceGroupNameBase'))]",
+    "onpremNamePrefix": "[format('{0}-onprem-', parameters('resourceNameBase'))]",
+    "hubNamePrefix": "[format('{0}-hub-', parameters('resourceNameBase'))]",
+    "spokeNamePrefix": "[format('{0}-spoke-', parameters('resourceNameBase'))]",
     "tags": {
       "purpose": "MCW"
     }

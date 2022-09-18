@@ -39,7 +39,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Requirements
 
-1. You must have a working Azure subscription to carry out this hands-on lab step-by-step without a spending cap to deploy the Barracuda firewall from the Azure Marketplace.
+- You must have a working Azure subscription to carry out this hands-on lab step-by-step without a spending cap to deploy the Barracuda firewall from the Azure Marketplace.
 
 ## Before the hands-on lab
 
@@ -49,11 +49,18 @@ Duration: 30 minutes
 
 In this task, you will leverage a custom Azure Resource Manager (ARM) template to deploy the existing Azure resources and a simulated on-premises environment for Tailspin Toys.
 
-1.  Open a browser using "InPrivate" or "Incognito" mode, and navigate to the ARM template: [ARM Template on GitHub](https://github.com/solliancenet/Building-the-business-migration-case-with-Windows-Server-and-SQL-Server/tree/lab/Hands-on%20lab/resources/deployment)
+1. Open a browser using "InPrivate" or "Incognito" mode, and navigate to the ARM template: [ARM Template on GitHub](https://github.com/solliancenet/Building-the-business-migration-case-with-Windows-Server-and-SQL-Server/tree/lab/Hands-on%20lab/resources/deployment)
 
-    -  Insert content here
+2. Select **Deploy to Azure**. This will open a new browser tab to the Azure Portal for custom deployments.
 
-        -  
+    ![GitHub page with Deploy to Azure button highlighted](images/before-hol-deploy-to-azure.png "Deploy to Azure")
+
+3. If prompted, sign in with an account that is an owner of the Azure Subscription.
+
+4. Fill in the required ARM template parameters.
+    - Create a new **Resource group**
+    - Select a **Region**
+    - Specify a **Resource Name Base**
 
 ### Task 2: Task name
 
