@@ -8,6 +8,12 @@
 # Set PowerShell Execution Policy
 Set-ExecutionPolicy Unrestricted -Force
 
+# Enable TLS 1.2 Strong Cryptography in .NET Framework 4.5 or higher
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord
+
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # Install Nuget
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 

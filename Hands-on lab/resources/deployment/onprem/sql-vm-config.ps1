@@ -71,6 +71,8 @@ Node "localhost"
 		# Get the database backup 
 		$dbsource = "https://github.com/solliancenet/Building-the-business-migration-case-with-Windows-Server-and-SQL-Server/raw/lab/Hands-on%20lab/resources/deployment/onprem/database.bak"
 		$dbdestination = "C:\database.bak"
+		
+		[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 		Invoke-WebRequest $dbsource -OutFile $dbdestination
 
 		$mdf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("WideWorldImporters", "C:\Data\WideWorldImporters.mdf")
