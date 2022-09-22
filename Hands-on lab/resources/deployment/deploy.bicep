@@ -8,6 +8,23 @@ var onpremNamePrefix = '${resourceNameBase}-onprem-'
 var hubNamePrefix = '${resourceNameBase}-hub-'
 var spokeNamePrefix = '${resourceNameBase}-spoke-'
 
+var onpremSQLVMNamePrefix = '${onpremNamePrefix}sql-'
+var onpremHyperVHostVMNamePrefix = '${onpremNamePrefix}hyperv-'
+
+var GitHubScriptRepo = 'solliancenet/Building-the-business-migration-case-with-Windows-Server-and-SQL-Server'
+var GitHubScriptRepoBranch = 'lab'
+var GitHubScriptRepoBranchURL = 'https://raw.githubusercontent.com/${GitHubScriptRepo}/${GitHubScriptRepoBranch}/Hands-on lab/resources/deployment/'
+
+var HyperVHostConfigArchiveFileName = 'create-vm.zip'
+var HyperVHostConfigArchiveScriptName = 'create-vm.ps1'
+var HyperVHostConfigURL = '${GitHubScriptRepoBranchURL}onprem/${HyperVHostConfigArchiveFileName}'
+var HyperVHostInstallHyperVScriptFolder = '.'
+var HyperVHostInstallHyperVScriptFileName = 'install-hyper-v.ps1'
+var HyperVHostInstallHyperVURL = '${GitHubScriptRepoBranchURL}onprem/${HyperVHostInstallHyperVScriptFileName}'
+
+var labUsername = 'demouser'
+var labPassword = 'demo!user123'
+
 var tags = {
     purpose: 'MCW'
 }
@@ -179,5 +196,219 @@ resource hub_bastion_public_ip 'Microsoft.Network/publicIPAddresses@2020-11-01' 
     properties: {
         publicIPAddressVersion: 'IPv4'
         publicIPAllocationMethod: 'Static'
+    }
+}
+
+/* ****************************
+On-premises Hyper-V Host VM
+**************************** */
+
+resource onprem_hyperv_nic 'Microsoft.Network/networkInterfaces@2021-03-01' = {
+    name: '${onpremHyperVHostVMNamePrefix}nic'
+    location: location
+    tags: tags
+    properties: {
+        ipConfigurations: [
+            {
+                name: 'ipconfig1'
+                properties: {
+                    subnet: {
+                        id: '${onprem_vnet.id}/subnets/default'
+                    }
+                    privateIPAllocationMethod: 'Dynamic'
+                }
+            }
+        ]
+        networkSecurityGroup: {
+            id: onprem_hyperv_nsg.id
+        }
+    }
+}
+
+resource onprem_hyperv_nsg 'Microsoft.Network/networkSecurityGroups@2019-02-01' = {
+    name: '${onpremHyperVHostVMNamePrefix}nsg'
+    location: location
+    tags: tags
+    properties: {
+        securityRules: [
+            {
+                name: 'RDP'
+                properties: {
+                    protocol: 'TCP'
+                    sourcePortRange: '*'
+                    destinationPortRange: '3389'
+                    sourceAddressPrefix: '*'
+                    destinationAddressPrefix: '*'
+                    access: 'Allow'
+                    priority: 100
+                    direction: 'Inbound'
+                }
+            }
+        ]
+    }
+}
+
+resource onprem_hyperv_vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
+    name: '${onpremHyperVHostVMNamePrefix}vm'
+    location: location
+    tags: tags
+    properties: {
+        hardwareProfile: {
+            vmSize: 'Standard_D4s_v5'
+        }
+        storageProfile: {
+            osDisk: {
+                createOption: 'fromImage'
+            }
+            imageReference: {
+                publisher: 'MicrosoftWindowsServer'
+                offer: 'WindowsServer'
+                sku: '2019-datacenter-gensecond'
+                version: 'latest'
+            }
+        }
+        networkProfile: {
+            networkInterfaces: [
+                {
+                    id: onprem_hyperv_nic.id
+                }
+            ]
+        }
+        osProfile: {
+            computerName: 'WinServer'
+            adminUsername: labUsername
+            adminPassword: labPassword
+        }
+    }
+}
+
+resource onprem_hyperv_vm_ext_installhyperv 'Microsoft.Compute/virtualMachines/extensions@2017-12-01' = {
+    name: '${onprem_hyperv_vm.name}/InstallHyperV'
+    location: location
+    tags: tags
+    dependsOn: [
+        onprem_hyperv_vm
+    ]
+    properties: {
+        publisher: 'Microsoft.Compute'
+        type: 'CustomScriptExtension'
+        typeHandlerVersion: '1.4'
+        autoUpgradeMinorVersion: true
+        settings: {
+            fileUris: [
+                HyperVHostInstallHyperVURL
+            ]
+            commandToExecute: 'powershell -ExecutionPolicy Unrestricted -File ${HyperVHostInstallHyperVScriptFolder}/${HyperVHostInstallHyperVScriptFileName}'
+        }
+    }
+}
+
+resource onprem_hyperv_vm_ext_createvm 'Microsoft.Compute/virtualMachines/extensions@2017-12-01' = {
+    name: '${onprem_hyperv_vm.name}/CreateWinServerVM'
+    location: location
+    tags: tags
+    dependsOn: [
+        onprem_hyperv_vm
+        onprem_hyperv_vm_ext_installhyperv
+    ]
+    properties: {
+        publisher: 'Microsoft.Powershell'
+        type: 'DSC'
+        typeHandlerVersion: '2.9'
+        autoUpgradeMinorVersion: true
+        settings: {
+            configuration: {
+                url: HyperVHostConfigURL
+                script: HyperVHostConfigArchiveScriptName
+                function: 'Main'
+            }
+            configurationArguments: {
+                nodeName: onprem_hyperv_vm.name
+            }
+        }
+    }
+}
+
+
+/* ****************************
+On-premises SQL VM
+**************************** */
+
+resource onprem_sqlvm_nic 'Microsoft.Network/networkInterfaces@2021-03-01' = {
+    name: '${onpremSQLVMNamePrefix}nic'
+    location: location
+    tags: tags
+    properties: {
+        ipConfigurations: [
+            {
+                name: 'ipconfig1'
+                properties: {
+                    subnet: {
+                        id: '${onprem_vnet.id}/subnets/default'
+                    }
+                    privateIPAllocationMethod: 'Dynamic'
+                }
+            }
+        ]
+        networkSecurityGroup: {
+            id: onprem_sqlvm_nsg.id
+        }
+    }
+}
+
+resource onprem_sqlvm_nsg 'Microsoft.Network/networkSecurityGroups@2019-02-01' = {
+    name: '${onpremSQLVMNamePrefix}nsg'
+    location: location
+    tags: tags
+    properties: {
+        securityRules: [
+            {
+                name: 'RDP'
+                properties: {
+                    protocol: 'TCP'
+                    sourcePortRange: '*'
+                    destinationPortRange: '3389'
+                    sourceAddressPrefix: '*'
+                    destinationAddressPrefix: '*'
+                    access: 'Allow'
+                    priority: 100
+                    direction: 'Inbound'
+                }
+            }
+        ]
+    }
+}
+
+resource onprem_sqlvm_vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
+    name: '${onpremSQLVMNamePrefix}vm'
+    location: location
+    tags: tags
+    properties: {
+        hardwareProfile: {
+            vmSize: 'Standard_D4s_v5'
+        }
+        storageProfile: {
+            osDisk: {
+                createOption: 'fromImage'
+            }
+            imageReference: {
+                publisher: 'MicrosoftSQLServer'
+                offer: 'SQL2012SP4-WS2012R2'
+                sku: 'Standard'
+                version: 'latest'
+            }
+        }
+        networkProfile: {
+            networkInterfaces: [
+                {
+                    id: onprem_sqlvm_nic.id
+                }
+            ]
+        }
+        osProfile: {
+            computerName: 'WinServer'
+            adminUsername: 'demouser'
+            adminPassword: 'demo!user123'
+        }
     }
 }
