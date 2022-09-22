@@ -36,10 +36,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Exercise 1: Create VM to Migrate Web Application](#exercise-1-create-vm-to-migrate-web-application)
         - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
-    - [Exercise 2: Exercise name](#exercise-2-exercise-name)
-        - [Task 1: Task name](#task-1-task-name-1)
-        - [Task 2: Task name](#task-2-task-name-1)
-    - [Exercise 3: Exercise name](#exercise-3-exercise-name)
+    - [Exercise 2: SQL Database Migration](#exercise-2-sql-database-migration)
+        - [Task 1: Create Azure SQL MI](#task-1-create-azure-sql-mi)
+        - [Task 2: Migrate On-premises database to SQL MI](#task-2-migrate-on-premises-database-to-sql-mi)
+    - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
         - [Task 1: Task name](#task-1-task-name-2)
         - [Task 2: Task name](#task-2-task-name-2)
     - [After the hands-on lab](#after-the-hands-on-lab)
@@ -181,13 +181,13 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
 
 
-## Exercise 2: Exercise name
+## Exercise 2: SQL Database Migration
 
 Duration: X minutes
 
 \[insert your custom Hands-on lab content here . . . \]
 
-### Task 1: Task name
+### Task 1: Create Azure SQL MI
 
 1.  Number and insert your custom workshop content here . . . 
 
@@ -195,7 +195,7 @@ Duration: X minutes
 
         -  
 
-### Task 2: Task name
+### Task 2: Migrate On-premises database to SQL MI
 
 1.  Number and insert your custom workshop content here . . . 
 
@@ -204,11 +204,45 @@ Duration: X minutes
         -  
 
 
-## Exercise 3: Exercise name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Exercise 3: Azure Arc-enable On-premises VM
 
 Duration: X minutes
 
 \[insert your custom Hands-on lab content here . . .\]
+
+Creds:
+Administrator
+demo!pass123
+
+
 
 ### Task 1: Task name
 
