@@ -2,7 +2,7 @@
 Microsoft Cloud Workshop
 
 .What does this script do?  
- - Initializes a new data disk, formats and give the letter F:\ and creates Backup, Data and Logs directories
+ - Initializes a new data disk, formats and give the letter C:\ and creates Backup, Data and Logs directories
     
  - Sets SQL Configs: Directories made as defaults, Enables TCP, Eables Mixed Authentication SA Account
 
@@ -29,16 +29,16 @@ Node "localhost"
             return $false
         }
         SetScript ={
-		$disk = Get-Disk | where-object PartitionStyle -eq "RAW"
-		$disk | Initialize-Disk -PartitionStyle MBR -PassThru -confirm:$false
-		$partition = $disk | New-Partition -UseMaximumSize -DriveLetter F
-		$partition | Format-Volume -Confirm:$false -Force
+		# $disk = Get-Disk | where-object PartitionStyle -eq "RAW"
+		# $disk | Initialize-Disk -PartitionStyle MBR -PassThru -confirm:$false
+		# $partition = $disk | New-Partition -UseMaximumSize -DriveLetter F
+		# $partition | Format-Volume -Confirm:$false -Force
 	
 		Start-Sleep -Seconds 60
 
-		$logs = "F:\Logs"
-		$data = "F:\Data"
-		$backups = "F:\Backup" 
+		$logs = "C:\Logs"
+		$data = "C:\Data"
+		$backups = "C:\Backup" 
 		[system.io.directory]::CreateDirectory($logs)
 		[system.io.directory]::CreateDirectory($data)
 		[system.io.directory]::CreateDirectory($backups)
@@ -73,8 +73,8 @@ Node "localhost"
 		$dbdestination = "C:\database.bak"
 		Invoke-WebRequest $dbsource -OutFile $dbdestination
 
-		$mdf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("WideWorldImporters", "F:\Data\WideWorldImporters.mdf")
-		$ldf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("WideWorldImporters_Log", "F:\Logs\WideWorldImporters.ldf")
+		$mdf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("WideWorldImporters", "C:\Data\WideWorldImporters.mdf")
+		$ldf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("WideWorldImporters_Log", "C:\Logs\WideWorldImporters.ldf")
 
 		# Restore the database from the backup
 		Restore-SqlDatabase -ServerInstance Localhost -Database WideWorldImporters `
