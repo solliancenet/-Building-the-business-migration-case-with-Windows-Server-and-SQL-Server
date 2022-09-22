@@ -18,12 +18,17 @@ var GitHubScriptRepoBranchURL = 'https://raw.githubusercontent.com/${GitHubScrip
 var HyperVHostConfigArchiveFileName = 'create-vm.zip'
 var HyperVHostConfigArchiveScriptName = 'create-vm.ps1'
 var HyperVHostConfigURL = '${GitHubScriptRepoBranchURL}onprem/${HyperVHostConfigArchiveFileName}'
+
 var HyperVHostInstallHyperVScriptFolder = '.'
 var HyperVHostInstallHyperVScriptFileName = 'install-hyper-v.ps1'
 var HyperVHostInstallHyperVURL = '${GitHubScriptRepoBranchURL}onprem/${HyperVHostInstallHyperVScriptFileName}'
 
+var SQLVMConfigFileName = 'sql-vm-config.zip'
+var SQLVMConfigScriptName = 'sql-vm-config.ps1'
+var SQLVMConfigURL = '${GitHubScriptRepoBranchURL}onprem/${SQLVMConfigFileName}'
+
 var labUsername = 'demouser'
-var labPassword = 'demo!user123'
+var labPassword = 'demo!pass123'
 
 var tags = {
     purpose: 'MCW'
@@ -323,7 +328,7 @@ resource onprem_hyperv_vm_ext_createvm 'Microsoft.Compute/virtualMachines/extens
                 function: 'Main'
             }
             configurationArguments: {
-                nodeName: onprem_hyperv_vm.name
+                nodeName: 'WinServer'
             }
         }
     }
@@ -407,8 +412,33 @@ resource onprem_sqlvm_vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
         }
         osProfile: {
             computerName: 'WinServer'
-            adminUsername: 'demouser'
-            adminPassword: 'demo!user123'
+            adminUsername: labUsername
+            adminPassword: labPassword
+        }
+    }
+}
+
+resource onprem_sqlvm_vm_ext_sqlvmconfig 'Microsoft.Compute/virtualMachines/extensions@2017-12-01' = {
+    name: '${onprem_sqlvm_vm.name}/SQLVMConfig'
+    location: location
+    tags: tags
+    dependsOn: [
+        onprem_sqlvm_vm
+    ]
+    properties: {
+        publisher: 'Microsoft.Powershell'
+        type: 'DSC'
+        typeHandlerVersion: '2.9'
+        autoUpgradeMinorVersion: true
+        settings: {
+            configuration: {
+                url: SQLVMConfigURL
+                script: SQLVMConfigScriptName
+                function: 'Main'
+            }
+            configurationArguments: {
+                nodeName: 'tailspin-onprem'
+            }
         }
     }
 }

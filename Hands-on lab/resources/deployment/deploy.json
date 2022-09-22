@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.10.61.36676",
-      "templateHash": "18431725832420565154"
+      "templateHash": "8949960635533409826"
     }
   },
   "parameters": {
@@ -33,8 +33,11 @@
     "HyperVHostInstallHyperVScriptFolder": ".",
     "HyperVHostInstallHyperVScriptFileName": "install-hyper-v.ps1",
     "HyperVHostInstallHyperVURL": "[format('{0}onprem/{1}', variables('GitHubScriptRepoBranchURL'), variables('HyperVHostInstallHyperVScriptFileName'))]",
+    "SQLVMConfigFileName": "sql-vm-config.zip",
+    "SQLVMConfigScriptName": "sql-vm-config.ps1",
+    "SQLVMConfigURL": "[format('{0}onprem/{1}', variables('GitHubScriptRepoBranchURL'), variables('SQLVMConfigFileName'))]",
     "labUsername": "demouser",
-    "labPassword": "demo!user123",
+    "labPassword": "demo!pass123",
     "tags": {
       "purpose": "MCW"
     }
@@ -354,7 +357,7 @@
             "function": "Main"
           },
           "configurationArguments": {
-            "nodeName": "[format('{0}vm', variables('onpremHyperVHostVMNamePrefix'))]"
+            "nodeName": "WinServer"
           }
         }
       },
@@ -444,12 +447,38 @@
         },
         "osProfile": {
           "computerName": "WinServer",
-          "adminUsername": "demouser",
-          "adminPassword": "demo!user123"
+          "adminUsername": "[variables('labUsername')]",
+          "adminPassword": "[variables('labPassword')]"
         }
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', format('{0}nic', variables('onpremSQLVMNamePrefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "apiVersion": "2017-12-01",
+      "name": "[format('{0}/SQLVMConfig', format('{0}vm', variables('onpremSQLVMNamePrefix')))]",
+      "location": "[variables('location')]",
+      "tags": "[variables('tags')]",
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.9",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "configuration": {
+            "url": "[variables('SQLVMConfigURL')]",
+            "script": "[variables('SQLVMConfigScriptName')]",
+            "function": "Main"
+          },
+          "configurationArguments": {
+            "nodeName": "tailspin-onprem"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines', format('{0}vm', variables('onpremSQLVMNamePrefix')))]"
       ]
     }
   ]
