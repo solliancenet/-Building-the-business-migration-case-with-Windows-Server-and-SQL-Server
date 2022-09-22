@@ -37,8 +37,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
     - [Exercise 2: SQL Database Migration](#exercise-2-sql-database-migration)
-        - [Task 1: Create Azure SQL MI](#task-1-create-azure-sql-mi)
-        - [Task 2: Migrate On-premises database to SQL MI](#task-2-migrate-on-premises-database-to-sql-mi)
+        - [Task 1: Create Subnet for Azure SQL MI](#task-1-create-subnet-for-azure-sql-mi)
+        - [Task 2: Create Azure SQL MI](#task-1-create-azure-sql-mi)
+        - [Task 3: Migrate On-premises database to SQL MI](#task-2-migrate-on-premises-database-to-sql-mi)
     - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
         - [Task 1: Task name](#task-1-task-name-2)
         - [Task 2: Task name](#task-2-task-name-2)
@@ -94,7 +95,7 @@ In this task, you will create a new Windows Server 2022 virtual machine (VM) tha
 
 6. On the **Create a virtual machine** pane, set the following values to configure the new virtual machine:
 
-    - **Resource Group**: Select the resource group that you created from this lab. Such as `tailspin-rg`.
+    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`.
     - **Virtual machine name**: Give the VM a unique name, such as `tailspin-webapp-vm`
     - **Region**: Select the Azure Region that was used to create the resource group
     - **Image**: Verify the image is set to **Windows Server 2022 Datacenter**
@@ -187,13 +188,82 @@ Duration: X minutes
 
 \[insert your custom Hands-on lab content here . . . \]
 
-### Task 1: Create Azure SQL MI
+### Task 1: Create Subnet for Azure SQL MI
 
-1.  Number and insert your custom workshop content here . . . 
+1. Within the Azure Portal, navigate to Resource Group created for this lab, and go to the `tailspin-spoke-vnet` virtual network.
 
-    -  Insert content here
+2. Under **Settings**, select the **Subnets** link.
 
-        -  
+    ![Subnets link highlighted on the tailspin-spoke-vnet pane](images/azure-sql-mi-spoke-vnet-subnets-link.png "Subnets link highlighted on the tailspin-spoke-vnet pane")
+
+3. Select **+Subnet** to create a new Subnet.
+
+4. On the **Add subnet** pane, enter the following values to create a Subnet that will used by the Azure SQL Managed Instance that will be created later:
+
+    - **Name**: `AzureSQLMI`
+    - **Subnet address range**: `10.2.1.0/24`
+    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
+
+    ![Add subnet pane with values entered](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
+
+5. Select **Save**. The list of Subnets will now look like the following:
+
+    ![List of Subnets for the Spoke VNet in the Azure Portal](images/azure-sql-mi-subnets-list.png "List of Subnets for the Spoke VNet in the Azure Portal")
+
+### Task 2: Create Azure SQL MI
+
+1. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
+
+2. Within the **Search services and marketplace** field, type **Azure SQL Managed Instance**, press Enter, and select it in the search results.
+
+3. Select **Create**.
+
+4. On the **Create Azure SQL Managed Instance** pane, set the following values:
+
+    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
+    - **Managed Instance name**: Enter a unique name, such as `tailspin-sqlmi`
+    - **Region**: Select the Azure Region that was used to create the resource group.
+
+5. For **Compute + storage**, select **Configure Managed Instance**.
+
+    ![Compute + storage section with Configure Managed Instance link highlighted](images/create-azure-sql-mi-compute-storage-configure-link.png "Compute + storage section with Configure Managed Instance link highlighted")
+
+6. For the **Compute + storage** configured select the following values:
+
+    - **Service tier**: General Purpose
+    - **Hardware generation**: Standard-series
+    - **vCores**: 8 vCores
+    - **Storage in GB**: 64 GB
+
+    ![Compute + storage pane with values entered](images/create-azure-sql-mi-compute-storage-values-entered.png "Compute + storage pane with values entered")
+
+7. Select **Apply**
+
+8. Under **Authentication**, set the **Authentication Method** value to **Use both SQL and Azure AD authentication**.
+
+9. Under **Azure AD admin**, select **Set admin** and choose an Azure AD user for the Azure AD admin. You should choose your own User account.
+
+    > **Note**: To choose the Azure AD admin, an organization account must be selected. A personal Microsoft Account cannot be used for this.
+
+10. Enter a username to use for the **Managed Instance admin login** and a **Password** for this new Administrator user that will be created on the database server.
+
+    > **Note**: Using the `demouser` username that was used previously in the lab, will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`
+
+    ![Authentication values are set](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are set")
+
+11. Select **Next: Networking >**.
+
+12. On the **Networking** pane, enter the following values:
+
+    - **Virtual network / subnet**: `tailspin-spoke-vnet/AzureSQLMI`
+
+    ![Networking values entered](images/create-azure-sql-mi-networking-values-entered.png "Networking values entered")
+
+13. Select **Review + create**.
+
+14. Select **Create**.
+
+    Deploying the new instance of Azure SQL Managed Instance will take a few minutes to complete.
 
 ### Task 2: Migrate On-premises database to SQL MI
 
