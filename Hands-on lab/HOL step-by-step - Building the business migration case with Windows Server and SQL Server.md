@@ -94,7 +94,7 @@ In this task, you will create a new Windows Server 2022 virtual machine (VM) tha
 
 6. On the **Create a virtual machine** pane, set the following values to configure the new virtual machine:
 
-    - **Resource Group**: Select the resource group that you created fro this lab. Such as `tailspin-rg`.
+    - **Resource Group**: Select the resource group that you created from this lab. Such as `tailspin-rg`.
     - **Virtual machine name**: Give the VM a unique name, such as `tailspin-webapp-vm`
     - **Region**: Select the Azure Region that was used to create the resource group
     - **Image**: Verify the image is set to **Windows Server 2022 Datacenter**
