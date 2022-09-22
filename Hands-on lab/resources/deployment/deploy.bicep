@@ -327,9 +327,6 @@ resource onprem_hyperv_vm_ext_createvm 'Microsoft.Compute/virtualMachines/extens
                 script: HyperVHostConfigArchiveScriptName
                 function: 'Main'
             }
-            configurationArguments: {
-                nodeName: 'WinServer'
-            }
         }
     }
 }
@@ -411,7 +408,7 @@ resource onprem_sqlvm_vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
             ]
         }
         osProfile: {
-            computerName: 'WinServer'
+            computerName: 'SQLServer'
             adminUsername: labUsername
             adminPassword: labPassword
         }
@@ -435,9 +432,6 @@ resource onprem_sqlvm_vm_ext_sqlvmconfig 'Microsoft.Compute/virtualMachines/exte
                 url: SQLVMConfigURL
                 script: SQLVMConfigScriptName
                 function: 'Main'
-            }
-            configurationArguments: {
-                nodeName: 'tailspin-onprem'
             }
         }
     }

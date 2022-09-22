@@ -19,11 +19,9 @@ Microsoft Cloud Workshop: BCDR
 
 Configuration Main
 {
-	Param ( [string] $nodeName )
-
 	Import-DscResource -ModuleName 'PSDesiredStateConfiguration', 'xHyper-V'
 
-	node $nodeName
+	node "localhost"
   	{
 		# Ensures a VM with default settings
         xVMSwitch InternalSwitch

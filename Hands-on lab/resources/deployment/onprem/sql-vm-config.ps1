@@ -19,11 +19,9 @@ Microsoft Cloud Workshop
 Configuration Main
 {
 
-Param ( [string] $nodeName )
-
 Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-Node $nodeName
+Node "localhost"
   {
     Script ConfigureSql
     {

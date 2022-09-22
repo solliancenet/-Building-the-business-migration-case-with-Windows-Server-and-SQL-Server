@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.10.61.36676",
-      "templateHash": "8949960635533409826"
+      "templateHash": "10710731823379624023"
     }
   },
   "parameters": {
@@ -355,9 +355,6 @@
             "url": "[variables('HyperVHostConfigURL')]",
             "script": "[variables('HyperVHostConfigArchiveScriptName')]",
             "function": "Main"
-          },
-          "configurationArguments": {
-            "nodeName": "WinServer"
           }
         }
       },
@@ -446,7 +443,7 @@
           ]
         },
         "osProfile": {
-          "computerName": "WinServer",
+          "computerName": "SQLServer",
           "adminUsername": "[variables('labUsername')]",
           "adminPassword": "[variables('labPassword')]"
         }
@@ -471,9 +468,6 @@
             "url": "[variables('SQLVMConfigURL')]",
             "script": "[variables('SQLVMConfigScriptName')]",
             "function": "Main"
-          },
-          "configurationArguments": {
-            "nodeName": "tailspin-onprem"
           }
         }
       },
