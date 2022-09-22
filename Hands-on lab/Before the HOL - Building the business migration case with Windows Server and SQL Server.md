@@ -60,7 +60,7 @@ In this task, you will leverage a custom Azure Resource Manager (ARM) template t
 4. Fill in the required ARM template parameters.
     - Create a new **Resource group**
     - Select a **Region**
-    - Specify a **Resource Name Base** (specify a base value that includes your initials to keep in unique to prevent naming conflicts, for example `tailspincp`)
+    - Specify a **Resource Name Base** (specify a base value that includes your initials to keep unique to prevent naming conflicts, for example `tailspincp`)
     - Select **Review + create**
 
 5. Agree to the Terms and conditions and select **Create**.
@@ -69,6 +69,6 @@ In this task, you will leverage a custom Azure Resource Manager (ARM) template t
 
 >**Note**: While automation can make things simpler and repeatable, sometimes it can fail. If at any time during the ARM template deployment there is a failure, review the failure, delete the Resource Group, and try the ARM template again, adjusting for any possible errors.
 
-Once the ARM template is done being deployed, the status will change to complete. At this point, things are ready for you to to through the Hands-on lab.
+Once the ARM template is done being deployed, the status will change to complete. At this point, things are ready for you to go through the Hands-on lab.
 
 You should follow all steps provided *before* performing the Hands-on lab.
