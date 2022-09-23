@@ -41,8 +41,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
     - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
-        - [Task 1: Task name](#task-1-task-name-2)
-        - [Task 2: Task name](#task-2-task-name-2)
+        - [Task 1: Generate Azure Arc script to add server](#task-1-generate-azure-arc-script-to-add-server)
+        - [Task 2: Run script to add server to Azure Arc]($task-2-run-script-to-add-server-to-azure-arc)
+        - [Task 3: Verify Azure Arc-enabled VM](#task-3-verify-azure-arc-enabled-vm)
     - [After the hands-on lab](#after-the-hands-on-lab)
         - [Task 1: Task name](#task-1-task-name-3)
         - [Task 2: Task name](#task-2-task-name-3)
@@ -73,7 +74,7 @@ Refer to the Before the hands-on lab setup guide manual before continuing to the
 
 ## Exercise 1: SQL Database Migration
 
-Duration: X minutes
+Duration: 90 minutes
 
 \[insert your custom Hands-on lab content here . . . \]
 
@@ -312,15 +313,9 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
 ## Exercise 3: Azure Arc-enable On-premises VM
 
-Duration: X minutes
+Duration: 30 minutes
 
 \[insert your custom Hands-on lab content here . . .\]
-
-Creds:
-Administrator
-demo!pass123
-
-
 
 ### Task 1: Generate Azure Arc script to add server
 
@@ -360,12 +355,38 @@ demo!pass123
 
 ### Task 2: Run script to add server to Azure Arc
 
-1.  Number and insert your custom workshop content here . . .
+1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-hyperv-vm` virtual machine. This is the simulated on-premises Hyper-V host VM.
 
-    -  Insert content here
+    ![simulated on-premisis hyper-v host vm](images/azurep-portal-onprem-hyperv-vm.png "simulated on-premisis hyper-v host vm")
 
-        -  
-        
+2. On the left, select **Bastion** under **Operations**.
+
+    ![Bastion link is highlighted](images/azure-portal-vm-operations-bastion-link.png "Bastion link is highlighted")
+
+3. Enter the **Username** and **Password**, then select **Connect**.
+
+    ![Bastion credentials shown entered](images/azure-portal-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
+
+4. Once connected to the Hyper-V Host VM, open the **Start menu**, then search for and run the **Hyper-V Manager**.
+
+5. Within the **Hyper-V Manager**, double-click the **OnPremVM** VM to connect to it.
+
+    ![Hyper-V Manager list of VMs with OnPremVM shown](images/hyper-v-manager-vm-list.png "Hyper-V Manager list of VMs with OnPremVM shown")
+
+6. Once connected to the **OnPremVM** VM within Hyper-V, login using the **Administrator** account and the password of `demo!pass123`.
+
+7. Within the **OnPremVM**, open the **Windows PowerShell ISE**, and create a new script file.
+
+8. Paste in the contents of the Azure Arc `OnboardingScript.ps1` script that was previously downloaded.
+
+    > **Note**: Within the Hyper-V Virtual Machine Connection window, you may need to use the **Clipboard** -> **Type clipboard text** menu option to paste into the **OnPremVM**.
+
+9. Run the full script. This will install the Azure Arc agent and Arc-enable the VM.
+
+### Task 3: Verify Azure Arc-enabled VM
+
+1. ???
+
 ## After the hands-on lab 
 
 Duration: X minutes

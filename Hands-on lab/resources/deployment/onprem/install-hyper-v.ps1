@@ -8,6 +8,31 @@
 # Set PowerShell Execution Policy
 Set-ExecutionPolicy Unrestricted -Force
 
+# ###########################
+# Enable Internet Sharing
+# ###########################
+
+# Register the HNetCfg library (once)
+regsvr32 hnetcfg.dll
+
+# Create a NetSharingManager object
+$m = New-Object -ComObject HNetCfg.HNetShare
+
+# List connections
+$m.EnumEveryConnection |% { $m.NetConnectionProps.Invoke($_) }
+
+# Find connection
+$c = $m.EnumEveryConnection |? { $m.NetConnectionProps.Invoke($_).Name -eq "Ethernet" }
+
+# Enable sharing (0 - public, 1 - private)
+$config = $m.INetSharingConfigurationForINetConnection.Invoke($c)
+
+$config.EnableSharing(0) # public sharing
+
+
+# ###########################
+# ###########################
+
 # Enable TLS 1.2 Strong Cryptography in .NET Framework 4.5 or higher
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord

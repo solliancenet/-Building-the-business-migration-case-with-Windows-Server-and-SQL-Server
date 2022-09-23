@@ -28,7 +28,7 @@ Configuration Main
         {
             Ensure         = 'Present'
             Name           = 'Nat Switch'
-            Type           = 'Internal'
+            Type           = 'External'
         }
 		
 		Script ConfigureHyperV
