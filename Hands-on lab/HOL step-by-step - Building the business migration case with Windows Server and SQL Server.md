@@ -38,8 +38,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - [Task 2: Create Azure SQL MI](#task-1-create-azure-sql-mi)
         - [Task 3: Install Data Migration Assistant](#task-3-install-data-migration-assistant)
         - [Task 4: Assess On-premises database compatibility](#task-2-assess-on-premises-database-compatibility)
-        - [Task 5: Migrate Database to Azure SQL MI](#task-5-migrate-database-to-azure-sql-mi)
-        - [Task 6: Verify Azure SQL MI migration completed](task-6-verify-azure-sql-mi-migration-completed)
+        - [Task 5: Backup on-premises SQL Database](task-5-backup-on-premises-sql-database)
+        - [Task 6: Migrate Database to Azure SQL MI](#task-6-migrate-database-to-azure-sql-mi)
+        - [Task 7: Verify Azure SQL MI migration completed](task-7-verify-azure-sql-mi-migration-completed)
     - [Exercise 2: Create VM to Migrate Web Application](#exercise-2-create-vm-to-migrate-web-application)
         - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
@@ -266,7 +267,7 @@ Duration: 90 minutes
 
 10. The Data Migration Assessment is complete. If there were feature parity or compatibility issues found, then you would need to address those before migrating the SQL Server database to Azure SQL MI.
 
-### Task 5: Migrate Database to Azure SQL MI
+### Task 5: Backup on-premises SQL Database
 
 1. In the **tailspin-onprem-sql-vm** virtual machine, run the **Azure Data Studio**.
 
@@ -274,13 +275,21 @@ Duration: 90 minutes
 
     ![Azure SQL Migration extension highlighted](images/azure-data-studio-extensions-azure-sql-migration.png "Azure SQL Migration extension highlighted")
 
-3. On the left, select the **Connections** tab.
+3. Next, you need to enable Preview Features within Azure Data Studio. Select the Manage icon (shown as the Gear in the lower left corner of Azure Data Studio)
 
-4. Select **New Connection**
+    ![The manage menu open with Settings highlighted](images/azure-data-studio-manage-menu-settings.png "The manage menu open with Settings highlighted")
+
+4. On the **Settings** pane, type **Enable Preview Features** in the search box at the top, then check the **Enable unreleased preview features** box for the **Workbench: Enable Preview Features** option that shows in the search results. This will autosave.
+
+    ![Azure Data Studio settings pane with Preview Features enabled](images/azure-data-studio-preview-features-enabled.png "Azure Data Studio settings pane with Preview Features enabled")
+
+5. Next, let's connect to the on-premises SQL Server. Select the **Connections** tab on the left side of Azure Data Studio.
+
+6. Select **New Connection**
 
     ![Azure Data Studio connections tab with New Connection button shown](images/azure-data-studio-connections-tab-new-connection-button.png "Azure Data Studio connections tab with New Connection button shown")
 
-5. On the **Connection** pane, enter the following values to connect to the on-premises SQL database, then select **Connect**:
+7. On the **Connection** pane, enter the following values to connect to the on-premises SQL database, then select **Connect**:
 
     - **Connection type**: Microsoft SQL Server
     - **Server**: `localhost`
@@ -288,6 +297,51 @@ Duration: 90 minutes
     - **Database**: `WideWorldImporters`
 
     ![Azure Data Studio with Connection pane shown having all values entered](images/azure-data-studio-connection-pane-values-entered.png "Azure Data Studio with Connection pane shown having all values entered")
+
+8. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
+
+    ![WideWorlImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorlImporters server with right-click menu shown and Manage option is highlighted")
+
+9. Select **Backup**.
+
+    ![Manage database with Backup button highlighted](images/azure-data-studio-database-manage-backup-button.png "Manage database with Backup button highlighted")
+
+??? How do we upload the Full Backup to Azure Storage? We'll have to use the portal for that...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Task 6: Migrate Database to Azure SQL MI
 
 6. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
@@ -352,13 +406,20 @@ Duration: 90 minutes
 
     ![Azure Data Studio showing there is 1 data migration in progress](images/azure-data-studio-database-migrations-in-progress.png "Azure Data Studio showing there is 1 data migration in progress")
 
-### Task 6: Verify Azure SQL MI migration completed
+### Task 7: Verify Azure SQL MI migration completed
 
 1. Within the Azure Portal, navigate to the **Azure SQL Managed Instance** that was created previously.
 
 2. While the SQL Server database is being migrated to Azure SQL MI, you will see the **WideWorldImporters** database shown with a **Restoring** status.
 
     ![Azure SQL MI in Azure Portal showing the WideWorldImporters database in Restoring state](images/azure-portal-sql-mi-database-restoring.png "Azure SQL MI in Azure Portal showing the WideWorldImporters database in Restoring state")
+
+
+
+
+
+
+
 
 
 
