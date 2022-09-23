@@ -36,7 +36,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Exercise 1: SQL Database Migration](#exercise-1-sql-database-migration)
         - [Task 1: Create Subnet for Azure SQL MI](#task-1-create-subnet-for-azure-sql-mi)
         - [Task 2: Create Azure SQL MI](#task-1-create-azure-sql-mi)
-        - [Task 3: Migrate On-premises database to SQL MI](#task-2-migrate-on-premises-database-to-sql-mi)
+        - [Task 3: Install Data Migration Assistant](#task-3-install-data-migration-assistant)
+        - [Task 4: Assess On-premises database compatibility](#task-2-assess-on-premises-database-compatibility)
+        - [Task 5: Migrate Database to Azure SQL MI](#task-5-migrate-database-to-azure-sql-mi)
     - [Exercise 2: Create VM to Migrate Web Application](#exercise-2-create-vm-to-migrate-web-application)
         - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
@@ -157,16 +159,91 @@ Duration: 90 minutes
 
     Deploying the new instance of Azure SQL Managed Instance may take about 1 hour to complete. You can continue to Exercise 2, then come back here later to finish Exercise 1.
 
-### Task 2: Migrate On-premises database to SQL MI
+### Task 3: Install Data Migration Assistant
 
-1.  Number and insert your custom workshop content here . . . 
+1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-sql-vm` virtual machine. This is the simulated on-premises SQL Server VM that contains the database to migrate to Azure SQL MI.
 
-    -  Insert content here
+    ![Simulatd on-premises SQL Server VM](images/azure-portal-onprem-sql-vm.png "Simulatd on-premises SQL Server VM")
 
-        -  
+2. On the left, select **Bastion** under **Operations**.
 
+    ![Bastion link is highlighted](images/azure-portal-vm-operations-bastion-link.png "Bastion link is highlighted")
 
+3. Enter the **Username** and **Password**, then select **Connect**.
 
+    ![Bastion credentials shown entered](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
+
+    > **Note**: When the VM was created the credentials were setup as:
+    > - **Username**: `demouser`
+    > - **Password**: `demo!pass123`
+
+4. In the **tailspin-onprem-sql-vm** virtual machine, go to **Server Manager**, and select **Local Server**
+
+    ![Server Manager with Local Server highlighted](images/server-manager-local-server-highlighted.png "Server Manager with Local Server highlighted")
+
+5. Within **Local Server**, select the `On` text link for the **IE Enhanced Security Configuration** property.
+
+    ![Server Manager with IE Enhanced Security Configuration highlighted](images/server-manager-local-server-ie-enhanced-security-config.png "Server Manager with IE Enhanced Security Configuration highlighted")
+
+6. On the **Internet Explorer Enhanced Security Configuration** dialog, select **Off** for **Administrators**, then select **OK**.
+
+    ![IE Enhanced Security Configuration dialog with Administrators Off property highlighted](images/server-manager-ie-enhanced-security-config-administrators-off-property.png "IE Enhanced Security Configuration dialog with Administrators Off property highlighted")
+
+7. In the **tailspin-onprem-sql-vm** virtual machine, open **Internet Explorer** then go to the following link and download the **.NET Framework 4.8 Runtime** installer. This will be needed to install the Microsoft Data Migration Assistant.
+
+    <https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer>
+
+8. Select **Run** to run the **.NET Framework 4.8 Runtime** installer once it's finished downloading, and follow the prompts to install the .NET Framework.
+
+9. Using **Internet Explorer**, go to the following link and download the **Microsoft Data Migration Assistant**.
+
+    - <https://www.microsoft.com/en-us/download/details.aspx?id=53595>
+
+10. Select **Run** to run the **Microsoft Data Migration Assistant** installer once it's finished downloading, and follow the prompts to install the assistant.
+
+    ![Microsoft Data Migration Assistant Setup wizard](images/microsoft-data-migration-assistant-setup-wizard.png "Microsoft Data Migration Assistant Setup wizard")
+
+### Task 4: Assess On-premises database compatibility
+
+1. Run the **Microsoft Data Migration Assistant** that was previously installed.
+
+    ![Data Migartion Assistant window](images/ms-data-migration-assistant-windows.png "Data Migartion Assistant window")
+
+2. On the left, select the Plus sign (`+`) button to create a new project, and enter the following values, then select **Create**.
+
+    - **Project type**: Assessment
+    - **Project name**: Tailspin
+    - **Assessment type**: Database Engine
+    - **Source server type**: SQL Server
+    - **Target server type**: Azure SQL Database Managed Instance
+
+    ![Data Migration Assistant New project dialog with values entered](images/ms-data-migration-assistant-new-project.png "Data Migration Assistant New project dialog with values entered")
+
+3. On the **Options** tab, ensure the **Check database compatibility** and **Check feature parity** report types are selected, then select **Next**.
+
+4. On the **Connect to a server** prompt, enter `localhost` for the     **Server name**, and check the **Trust server certificate** option, then select **Connect**.
+
+    ![Connect to a server configured for localhost](images/ms-data-migration-assistant-assessment-connect-to-server-localhost.png "Connect to a server configured for localhost")
+
+5. On the **Add sources** prompt, select the **WideWorldImporters** database, then select **Add**.
+
+6. Select **Start Assessment** in the lower right.
+
+    ![Data Migration Assistant with the Start Assessment button highlighted](images/ms-data-migration-assistant-assessment-start-assessment-button.png "Data Migration Assistant with the Start Assessment button highlighted")
+
+7. On the **Review results** pane, you should see a message that "**There are no feature parity issues with your server instance**".
+
+    ![Data Migration Assistant showing there are no feature parity issues](images/ms-data-migration-assistant-assessment-no-feature-parity-issues.png "Data Migration Assistant showing there are no feature parity issues")
+
+8. On the top left of the **Review results** pane, select **Compatibility issues**.
+
+9. On the **Review results** pane, you should see a message that "**There are no compatibility issues with your database**".
+
+    ![Data Migration Assistant showing there are no compatibility issues](images/ms-data-migration-assistant-assessment-no-compatibility-issues.png "Data Migration Assistant showing there are no compatibility issues")
+
+10. The Data Migration Assessment is complete. If there were feature parity or compatibility issues found, then you would need to address those before migrating the SQL Server database to Azure SQL MI.
+
+### Task 5: Migrate Database to Azure SQL MI
 
 
 
@@ -357,7 +434,7 @@ Duration: 30 minutes
 
 1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-hyperv-vm` virtual machine. This is the simulated on-premises Hyper-V host VM.
 
-    ![simulated on-premisis hyper-v host vm](images/azurep-portal-onprem-hyperv-vm.png "simulated on-premisis hyper-v host vm")
+    ![Simulated on-premises hyper-v host vm](images/azurep-portal-onprem-hyperv-vm.png "Simulated on-premises hyper-v host vm")
 
 2. On the left, select **Bastion** under **Operations**.
 
@@ -366,6 +443,10 @@ Duration: 30 minutes
 3. Enter the **Username** and **Password**, then select **Connect**.
 
     ![Bastion credentials shown entered](images/azure-portal-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
+
+    > **Note**: When the VM was created the credentials were setup as:
+    > - **Username**: `demouser`
+    > - **Password**: `demo!pass123`
 
 4. Once connected to the Hyper-V Host VM, open the **Start menu**, then search for and run the **Hyper-V Manager**.
 
