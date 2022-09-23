@@ -57,12 +57,12 @@ Configuration Main
                 # The following command was used to Zip up the VM files originally
                 # [io.compression.zipfile]::CreateFromDirectory("C:\OnPremWinServerVM", "C:\OnPremWinServerVM.zip")
 
-                New-VMSwitch -name "NAT Switch" -NetAdapterName Ethernet -AllowManagementOS $true
+                ## New-VMSwitch -name "NAT Switch" -NetAdapterName Ethernet -AllowManagementOS $true
 
-                # $NatSwitch = Get-NetAdapter -Name "vEthernet (NAT Switch)"
-                # New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $NatSwitch.ifIndex
+                $NatSwitch = Get-NetAdapter -Name "vEthernet (NAT Switch)"
+                New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $NatSwitch.ifIndex
 
-                # New-NetNat -Name NestedVMNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24 -Verbose
+                New-NetNat -Name NestedVMNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24 -Verbose
 
                 New-VM -Name OnPremVM `
                         -MemoryStartupBytes 4GB `
