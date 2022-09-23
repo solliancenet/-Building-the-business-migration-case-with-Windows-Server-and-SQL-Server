@@ -28,7 +28,7 @@ Configuration Main
         {
             Ensure         = 'Present'
             Name           = 'Nat Switch'
-            Type           = 'External'
+            Type           = 'Internal'
         }
 		
 		Script ConfigureHyperV
@@ -56,7 +56,6 @@ Configuration Main
                 # The following command was used to Zip up the VM files originally
                 # [io.compression.zipfile]::CreateFromDirectory("C:\OnPremWinServerVM", "C:\OnPremWinServerVM.zip")
 
-                ## New-VMSwitch -name "NAT Switch" -NetAdapterName Ethernet -AllowManagementOS $true
 
                 $NatSwitch = Get-NetAdapter -Name "vEthernet (NAT Switch)"
                 New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $NatSwitch.ifIndex
