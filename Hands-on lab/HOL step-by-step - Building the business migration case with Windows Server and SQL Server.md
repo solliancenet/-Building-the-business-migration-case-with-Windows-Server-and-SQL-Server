@@ -34,11 +34,12 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Requirements](#requirements)
     - [Before the hands-on lab](#exercise-1-before-the-hands-on-lab)
     - [Exercise 1: SQL Database Migration](#exercise-1-sql-database-migration)
-        - [Task 1: Create Subnet for Azure SQL MI](#task-1-create-subnet-for-azure-sql-mi)
+        - [Task 1: Create Subnet and Storage Account for Azure SQL MI](#task-1-create-subnet-and-storage-account-for-azure-sql-mi)
         - [Task 2: Create Azure SQL MI](#task-1-create-azure-sql-mi)
         - [Task 3: Install Data Migration Assistant](#task-3-install-data-migration-assistant)
         - [Task 4: Assess On-premises database compatibility](#task-2-assess-on-premises-database-compatibility)
         - [Task 5: Migrate Database to Azure SQL MI](#task-5-migrate-database-to-azure-sql-mi)
+        - [Task 6: Verify Azure SQL MI migration completed](task-6-verify-azure-sql-mi-migration-completed)
     - [Exercise 2: Create VM to Migrate Web Application](#exercise-2-create-vm-to-migrate-web-application)
         - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
@@ -80,7 +81,7 @@ Duration: 90 minutes
 
 \[insert your custom Hands-on lab content here . . . \]
 
-### Task 1: Create Subnet for Azure SQL MI
+### Task 1: Create Subnet and Storage Account for Azure SQL MI
 
 1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
 
@@ -103,6 +104,28 @@ Duration: 90 minutes
 6. Select **Save**. The list of Subnets will now look like the following:
 
     ![List of Subnets for the Spoke VNet in the Azure Portal](images/azure-sql-mi-subnets-list.png "List of Subnets for the Spoke VNet in the Azure Portal")
+
+7. Go to the **Home** screen in the **Azure Portal**, then select **+ Create a resource**.
+
+8. Under **Categories**, select **Storage**, then select **Create** for **Storage account** in the list of popular resources.
+
+9. On the **Create a storage account**, enter the following values, then select **Review**:
+
+    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
+    - **Storage account name**: Enter a unique name for the storage account, similar to `tailspinsqlmistorage`. You can add your initials or date to meet uniqueness requirements.
+    - **Region**: Select the Azure Region that was used to create the resource group.
+
+    ![Create a storage account pane with all values entered](images/azure-portal-create-storage-account-sqlmi.png "Create a storage account pane with all values entered")
+
+10. Select **Create** to create the Storage Account.
+
+11. Once the Storage Account is created, navigate to it, then select **Containers**.
+
+    ![Storage Account with Containers link highlighted](images/azure-portal-storage-account-containers-link.png "Storage Account with Containers link highlighted")
+
+12. Select **+ Container**.
+
+13. On the **New container** pane, enter `sql-backup` in the **Name** field, then select **Create**.
 
 ### Task 2: Create Azure SQL MI
 
@@ -245,7 +268,97 @@ Duration: 90 minutes
 
 ### Task 5: Migrate Database to Azure SQL MI
 
+1. In the **tailspin-onprem-sql-vm** virtual machine, run the **Azure Data Studio**.
 
+2. On the left, select the **Extensions** tab, then select the **Azure SQL Migration** extension and install it.
+
+    ![Azure SQL Migration extension highlighted](images/azure-data-studio-extensions-azure-sql-migration.png "Azure SQL Migration extension highlighted")
+
+3. On the left, select the **Connections** tab.
+
+4. Select **New Connection**
+
+    ![Azure Data Studio connections tab with New Connection button shown](images/azure-data-studio-connections-tab-new-connection-button.png "Azure Data Studio connections tab with New Connection button shown")
+
+5. On the **Connection** pane, enter the following values to connect to the on-premises SQL database, then select **Connect**:
+
+    - **Connection type**: Microsoft SQL Server
+    - **Server**: `localhost`
+    - **Authentication type**: Windows Authentication
+    - **Database**: `WideWorldImporters`
+
+    ![Azure Data Studio with Connection pane shown having all values entered](images/azure-data-studio-connection-pane-values-entered.png "Azure Data Studio with Connection pane shown having all values entered")
+
+6. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
+
+    ![WideWorlImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorlImporters server with right-click menu shown and Manage option is highlighted")
+
+7. Select the **Azure SQL Migration** option.
+
+    ![Manage server pane with Azure SQL Migration option highlighted](images/azure-data-studio-manage-server-pane.png "Manage server pane with Azure SQL Migration option highlighted")
+
+8. Select the **Migrate to Azure SQL** button.
+
+    ![Azure SQL Migration with Migrate to Azure SQL button highlighted](images/azure-data-studio-azure-sql-migration-migrate-button.png "Azure SQL Migration with Migrate to Azure SQL button highlighted")
+
+9. On **Step 1: Database for assessment**, select the **WideWorldImporters** database, then select **Next**.
+
+    ![](images/azure-data-studio-migrate-step-1.png)
+
+10. On **Step 2: Assessment results and recommendations**, select the **Azure SQL Managed Instance** option.
+
+11. Scroll down and select the **View/Select** button to select a database.
+
+12. Select the **WideWorldImporters** database, and you should see a message stating "`No issues for migrating to Azure SQL Managed Instance.`", then select the **Select** button.
+
+     ![WideWorldImporters database selected and 'no issues' message shown](images/2022-09-23-15-01-58.png "WideWorldImporters database selected and 'no issues' message shown")
+
+13. Select **Next**.
+
+    ![](images/azure-data-studio-migrate-step-2.png "")
+
+14. On **Step 3: Azure SQL target**, enter connection information to your Azure Subscription and for the **Azure SQL Manage Instance** resource that was previously created.
+
+    ![Step 3 shown with Azure SQL MI resource selected](images/azure-data-studio-migrate-step-3.png "Step 3 shown with Azure SQL MI resource selected")
+
+15. On **Step 4: Migration mode**, select **Next**.
+
+    ![Step 4 Migration mode with Online migration selected](images/azure-data-studio-migrate-step-4.png "Step 4 Migration mode with Online migration selected")
+
+16. On **Step 5: Database backup**, select **My database backups are in an Azure Storage Blob Container**, select the Azure Storage Account and container created previously, then select **Next**.
+
+    ![Step 5: Database backup with Azure Storage Account and Container selected](images/azure-data-studio-migrate-step-5.png "Step 5: Database backup with Azure Storage Account and Container selected")
+
+17. On **Step 6: Azure Database Migration Service**, select **Create new** under **Azure Database Migration Service**.
+
+18. On the **Create Azure Database Migration Service** pane, enter the following values, then select **Create**.
+
+    - **Resource group**: Select the Resource Group for this lab. For example: `tailspin-rg`
+    - **Name**: `tailspin-sql-migration`
+
+    ![Create Database Migration Service dialog with values entered](images/azure-data-studio-migrate-create-migration-service.png "Create Database Migration Service dialog with values entered")
+
+19. Once the Database Migration Service has been created, select **Done**.
+
+20. On **Step 6: Azure Database Migration Service**, select the **Azure Database Migration Service** that was created, then selecft **Next**.
+
+    ![Step 6 with Azure Database Migration Service selected](images/azure-data-studio-migrate-step-6.png "Step 6 with Azure Database Migration Service selected")
+
+21. On **Step 7: Summary**, review all the configurations chosen, then select **Start migration**.
+
+    ![Step 7 showing summary of configurations chosen](images/azure-data-studio-migrate-step-7.png "Step 7 showing summary of configurations chosen")
+
+22. Azure Data Studio will now show that there is 1 **Database migrations in progress**. This will take a few minutes to complete.
+
+    ![Azure Data Studio showing there is 1 data migration in progress](images/azure-data-studio-database-migrations-in-progress.png "Azure Data Studio showing there is 1 data migration in progress")
+
+### Task 6: Verify Azure SQL MI migration completed
+
+1. Within the Azure Portal, navigate to the **Azure SQL Managed Instance** that was created previously.
+
+2. While the SQL Server database is being migrated to Azure SQL MI, you will see the **WideWorldImporters** database shown with a **Restoring** status.
+
+    ![Azure SQL MI in Azure Portal showing the WideWorldImporters database in Restoring state](images/azure-portal-sql-mi-database-restoring.png "Azure SQL MI in Azure Portal showing the WideWorldImporters database in Restoring state")
 
 
 
