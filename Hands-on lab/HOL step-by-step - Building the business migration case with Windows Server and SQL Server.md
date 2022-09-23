@@ -263,7 +263,7 @@ Duration: X minutes
 
 14. Select **Create**.
 
-    Deploying the new instance of Azure SQL Managed Instance will take a few minutes to complete.
+    Deploying the new instance of Azure SQL Managed Instance may take about 1 hour to complete.
 
 ### Task 2: Migrate On-premises database to SQL MI
 
