@@ -33,13 +33,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Solution architecture](#solution-architecture)
     - [Requirements](#requirements)
     - [Before the hands-on lab](#exercise-1-before-the-hands-on-lab)
-    - [Exercise 1: Create VM to Migrate Web Application](#exercise-1-create-vm-to-migrate-web-application)
-        - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
-        - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
-    - [Exercise 2: SQL Database Migration](#exercise-2-sql-database-migration)
+    - [Exercise 1: SQL Database Migration](#exercise-1-sql-database-migration)
         - [Task 1: Create Subnet for Azure SQL MI](#task-1-create-subnet-for-azure-sql-mi)
         - [Task 2: Create Azure SQL MI](#task-1-create-azure-sql-mi)
         - [Task 3: Migrate On-premises database to SQL MI](#task-2-migrate-on-premises-database-to-sql-mi)
+    - [Exercise 2: Create VM to Migrate Web Application](#exercise-2-create-vm-to-migrate-web-application)
+        - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
+        - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
     - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
         - [Task 1: Task name](#task-1-task-name-2)
         - [Task 2: Task name](#task-2-task-name-2)
@@ -71,11 +71,133 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 Refer to the Before the hands-on lab setup guide manual before continuing to the lab exercises.
 
-## Exercise 1: Create VM to Migrate Web Application
+## Exercise 1: SQL Database Migration
+
+Duration: X minutes
+
+\[insert your custom Hands-on lab content here . . . \]
+
+### Task 1: Create Subnet for Azure SQL MI
+
+1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
+
+2. Within the Azure Portal, navigate to Resource Group created for this lab, and go to the `tailspin-spoke-vnet` virtual network.
+
+3. Under **Settings**, select the **Subnets** link.
+
+    ![Subnets link highlighted on the tailspin-spoke-vnet pane](images/azure-sql-mi-spoke-vnet-subnets-link.png "Subnets link highlighted on the tailspin-spoke-vnet pane")
+
+4. Select **+Subnet** to create a new Subnet.
+
+5. On the **Add subnet** pane, enter the following values to create a Subnet that will used by the Azure SQL Managed Instance that will be created later:
+
+    - **Name**: `AzureSQLMI`
+    - **Subnet address range**: `10.2.1.0/24`
+    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
+
+    ![Add subnet pane with values entered](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
+
+6. Select **Save**. The list of Subnets will now look like the following:
+
+    ![List of Subnets for the Spoke VNet in the Azure Portal](images/azure-sql-mi-subnets-list.png "List of Subnets for the Spoke VNet in the Azure Portal")
+
+### Task 2: Create Azure SQL MI
+
+1. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
+
+2. Within the **Search services and marketplace** field, type **Azure SQL Managed Instance**, press Enter, and select it in the search results.
+
+3. Select **Create**.
+
+4. On the **Create Azure SQL Managed Instance** pane, set the following values:
+
+    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
+    - **Managed Instance name**: Enter a unique name, such as `tailspin-sqlmi`
+    - **Region**: Select the Azure Region that was used to create the resource group.
+
+5. For **Compute + storage**, select **Configure Managed Instance**.
+
+    ![Compute + storage section with Configure Managed Instance link highlighted](images/create-azure-sql-mi-compute-storage-configure-link.png "Compute + storage section with Configure Managed Instance link highlighted")
+
+6. For the **Compute + storage** configured select the following values:
+
+    - **Service tier**: General Purpose
+    - **Hardware generation**: Standard-series
+    - **vCores**: 8 vCores
+    - **Storage in GB**: 64 GB
+
+    ![Compute + storage pane with values entered](images/create-azure-sql-mi-compute-storage-values-entered.png "Compute + storage pane with values entered")
+
+7. Select **Apply**
+
+8. Under **Authentication**, set the **Authentication Method** value to **Use both SQL and Azure AD authentication**.
+
+9. Under **Azure AD admin**, select **Set admin** and choose an Azure AD user for the Azure AD admin. You should choose your own User account.
+
+    > **Note**: To choose the Azure AD admin, an organization account must be selected. A personal Microsoft Account cannot be used for this.
+
+10. Enter a username to use for the **Managed Instance admin login** and a **Password** for this new Administrator user that will be created on the database server.
+
+    > **Note**: Using the `demouser` username that was used previously in the lab, will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`
+
+    ![Authentication values are set](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are set")
+
+11. Select **Next: Networking >**.
+
+12. On the **Networking** pane, enter the following values:
+
+    - **Virtual network / subnet**: `tailspin-spoke-vnet/AzureSQLMI`
+
+    ![Networking values entered](images/create-azure-sql-mi-networking-values-entered.png "Networking values entered")
+
+13. Select **Review + create**.
+
+14. Select **Create**.
+
+    Deploying the new instance of Azure SQL Managed Instance may take about 1 hour to complete. You can continue to Exercise 2, then come back here later to finish Exercise 1.
+
+### Task 2: Migrate On-premises database to SQL MI
+
+1.  Number and insert your custom workshop content here . . . 
+
+    -  Insert content here
+
+        -  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Exercise 2: Create VM to Migrate Web Application
 
 Duration: 30 minutes
 
-In this exercise, you will create a new Windows Server 2022 virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure, and then you will use Azure Bastion to connect to the VM over Remote Desktop (RDP). Azure Bastion will allow secure remoting to the VM for Administrators.
+In this exercise, you will create a new Windows Server 2022 virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure, and then you will use Azure Bastion to connect to the VM over Remote Desktop (RDP). Azure Bastion will allow secure remote connections to the VM for Administrators.
 
 ### Task 1: Create Windows Server 2022 VM
 
@@ -182,120 +304,6 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
 
 
-## Exercise 2: SQL Database Migration
-
-Duration: X minutes
-
-\[insert your custom Hands-on lab content here . . . \]
-
-### Task 1: Create Subnet for Azure SQL MI
-
-1. Within the Azure Portal, navigate to Resource Group created for this lab, and go to the `tailspin-spoke-vnet` virtual network.
-
-2. Under **Settings**, select the **Subnets** link.
-
-    ![Subnets link highlighted on the tailspin-spoke-vnet pane](images/azure-sql-mi-spoke-vnet-subnets-link.png "Subnets link highlighted on the tailspin-spoke-vnet pane")
-
-3. Select **+Subnet** to create a new Subnet.
-
-4. On the **Add subnet** pane, enter the following values to create a Subnet that will used by the Azure SQL Managed Instance that will be created later:
-
-    - **Name**: `AzureSQLMI`
-    - **Subnet address range**: `10.2.1.0/24`
-    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
-
-    ![Add subnet pane with values entered](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
-
-5. Select **Save**. The list of Subnets will now look like the following:
-
-    ![List of Subnets for the Spoke VNet in the Azure Portal](images/azure-sql-mi-subnets-list.png "List of Subnets for the Spoke VNet in the Azure Portal")
-
-### Task 2: Create Azure SQL MI
-
-1. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
-
-2. Within the **Search services and marketplace** field, type **Azure SQL Managed Instance**, press Enter, and select it in the search results.
-
-3. Select **Create**.
-
-4. On the **Create Azure SQL Managed Instance** pane, set the following values:
-
-    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
-    - **Managed Instance name**: Enter a unique name, such as `tailspin-sqlmi`
-    - **Region**: Select the Azure Region that was used to create the resource group.
-
-5. For **Compute + storage**, select **Configure Managed Instance**.
-
-    ![Compute + storage section with Configure Managed Instance link highlighted](images/create-azure-sql-mi-compute-storage-configure-link.png "Compute + storage section with Configure Managed Instance link highlighted")
-
-6. For the **Compute + storage** configured select the following values:
-
-    - **Service tier**: General Purpose
-    - **Hardware generation**: Standard-series
-    - **vCores**: 8 vCores
-    - **Storage in GB**: 64 GB
-
-    ![Compute + storage pane with values entered](images/create-azure-sql-mi-compute-storage-values-entered.png "Compute + storage pane with values entered")
-
-7. Select **Apply**
-
-8. Under **Authentication**, set the **Authentication Method** value to **Use both SQL and Azure AD authentication**.
-
-9. Under **Azure AD admin**, select **Set admin** and choose an Azure AD user for the Azure AD admin. You should choose your own User account.
-
-    > **Note**: To choose the Azure AD admin, an organization account must be selected. A personal Microsoft Account cannot be used for this.
-
-10. Enter a username to use for the **Managed Instance admin login** and a **Password** for this new Administrator user that will be created on the database server.
-
-    > **Note**: Using the `demouser` username that was used previously in the lab, will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`
-
-    ![Authentication values are set](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are set")
-
-11. Select **Next: Networking >**.
-
-12. On the **Networking** pane, enter the following values:
-
-    - **Virtual network / subnet**: `tailspin-spoke-vnet/AzureSQLMI`
-
-    ![Networking values entered](images/create-azure-sql-mi-networking-values-entered.png "Networking values entered")
-
-13. Select **Review + create**.
-
-14. Select **Create**.
-
-    Deploying the new instance of Azure SQL Managed Instance may take about 1 hour to complete.
-
-### Task 2: Migrate On-premises database to SQL MI
-
-1.  Number and insert your custom workshop content here . . . 
-
-    -  Insert content here
-
-        -  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -314,15 +322,43 @@ demo!pass123
 
 
 
-### Task 1: Task name
+### Task 1: Generate Azure Arc script to add server
 
-1.  Number and insert your custom workshop content here . . .
+1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
 
-    -  Insert content here
+2. In the **Search resources, services, and docs** box at the top of the portal, search for **Azure Arc**, then select the **Azure Arc** service.
 
-        -  
-        
-### Task 2: Task name
+    ![Azure Portal search for Azure Arc with 'Azure Arc' option highlighted](images/azure-portal-search-azure-arc-service.png "Azure Portal search for Azure Arc with 'Azure Arc' option highlighted")
+
+3. On the **Azure Arc** pane, select the **Infrastructure** tab, then select the **Add** button under **Servers**.
+
+    ![Azure Arc pane with Infrastructure tab and Servers Add button highlighted](images/azure-arc-pane-infrastructure-servers-add-button.png "Azure Arc pane with Infrastructure tab and Servers Add button highlighted")
+
+4. Under **Add a single server** select **Generate script**.
+
+5. On the **Add a server with Azure Arc** pane, read the requirements of Azure Arc that are listed, then select **Next**.
+
+6. On the **Resource details** tab, enter the following values, then select **Next**.
+
+    - **Resource group**: Select the Resource Group created for this lab. For example: `tailspin-rg`
+    - **Region**: Select the closest region to the geographic location of the server being added to Azure Arc. In this case, use the same Region used for the Resource Group created for the lab.
+    - **Operating system**: `Windows`
+    - **Connectivity method**: `Public endpoint`
+
+    ![Resource details tab with values entered](images/2022-09-22-21-13-42.png "Resource details tab with values entered")
+
+7. On the **Tags** tab, enter the following tag values to identify this server, then select **Next**:
+
+    - **Datacenter**: `headquarters`
+    - **City**: `Milwaukee`
+    - **StateOrDistrict**: `WI`
+    - **CountryOrRegion**: `USA`
+
+    ![Tags tab with all tag values entered](images/azure-arc-add-server-tags-tab.png "Tags tab with all tag values entered")
+
+8. On the **Download and run script** tab, select **Download** to download the generated script. By default, the script named `OnboardingScript.ps1` will be saved to the `Downloads` folder.
+
+### Task 2: Run script to add server to Azure Arc
 
 1.  Number and insert your custom workshop content here . . .
 

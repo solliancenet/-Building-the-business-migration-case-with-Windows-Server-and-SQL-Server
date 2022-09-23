@@ -54,6 +54,8 @@ Configuration Main
 
                 Add-Type -assembly "system.io.compression.filesystem"
                 [io.compression.zipfile]::ExtractToDirectory($downloadedFile, $vmFolder)
+                # The following command was used to Zip up the VM files originally
+                # [io.compression.zipfile]::CreateFromDirectory("C:\OnPremWinServerVM", "C:\OnPremWinServerVM.zip")
 
                 New-VMSwitch -name "NAT Switch" -NetAdapterName Ethernet -AllowManagementOS $true
 

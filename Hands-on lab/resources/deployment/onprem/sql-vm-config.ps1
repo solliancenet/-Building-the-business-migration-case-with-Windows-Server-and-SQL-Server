@@ -75,8 +75,8 @@ Node "localhost"
 		[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 		Invoke-WebRequest $dbsource -OutFile $dbdestination
 
-		$mdf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("WideWorldImporters", "C:\Data\WideWorldImporters.mdf")
-		$ldf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("WideWorldImporters_Log", "C:\Logs\WideWorldImporters.ldf")
+		$mdf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("AdventureWorks2008R2_Data", "C:\Data\WideWorldImporters.mdf")
+		$ldf = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile("AdventureWorks2008R2_Log", "C:\Logs\WideWorldImporters.ldf")
 
 		# Restore the database from the backup
 		Restore-SqlDatabase -ServerInstance Localhost -Database WideWorldImporters `
