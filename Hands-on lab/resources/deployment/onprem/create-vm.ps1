@@ -45,7 +45,6 @@ Configuration Main
 		
 			SetScript =
 			{
-                #$zipDownload = "https://media.githubusercontent.com/media/microsoft/MCW-Business-continuity-and-disaster-recovery/master/Hands-on%20lab/NestedDeployments/CustomScripts/OnPremLinuxVM.zip"
                 $zipDownload = "https://mcwtest.blob.core.windows.net/deployment/OnPremWinServerVM.zip"
                 $downloadedFile = "C:\OnPremWinServerVM.zip"
                 $vmFolder = "C:\VM"
