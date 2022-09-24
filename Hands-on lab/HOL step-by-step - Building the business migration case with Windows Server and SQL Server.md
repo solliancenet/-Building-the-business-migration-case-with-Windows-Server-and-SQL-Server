@@ -40,17 +40,15 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - [Task 4: Assess On-premises database compatibility](#task-2-assess-on-premises-database-compatibility)
         - [Task 5: Backup on-premises SQL Database](task-5-backup-on-premises-sql-database)
         - [Task 6: Migrate Database to Azure SQL MI](#task-6-migrate-database-to-azure-sql-mi)
-        - [Task 7: Verify Azure SQL MI migration completed](task-7-verify-azure-sql-mi-migration-completed)
     - [Exercise 2: Create VM to Migrate Web Application](#exercise-2-create-vm-to-migrate-web-application)
-        - [Task 1: Create Windows Server 2022 VM](#task-1-create-windows-server-2022-vm)
+        - [Task 1: Create Windows Server 2022 VM for Application Hosting](#task-1-create-windows-server-2022-vm-for-application-hosting)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
     - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
         - [Task 1: Generate Azure Arc script to add server](#task-1-generate-azure-arc-script-to-add-server)
         - [Task 2: Run script to add server to Azure Arc]($task-2-run-script-to-add-server-to-azure-arc)
         - [Task 3: Verify Azure Arc-enabled VM](#task-3-verify-azure-arc-enabled-vm)
     - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Task name](#task-1-task-name-3)
-        - [Task 2: Task name](#task-2-task-name-3)
+        - [Task 1: Delete Resource group to remove the lab environment](#task-1-delete-resource-group-to-remove-the-lab-environment)
 
 <!-- /TOC -->
 
@@ -58,19 +56,23 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Abstract and learning objectives
 
-\[Insert what is trying to be solved for by using this workshop. . . \]
+In this hands-on lab, you will perform steps to migrate Windows Server and SQL Server workloads to Azure. You will go through provisioning a Windows Server VM, migrating SQL Server database to Azure SQL Managed Instance (SQL MI), and Azure Arc-enable an on-premises Windows Server VM.
 
 ## Overview
 
-\[insert your custom workshop content here . . . \]
+In this lab, attendees will perform steps towards migrating Tailspin Toys on-premises Windows Server and SQL Server workloads to Azure. Tailspin needs a new Windows Server VM created in Azure for hosting their Web application, a on-premises SQL Server database migrated to Azure SQL Managed Instance, and an on-premises Windows Server VM to be Azure Arc-enabled.
+
+Tailspin already has a Hub and Spoke network setup in Azure with Azure Bastion for enabling remote management of Azure VM using Azure Bastion. The Azure resources provisioned throughout this lab will be deployed into this environment.
 
 ## Solution architecture
 
-\[Insert your end-solution architecture here. . .\]
+![Preferred Solution Diagram](images/PreferredSolutionDiagram.png "Diagram showing on-premises network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.")
+
+The diagram shows on-premises network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.
 
 ## Requirements
 
-1.  Number and insert your custom workshop content here . . . 
+- You must have a working Azure subscription to carry out this hands-on lab step-by-step without a spending cap to deploy the Barracuda firewall from the Azure Marketplace.
 
 ## Before the hands-on lab
 
@@ -80,7 +82,9 @@ Refer to the Before the hands-on lab setup guide manual before continuing to the
 
 Duration: 90 minutes
 
-\[insert your custom Hands-on lab content here . . . \]
+Tailspin Toys needs to migrate their on-premises SQL Server database to Azure SQL Managed Instance. This is part of the migration strategy defines to migrate Tailspin Toys workloads to Azure.
+
+In this exercise, you will go through the steps necessary to migrate Tailspin Toys on-premises SQL Server database to Azure SQL Managed Instance.
 
 ### Task 1: Create Subnet and Storage Account for Azure SQL MI
 
@@ -306,40 +310,33 @@ Duration: 90 minutes
 
     ![Manage database with Backup button highlighted](images/azure-data-studio-database-manage-backup-button.png "Manage database with Backup button highlighted")
 
-??? How do we upload the Full Backup to Azure Storage? We'll have to use the portal for that...
+10. On the **Backup database** pane, make sure **Backup type** is set to **Full**, select the **Reliability** option to **Perform checksum before writing to media**, then make a note of the **Backup files** location, and select **Backup**.
 
+    ![Backup database pane](images/azure-data-studio-backup-full.png "Backup database pane")
 
+11. Open **Internet Explorer**, navigate to the following URL, download **Microsoft Azure Storage Explorer** and install it.
 
+    <https://azure.microsoft.com/en-us/products/storage/storage-explorer/#overview>
 
+12. Launch **Microsoft Azure Storage Explorer**
 
+13. Select **Sign in with Azure**
 
+    ![Azure Storage Explorer window with Sign in with Azure button highlighted](images/azure-storage-explorer-with-sign-in-azure-highlighted.png "Azure Storage Explorer window with Sign in with Azure button highlighted")
 
+14. Sign in with your **Microsoft Account**.
 
+15. In the **Explorer** pane, expand the Azure Subscription, locate the Storage Account that was previously created (named similar to `tailspinsqlmistorage`), then expand **Blob Container** and select the **sql-backup** container.
 
+    ![Storage Explorer showing the SQL MI backup storage account expanded](images/azure-storage-explorer-tailspinsqlmistorage-container-expanded.png "Storage Explorer showing the SQL MI backup storage account expanded")
 
+16. In the **sql-backup** container pane, select **Upload**, then select **Upload Files...**.
 
+    ![Storage Explroer with Upload button highlighted and menu for Upload files showing](images/azure-storage-explorer-tailspinsqlmistorage-upload-button.png "Storage Explroer with Upload button highlighted and menu for Upload files showing")
 
+17. In the **Upload Files** dialog, in the **Selected files** field, select the **Database Backup File** (`.bak`) for the **WideWorldImporters** database that was previously created, then select **Upload**.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ![Storage Explorer Upload File dialog with database backup file selected](images/azure-storage-explorer-upload-files.png "Storage Explorer Upload File dialog with database backup file selected")
 
 ### Task 6: Migrate Database to Azure SQL MI
 
@@ -402,48 +399,35 @@ Duration: 90 minutes
 
     ![Step 7 showing summary of configurations chosen](images/azure-data-studio-migrate-step-7.png "Step 7 showing summary of configurations chosen")
 
-22. Azure Data Studio will now show that there is 1 **Database migrations in progress**. This will take a few minutes to complete.
+22. Azure Data Studio will now show that there is 1 **Database migrations in progress**.
 
     ![Azure Data Studio showing there is 1 data migration in progress](images/azure-data-studio-database-migrations-in-progress.png "Azure Data Studio showing there is 1 data migration in progress")
 
-### Task 7: Verify Azure SQL MI migration completed
+23. In the Azure Portal, navigate to the **Azure Database Migration Service** that was created (named similar to `tailspin-sql-migration`), then select **Migrations** and the **WideWorldImporters** migration.
 
-1. Within the Azure Portal, navigate to the **Azure SQL Managed Instance** that was created previously.
+    ![Azure Database Migration Service with In-progress migration highlighted](images/azure-database-migration-service-inprogress.png "Azure Database Migration Service with In-progress migration highlighted")
 
-2. While the SQL Server database is being migrated to Azure SQL MI, you will see the **WideWorldImporters** database shown with a **Restoring** status.
+24. The **WideWorldImporters** migration shows the current status of the migration as `InProgress`. Notice the **Currently restoring files** should say **All backups restored** once the database backup has been restored. Then select **Complete cutover** at the top.
 
-    ![Azure SQL MI in Azure Portal showing the WideWorldImporters database in Restoring state](images/azure-portal-sql-mi-database-restoring.png "Azure SQL MI in Azure Portal showing the WideWorldImporters database in Restoring state")
+    ![](images/wideworldimporters-migration-inprogress.png "WideWorldImporters migration showing status as InProgress")
 
+25. On the **Complete cutover** prompt, select the box for **I confirm there are no additional log backups...**, then select **Complete cutover**.
 
+    ![Complete cutover prompt](images/wideworldimporters-migration-complete-cutover.png "Complete cutover prompt")
 
+26. The **WideWorldImporters** Migration will now show the status of **Completing**. This will take a few minutes to complete.
 
+    ![WideWorldImporters migration showing status of Completing](images/wideworldimporters-migration-completing.png "WideWorldImporters migration showing status of Completing")
 
+27. Once the cutover has completed, the **WideWorldImporters** migration will show a status of **Succeeded**.
 
+    ![WideWorldImporters migration showing status of succeeded](images/wideworldimporters-migration-succeeded.png "WideWorldImporters migration showing status of succeeded")
 
+28. Within the Azure Portal, navigate to the **Azure SQL Managed Instance** that was created previously.
 
+29. When the SQL Server database migration to Azure SQL MI has completed, you will see the **WideWorldImporters** database shown with an **Online** status.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ![Azure SQL MI in Azure Portal showing the WideWorldImporters database in Online status](images/azure-portal-sql-mi-database-status-online.png "Azure SQL MI in Azure Portal showing the WideWorldImporters database in Online status")
 
 ## Exercise 2: Create VM to Migrate Web Application
 
@@ -451,7 +435,7 @@ Duration: 30 minutes
 
 In this exercise, you will create a new Windows Server 2022 virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure, and then you will use Azure Bastion to connect to the VM over Remote Desktop (RDP). Azure Bastion will allow secure remote connections to the VM for Administrators.
 
-### Task 1: Create Windows Server 2022 VM
+### Task 1: Create Windows Server 2022 VM for Application Hosting
 
 In this task, you will create a new Windows Server 2022 virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure.
 
@@ -531,42 +515,11 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
 > **Note**: Now that the Windows Server 2022 VM has been created in Azure, Tailspin Toys will now be able to modify their Continuous Integration and Continuous Deployment (CD/CD) pipelines within Azure DevOps to begin deploying the Web Application code to this virtual machine as they get ready for migrating the application to Azure.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Exercise 3: Azure Arc-enable On-premises VM
 
 Duration: 30 minutes
 
-\[insert your custom Hands-on lab content here . . .\]
+In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin has on-premises. This VM is being Arc-enabled since there are no plans to migrate it to Azure, but Tailspin would like to simplify the management of all their VMs in a single place. Azure Arc provides the functionality to manage Azure and on-premises VMs in a single place giving Tailspin Toys exactly what they are looking to simplify VM management and administration.
 
 ### Task 1: Generate Azure Arc script to add server
 
@@ -642,26 +595,56 @@ Duration: 30 minutes
 
 1. ???
 
-## After the hands-on lab 
 
-Duration: X minutes
 
-\[insert your custom Hands-on lab content here . . .\]
 
-### Task 1: Task name
 
-1.  Number and insert your custom workshop content here . . .
 
-    -  Insert content here
 
-        -  
 
-### Task 2: Task name
 
-1.  Number and insert your custom workshop content here . . .
 
-    -  Insert content here
 
-        -    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## After the hands-on lab
+
+Duration: 15 minutes
+
+### Task 1: Delete Resource group to remove the lab environment
+
+1. To to the **Azure Portal**.
+
+2. Go to your **Resource groups**.
+
+3. Select the **Resource group** you created.
+
+    ![Resource group list in Azure Portal](images/azure-portal-resource-groups.png "Resource group list in Azure Portal")
+
+4. Select **Delete Resource group**.
+
+    ![Resource group pane with Delete button highlighted](images/azure-portal-resource-group-delete-button.png "Resource group pane with Delete button highlighted")
+
+5. Enter the name of the **Resource group** and select **Delete**.
+
+    ![Delete Resource group confirmation prompt](images/azure-portal-resource-group-delete-confirm.png "Delete Resource group confirmation prompt")
 
 You should follow all steps provided *after* attending the Hands-on lab.
