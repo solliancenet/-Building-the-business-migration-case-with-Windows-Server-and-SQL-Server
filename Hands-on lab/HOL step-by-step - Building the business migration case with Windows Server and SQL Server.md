@@ -601,30 +601,6 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## After the hands-on lab
 
 Duration: 15 minutes
