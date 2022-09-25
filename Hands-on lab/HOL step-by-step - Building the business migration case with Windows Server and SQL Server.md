@@ -45,7 +45,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
     - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
         - [Task 1: Generate Azure Arc script to add server](#task-1-generate-azure-arc-script-to-add-server)
-        - [Task 2: Run script to add server to Azure Arc]($task-2-run-script-to-add-server-to-azure-arc)
+        - [Task 2: Run script to add server to Azure Arc](#task-2-run-script-to-add-server-to-azure-arc)
         - [Task 3: Verify Azure Arc-enabled VM](#task-3-verify-azure-arc-enabled-vm)
     - [After the hands-on lab](#after-the-hands-on-lab)
         - [Task 1: Delete Resource group to remove the lab environment](#task-1-delete-resource-group-to-remove-the-lab-environment)
@@ -583,7 +583,11 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 6. Once connected to the **OnPremVM** VM within Hyper-V, login using the **Administrator** account and the password of `demo!pass123`.
 
-7. Within the **OnPremVM**, open the **Windows PowerShell ISE**, and create a new script file.
+7. Within the **OnPremVM**, open **Internet Explorer**, go to the following link to download the **PowerShell 5.1** installer, and run it. This will install PowerShell 5.1 on the Windows Server 2012 R2 VM, since this is the version of PowerShell required by the Azure Arc script.
+
+    <https://go.microsoft.com/fwlink/?linkid=839516>
+
+1. Within the **OnPremVM**, open the **Windows PowerShell ISE**, and create a new script file.
 
 8. Paste in the contents of the Azure Arc `OnboardingScript.ps1` script that was previously downloaded.
 
