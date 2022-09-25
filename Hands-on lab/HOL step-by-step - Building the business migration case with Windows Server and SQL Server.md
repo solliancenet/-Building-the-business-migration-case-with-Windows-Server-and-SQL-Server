@@ -56,11 +56,11 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Abstract and learning objectives
 
-In this hands-on lab, you will perform steps to migrate Windows Server and SQL Server workloads to Azure. You will go through provisioning a Windows Server VM, migrating SQL Server database to Azure SQL Managed Instance (SQL MI), and Azure Arc-enable an on-premises Windows Server VM.
+In this hands-on lab, you will perform steps to migrate Windows Server and SQL Server workloads to Azure. You will go through provisioning a Windows Server VM, migrating a SQL Server database to Azure SQL Managed Instance (SQL MI), and Azure Arc-enable an on-premises Windows Server VM.
 
 ## Overview
 
-In this lab, attendees will perform steps towards migrating Tailspin Toys on-premises Windows Server and SQL Server workloads to Azure. Tailspin needs a new Windows Server VM created in Azure for hosting their Web application, a on-premises SQL Server database migrated to Azure SQL Managed Instance, and an on-premises Windows Server VM to be Azure Arc-enabled.
+In this lab, attendees will perform steps toward migrating Tailspin Toys on-premises Windows Server and SQL Server workloads to Azure. Tailspin needs a new Windows Server VM created in Azure for hosting their Web application, an on-premises SQL Server database migrated to Azure SQL Managed Instance, and an on-premises Windows Server VM to be Azure Arc-enabled.
 
 Tailspin already has a Hub and Spoke network setup in Azure with Azure Bastion for enabling remote management of Azure VM using Azure Bastion. The Azure resources provisioned throughout this lab will be deployed into this environment.
 
@@ -68,7 +68,7 @@ Tailspin already has a Hub and Spoke network setup in Azure with Azure Bastion f
 
 ![Preferred Solution Diagram](images/PreferredSolutionDiagram.png "Diagram showing on-premises network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.")
 
-The diagram shows on-premises network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.
+The diagram shows an on-premise network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.
 
 ## Requirements
 
@@ -82,25 +82,24 @@ Refer to the Before the hands-on lab setup guide manual before continuing to the
 
 Duration: 90 minutes
 
-Tailspin Toys needs to migrate their on-premises SQL Server database to Azure SQL Managed Instance. This is part of the migration strategy defines to migrate Tailspin Toys workloads to Azure.
+Tailspin Toys needs to migrate their on-premises SQL Server database to Azure SQL Managed Instance. This is part of the migration strategy defined to migrate Tailspin Toys workloads to Azure.
 
-In this exercise, you will go through the steps necessary to migrate Tailspin Toys on-premises SQL Server database to Azure SQL Managed Instance.
+In this exercise, you will go through the steps necessary to migrate Tailspin Toys' on-premises SQL Server database to Azure SQL Managed Instance.
 
 ### Task 1: Create Subnet and Storage Account for Azure SQL MI
 
 1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
 
-2. Within the Azure Portal, navigate to Resource Group created for this lab, and go to the `tailspin-spoke-vnet` virtual network.
+2. Within the Azure Portal, navigate to the Resource Group created for this lab, and go to the `tailspin-spoke-vnet` virtual network.
 
 3. Under **Settings**, select the **Subnets** link.
 
     ![Subnets link highlighted on the tailspin-spoke-vnet pane](images/azure-sql-mi-spoke-vnet-subnets-link.png "Subnets link highlighted on the tailspin-spoke-vnet pane")
-
 4. Select **+Subnet** to create a new Subnet.
 
-5. On the **Add subnet** pane, enter the following values to create a Subnet that will used by the Azure SQL Managed Instance that will be created later:
+5. On the **Add subnet** pane, enter the following values to create a Subnet that will be used by the Azure SQL Managed Instance that will be created later:
 
-    - **Name**: `AzureSQLMI`
+    - **Name**: `AzureSQLMI` 
     - **Subnet address range**: `10.2.1.0/24`
     - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
 
@@ -201,7 +200,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Bastion credentials shown entered](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
-    > **Note**: When the VM was created the credentials were setup as:
+    > **Note**: When the VM was created the credentials were set up as:
     > - **Username**: `demouser`
     > - **Password**: `demo!pass123`
 
@@ -227,7 +226,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     - <https://www.microsoft.com/en-us/download/details.aspx?id=53595>
 
-10. Select **Run** to run the **Microsoft Data Migration Assistant** installer once it's finished downloading, and follow the prompts to install the assistant.
+10. Select **Run** to run the **Microsoft Data Migration Assistant** installer once it's finished downloading and follow the prompts to install the assistant.
 
     ![Microsoft Data Migration Assistant Setup wizard](images/microsoft-data-migration-assistant-setup-wizard.png "Microsoft Data Migration Assistant Setup wizard")
 
@@ -310,7 +309,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Manage database with Backup button highlighted](images/azure-data-studio-database-manage-backup-button.png "Manage database with Backup button highlighted")
 
-10. On the **Backup database** pane, make sure **Backup type** is set to **Full**, select the **Reliability** option to **Perform checksum before writing to media**, then make a note of the **Backup files** location, and select **Backup**.
+10. On the **Backup database** pane, make sure the **Backup type** is set to **Full**, select the **Reliability** option to **Perform checksum before writing to media**, then make a note of the location of the **Backup files**, and select **Backup**.
 
     ![Backup database pane](images/azure-data-studio-backup-full.png "Backup database pane")
 
@@ -352,11 +351,11 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Azure SQL Migration with Migrate to Azure SQL button highlighted](images/azure-data-studio-azure-sql-migration-migrate-button.png "Azure SQL Migration with Migrate to Azure SQL button highlighted")
 
-9. On **Step 1: Database for assessment**, select the **WideWorldImporters** database, then select **Next**.
+9. In **Step 1: Database for assessment**, select the **WideWorldImporters** database, then select **Next**.
 
     ![](images/azure-data-studio-migrate-step-1.png)
 
-10. On **Step 2: Assessment results and recommendations**, select the **Azure SQL Managed Instance** option.
+10. In **Step 2: Assessment results and recommendations**, select the **Azure SQL Managed Instance** option.
 
 11. Scroll down and select the **View/Select** button to select a database.
 
@@ -368,7 +367,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![](images/azure-data-studio-migrate-step-2.png "")
 
-14. On **Step 3: Azure SQL target**, enter connection information to your Azure Subscription and for the **Azure SQL Manage Instance** resource that was previously created.
+14. In **Step 3: Azure SQL target**, enter connection information to your Azure Subscription and for the **Azure SQL Manage Instance** resource that was previously created.
 
     ![Step 3 shown with Azure SQL MI resource selected](images/azure-data-studio-migrate-step-3.png "Step 3 shown with Azure SQL MI resource selected")
 
@@ -376,13 +375,13 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Step 4 Migration mode with Online migration selected](images/azure-data-studio-migrate-step-4.png "Step 4 Migration mode with Online migration selected")
 
-16. On **Step 5: Database backup**, select **My database backups are in an Azure Storage Blob Container**, select the Azure Storage Account and container created previously, then select **Next**.
+16. In **Step 5: Database backup**, select **My database backups are in an Azure Storage Blob Container**, select the Azure Storage Account and container created previously, then select **Next**.
 
     ![Step 5: Database backup with Azure Storage Account and Container selected](images/azure-data-studio-migrate-step-5.png "Step 5: Database backup with Azure Storage Account and Container selected")
 
-17. On **Step 6: Azure Database Migration Service**, select **Create new** under **Azure Database Migration Service**.
+17. In **Step 6: Azure Database Migration Service**, select **Create new** under **Azure Database Migration Service**.
 
-18. On the **Create Azure Database Migration Service** pane, enter the following values, then select **Create**.
+18. In the **Create Azure Database Migration Service** pane, enter the following values, then select **Create**.
 
     - **Resource group**: Select the Resource Group for this lab. For example: `tailspin-rg`
     - **Name**: `tailspin-sql-migration`
@@ -391,11 +390,11 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 19. Once the Database Migration Service has been created, select **Done**.
 
-20. On **Step 6: Azure Database Migration Service**, select the **Azure Database Migration Service** that was created, then selecft **Next**.
+20. In **Step 6: Azure Database Migration Service**, select the **Azure Database Migration Service** that was created, then select **Next**.
 
     ![Step 6 with Azure Database Migration Service selected](images/azure-data-studio-migrate-step-6.png "Step 6 with Azure Database Migration Service selected")
 
-21. On **Step 7: Summary**, review all the configurations chosen, then select **Start migration**.
+21. In **Step 7: Summary**, review all the configurations chosen, then select **Start migration**.
 
     ![Step 7 showing summary of configurations chosen](images/azure-data-studio-migrate-step-7.png "Step 7 showing summary of configurations chosen")
 
@@ -409,9 +408,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 24. The **WideWorldImporters** migration shows the current status of the migration as `InProgress`. Notice the **Currently restoring files** should say **All backups restored** once the database backup has been restored. Then select **Complete cutover** at the top.
 
-    ![](images/wideworldimporters-migration-inprogress.png "WideWorldImporters migration showing status as InProgress")
-
-25. On the **Complete cutover** prompt, select the box for **I confirm there are no additional log backups...**, then select **Complete cutover**.
+    ![](images/wideworldimporters-migration-inprogress.png "WideWorldImporters migration showing status as InProgress")I
+25. In the **Complete cutover** prompt, select the box for **I confirm there are no additional log backups...**, then select **Complete cutover**.
 
     ![Complete cutover prompt](images/wideworldimporters-migration-complete-cutover.png "Complete cutover prompt")
 
@@ -419,7 +417,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![WideWorldImporters migration showing status of Completing](images/wideworldimporters-migration-completing.png "WideWorldImporters migration showing status of Completing")
 
-27. Once the cutover has completed, the **WideWorldImporters** migration will show a status of **Succeeded**.
+27. Once the cutover has been completed, the **WideWorldImporters** migration will show a status of **Succeeded**.
 
     ![WideWorldImporters migration showing status of succeeded](images/wideworldimporters-migration-succeeded.png "WideWorldImporters migration showing status of succeeded")
 
@@ -460,7 +458,7 @@ In this task, you will create a new Windows Server 2022 virtual machine (VM) tha
 
     ![Create a virtual machine with field set](images/create-virtual-machine-windows-server-image-set.png "Create a virtual machine with field set")
 
-7. Set the **Size** field select the **Standard_D4s_v5** virtual machine size.
+7. Set the **Size** field by selecting the **Standard_D4s_v5** virtual machine size.
 
     ![VM size is set](images/create-virtual-machine-size-set.png "VM size is set")
 
@@ -474,7 +472,7 @@ In this task, you will create a new Windows Server 2022 virtual machine (VM) tha
 
 10. Provision the VM in the Spoke VNet in Azure by selecting the following values under the **Network interface** section:
 
-    - **Virtual network**: Select the Spoke VNet that was created for this lab. It's name will be silimar to `tailspin-spoke-vnet`
+    - **Virtual network**: Select the Spoke VNet that was created for this lab. Its name will be similar to `tailspin-spoke-vnet`
     - **Subnet**: `default`
     - **Public IP**: `None`
 
@@ -557,7 +555,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 8. On the **Download and run script** tab, select **Download** to download the generated script. By default, the script named `OnboardingScript.ps1` will be saved to the `Downloads` folder.
 
-### Task 2: Run script to add server to Azure Arc
+### Task 2: Run script to a add server to Azure Arc
 
 1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-hyperv-vm` virtual machine. This is the simulated on-premises Hyper-V host VM.
 
@@ -581,7 +579,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
     ![Hyper-V Manager list of VMs with OnPremVM shown](images/hyper-v-manager-vm-list.png "Hyper-V Manager list of VMs with OnPremVM shown")
 
-6. Once connected to the **OnPremVM** VM within Hyper-V, login using the **Administrator** account and the password of `demo!pass123`.
+6. Once connected to the **OnPremVM** VM within Hyper-V, sign in using the **Administrator** account and the password of `demo!pass123`.
 
 7. Within the **OnPremVM**, open **Internet Explorer**, go to the following link to download the Windows Update for installing **PowerShell 5.1**, and run it. This will install PowerShell 5.1 on the Windows Server 2012 R2 VM, since this is the version of PowerShell required by the Azure Arc script.
 
@@ -624,7 +622,7 @@ Duration: 15 minutes
 
 ### Task 1: Delete Resource group to remove the lab environment
 
-1. To to the **Azure Portal**.
+1. Go to the **Azure Portal**.
 
 2. Go to your **Resource groups**.
 
