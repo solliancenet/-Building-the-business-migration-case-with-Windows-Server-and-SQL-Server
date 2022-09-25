@@ -606,15 +606,31 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 11. Run the full script. This will install the Azure Arc agent and Arc-enable the VM. When the script opens up a browser window, enter your credentials to authenticate with Azure.
 
+    > **Note**: When the Azure Arc script opens a new browser window to authenticate you with Azure, be sure to use an Organization Account with permissions to create `Microsoft.HybridCompute/machines` resources. Using a Personal Account is not supported and will result in a `AZCM0042: Failed to Create Resource` error message.
+
+12. When the script finishes executing successfully, a message stating "**Connected machine to Azure**" will be shown, along with the Azure Portal resource URL for the Azure Arc-enabled Server.
+
+    ![Azure Arc script successful with Connected machine to Azure message](images/azure-arc-enabled-script-successful.png "Azure Arc script successful with Connected machine to Azure message")
+
 ### Task 3: Verify Azure Arc-enabled VM
 
-1. ???
+1. In the Azure Portal, navigate to the Resource Group for the lab, then locate the Azure resource of type **Server - Azure Arc** and select it.
 
+    The on-premises VM has been Azure Arc-enabled and can be managed along side other Azure resources. This is enabled by the **Azure Connected Machine Agent** running on the VM that facilitates the interaction between Azure and the Azure Arc-enabled VM.
 
+    ![Azure Resource Group showing resource list with Server - Azure Arc resource highlighted](images/resource-group-showing-server-azure-arc-resource.png "Azure Resource Group showing resource list with Server - Azure Arc resource highlighted")
 
+2. This is the **Server - Azure Arc** pane for the on-premises virtual machine that was just Azure Arc-enabled. The **Status** shows **Connected** to signify that the Azure Arc-enabled virtual machine is connected to Azure. Also, notice that the **Computer Name** and **Operating System** of the virtual machine are displayed.
 
+    ![Azure Portal Server - Azure Arc pane for Azure Arc-enabled virtual machine](images/azure-portal-server-azure-arc-enabled-vm.png "Azure Portal Server - Azure Arc pane for Azure Arc-enabled virtual machine")
 
+3. From here, there are several **Azure Arc** capabilities available to use for managing the Azure Arc-enabled virtual machine.
 
+    ![Azure Arc capabilities listed on the Server - Azure Arc pane](images/azure-portal-server-azure-arc-capabilities.png "Azure Arc capabilities listed on the Server - Azure Arc pane")
+
+4. Select **Extensions** under **Settings**. This is where you can install Extensions on the Azure Arc-enabled virtual machine. For example, the **Custom Script Extension for Windows - Azure Arc** extension can be used to download PowerShell scripts and files from Azure storage, and launch a PowerShell script on the machine.
+
+    ![Azure Portal Server - Azure Arc pane showing Extensions](images/azure-poral-server-azure-arc-extensions.png "Azure Portal Server - Azure Arc pane showing Extensions")
 
 ## After the hands-on lab
 
