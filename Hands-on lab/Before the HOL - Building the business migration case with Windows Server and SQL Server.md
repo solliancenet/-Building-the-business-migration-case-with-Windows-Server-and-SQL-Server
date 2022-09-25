@@ -60,7 +60,7 @@ In this task, you will leverage a custom Azure Resource Manager (ARM) template t
 4. Fill in the required ARM template parameters.
     - Create a new **Resource group**
     - Select a **Region**
-    - Specify a **Resource Name Base** (specify a base value that includes your initials to keep unique to prevent naming conflicts, for example `tailspincp`)
+    - Specify a **Resource Name Base** (specify a base value that includes your initials to keep unique to prevent naming conflicts, for example, `tailspincp`)
     - Select **Review + create**
 
 5. Agree to the Terms and conditions and select **Create**.
