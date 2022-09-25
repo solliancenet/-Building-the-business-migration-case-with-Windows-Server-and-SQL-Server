@@ -581,6 +581,17 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 6. Once connected to the **OnPremVM** VM within Hyper-V, sign in using the **Administrator** account and the password of `demo!pass123`.
 
+    > **Note**: If you encounter that the **OnPremVM** has **No Internet Connection**, go back into the `tailspin-onprem-hyperv-vm` Hyper-V Host VM and perform the following steps:
+    > 1. Open the **Network Connections**
+    > 2. Locate the **Ethernet** connection and right-click it.
+    > 3. Select **Properties**
+    > 4. Select the **Sharing** tab
+    > 5. Disable and re-enable **Internet Connection Sharing** on this connection.
+    >
+    > You may see a warning message when disabling it and re-enabling it, but it will still work to restore Internet Connection Sharing with the **OnPremVM** that is connected through the Host VM's network connection.
+    >
+    > ![Ethernet connection properties on the Hyper-V Host VM showing Internet Connection Sharing option highlighted](images/windows-hyperv-network-connections-internet-connection-sharing.png "Ethernet connection properties on the Hyper-V Host VM showing Internet Connection Sharing option highlighted")
+
 7. Within the **OnPremVM**, open **Internet Explorer**, go to the following link to download the Windows Update for installing **PowerShell 5.1**, and run it. This will install PowerShell 5.1 on the Windows Server 2012 R2 VM, since this is the version of PowerShell required by the Azure Arc script.
 
     <https://go.microsoft.com/fwlink/?linkid=839516>
