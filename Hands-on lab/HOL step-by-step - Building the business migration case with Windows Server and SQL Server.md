@@ -517,7 +517,7 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
 ## Exercise 3: Azure Arc-enable On-premises VM
 
-Duration: 30 minutes
+Duration: 45 minutes
 
 In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin has on-premises. This VM is being Arc-enabled since there are no plans to migrate it to Azure, but Tailspin would like to simplify the management of all their VMs in a single place. Azure Arc provides the functionality to manage Azure and on-premises VMs in a single place giving Tailspin Toys exactly what they are looking to simplify VM management and administration.
 
@@ -583,17 +583,30 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 6. Once connected to the **OnPremVM** VM within Hyper-V, login using the **Administrator** account and the password of `demo!pass123`.
 
-7. Within the **OnPremVM**, open **Internet Explorer**, go to the following link to download the **PowerShell 5.1** installer, and run it. This will install PowerShell 5.1 on the Windows Server 2012 R2 VM, since this is the version of PowerShell required by the Azure Arc script.
+7. Within the **OnPremVM**, open **Internet Explorer**, go to the following link to download the Windows Update for installing **PowerShell 5.1**, and run it. This will install PowerShell 5.1 on the Windows Server 2012 R2 VM, since this is the version of PowerShell required by the Azure Arc script.
 
     <https://go.microsoft.com/fwlink/?linkid=839516>
 
-1. Within the **OnPremVM**, open the **Windows PowerShell ISE**, and create a new script file.
+8. Within the **OnPremVM**, open **Internet Explorer**, go to the following link to download the .NET Framework 4.8, and install it. The Azure Arc script will install the **Azure Connected Machine Agent** which requires **.NET Framework 4.6 or later**.
 
-8. Paste in the contents of the Azure Arc `OnboardingScript.ps1` script that was previously downloaded.
+    <https://go.microsoft.com/fwlink/?LinkId=2085155>
+
+    > **Note**: The .NET Framework installer will display a **Blocking Issues** with a note that another update needs to be installed.
+    > There following 2 updates need to be installed in the following order:
+    > 1. Install KB2919442 from <https://www.microsoft.com/en-us/download/details.aspx?id=42153>
+    > 2. Install KB2919355 from <https://www.microsoft.com/en-us/download/details.aspx?id=42334>
+    >
+    > Be sure to restart the VM after installing the updates, before you continue with the .NET Framework install.
+    >
+    > ![Blocking issue warning with message highlighted](images/dot-net-framwork-blocking-issue.png "Blocking issue warning with message highlighted")
+
+9. Within the **OnPremVM**, open the **Windows PowerShell ISE**, and create a new script file.
+
+10. Paste in the contents of the Azure Arc `OnboardingScript.ps1` script that was previously downloaded.
 
     > **Note**: Within the Hyper-V Virtual Machine Connection window, you may need to use the **Clipboard** -> **Type clipboard text** menu option to paste into the **OnPremVM**.
 
-9. Run the full script. This will install the Azure Arc agent and Arc-enable the VM.
+11. Run the full script. This will install the Azure Arc agent and Arc-enable the VM. When the script opens up a browser window, enter your credentials to authenticate with Azure.
 
 ### Task 3: Verify Azure Arc-enabled VM
 
