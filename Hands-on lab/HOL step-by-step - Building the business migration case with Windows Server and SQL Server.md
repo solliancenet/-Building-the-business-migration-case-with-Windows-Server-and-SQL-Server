@@ -44,8 +44,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - [Task 1: Create Windows Server 2022 VM for Application Hosting](#task-1-create-windows-server-2022-vm-for-application-hosting)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
     - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
-        - [Task 1: Generate Azure Arc script to add server](#task-1-generate-azure-arc-script-to-add-server)
-        - [Task 2: Run script to add server to Azure Arc](#task-2-run-script-to-add-server-to-azure-arc)
+        - [Task 1: Generate Azure Arc script to add a server](#task-1-generate-azure-arc-script-to-add-server)
+        - [Task 2: Run script to add a server to Azure Arc](#task-2-run-script-to-add-server-to-azure-arc)
         - [Task 3: Verify Azure Arc-enabled VM](#task-3-verify-azure-arc-enabled-vm)
     - [After the hands-on lab](#after-the-hands-on-lab)
         - [Task 1: Delete Resource group to remove the lab environment](#task-1-delete-resource-group-to-remove-the-lab-environment)
@@ -60,7 +60,7 @@ In this hands-on lab, you will perform steps to migrate Windows Server and SQL S
 
 ## Overview
 
-In this lab, attendees will perform steps toward migrating Tailspin Toys on-premises Windows Server and SQL Server workloads to Azure. Tailspin needs a new Windows Server VM created in Azure for hosting their Web application, an on-premises SQL Server database migrated to Azure SQL Managed Instance, and an on-premises Windows Server VM to be Azure Arc-enabled.
+In this lab, attendees will perform steps toward migrating Tailspin Toy's on-premises Windows Server and SQL Server workloads to Azure. Tailspin needs a new Windows Server VM created in Azure for hosting their Web application, an on-premises SQL Server database migrated to Azure SQL Managed Instance, and an on-premises Windows Server VM to be Azure Arc-enabled.
 
 Tailspin already has a Hub and Spoke network setup in Azure with Azure Bastion for enabling remote management of Azure VM using Azure Bastion. The Azure resources provisioned throughout this lab will be deployed into this environment.
 
@@ -203,7 +203,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Bastion credentials shown entered](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
-    > **Note**: When the VM was created the credentials were set up as:
+    > **Note**: When the VM was created the credentials were setup as:
     > - **Username**: `demouser`
     > - **Password**: `demo!pass123`
 
@@ -630,7 +630,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 1. In the Azure Portal, navigate to the Resource Group for the lab, then locate the Azure resource of type **Server - Azure Arc** and select it.
 
-    The on-premises VM has been Azure Arc-enabled and can be managed along side other Azure resources. This is enabled by the **Azure Connected Machine Agent** running on the VM that facilitates the interaction between Azure and the Azure Arc-enabled VM.
+    The on-premises VM has been Azure Arc-enabled and can be managed alongside other Azure resources. This is enabled by the **Azure Connected Machine Agent** running on the VM that facilitates the interaction between Azure and the Azure Arc-enabled VM.
 
     ![Azure Resource Group showing resource list with Server - Azure Arc resource highlighted](images/resource-group-showing-server-azure-arc-resource.png "Azure Resource Group showing resource list with Server - Azure Arc resource highlighted")
 
