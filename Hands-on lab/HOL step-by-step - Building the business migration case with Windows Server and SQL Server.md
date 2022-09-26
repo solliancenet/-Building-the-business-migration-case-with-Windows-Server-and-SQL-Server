@@ -95,6 +95,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 3. Under **Settings**, select the **Subnets** link.
 
     ![Subnets link highlighted on the tailspin-spoke-vnet pane](images/azure-sql-mi-spoke-vnet-subnets-link.png "Subnets link highlighted on the tailspin-spoke-vnet pane")
+
 4. Select **+Subnet** to create a new Subnet.
 
 5. On the **Add subnet** pane, enter the following values to create a Subnet that will be used by the Azure SQL Managed Instance that will be created later:
