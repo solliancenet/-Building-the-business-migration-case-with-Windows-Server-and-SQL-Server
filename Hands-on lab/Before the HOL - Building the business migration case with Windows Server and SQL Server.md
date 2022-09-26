@@ -30,8 +30,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 - [Building the business migration case with Windows Server and SQL Server before the hands-on lab setup guide](#building-the-business-migration-case-with-windows-server-and-sql-server-before-the-hands-on-lab-setup-guide)
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Task name](#task-1-task-name)
-        - [Task 2: Task name](#task-2-task-name)
+        - [Task 1: Create existing resources](#task-1-create-existing-resources)
 
 <!-- /TOC -->
 
