@@ -76,14 +76,13 @@ resource hub_vnet 'Microsoft.Network/virtualNetworks@2020-11-01' = {
                     addressPrefix: '10.1.0.0/24'
                 }
             }
+            {
+                name: 'AzureBastionSubnet'
+                properties: {
+                    addressPrefix: '10.1.1.0/24'
+                }
+            }
         ]
-    }
-}
-
-resource hub_vnet_azurebastionsubnet 'Microsoft.Network/virtualNetworks/subnets@2020-11-01' = {
-    name: '${hub_vnet.name}/AzureBastionSubnet'
-    properties: {
-        addressPrefix: '10.1.1.0/24'
     }
 }
 
@@ -181,7 +180,7 @@ resource hub_bastion 'Microsoft.Network/bastionHosts@2020-11-01' = {
                         id: hub_bastion_public_ip.id
                     }
                     subnet: {
-                        id: hub_vnet_azurebastionsubnet.id
+                        id: '${hub_vnet.id}/subnets/AzureBastionSubnet'
                     }
                 }
             }
