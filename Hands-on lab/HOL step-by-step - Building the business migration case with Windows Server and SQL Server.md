@@ -35,10 +35,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Before the hands-on lab](#exercise-1-before-the-hands-on-lab)
     - [Exercise 1: SQL Database Migration](#exercise-1-sql-database-migration)
         - [Task 1: Create Subnet and Storage Account for Azure SQL MI](#task-1-create-subnet-and-storage-account-for-azure-sql-mi)
-        - [Task 2: Create Azure SQL MI](#task-1-create-azure-sql-mi)
+        - [Task 2: Create Azure SQL MI](#task-2-create-azure-sql-mi)
         - [Task 3: Install Data Migration Assistant](#task-3-install-data-migration-assistant)
-        - [Task 4: Assess On-premises database compatibility](#task-2-assess-on-premises-database-compatibility)
-        - [Task 5: Backup on-premises SQL Database](task-5-backup-on-premises-sql-database)
+        - [Task 4: Assess On-premises database compatibility](#task-4-assess-on-premises-database-compatibility)
+        - [Task 5: Backup on-premises SQL Database](#task-5-backup-on-premises-sql-database)
         - [Task 6: Migrate Database to Azure SQL MI](#task-6-migrate-database-to-azure-sql-mi)
     - [Exercise 2: Create VM to Migrate Web Application](#exercise-2-create-vm-to-migrate-web-application)
         - [Task 1: Create Windows Server 2022 VM for Application Hosting](#task-1-create-windows-server-2022-vm-for-application-hosting)
@@ -558,7 +558,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 8. On the **Download and run script** tab, select **Download** to download the generated script. By default, the script named `OnboardingScript.ps1` will be saved to the `Downloads` folder.
 
-### Task 2: Run script to a add server to Azure Arc
+### Task 2: Run script to add server to Azure Arc
 
 1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-hyperv-vm` virtual machine. This is the simulated on-premises Hyper-V host VM.
 
