@@ -15,11 +15,27 @@ September 2022
 
 ### Workshop
 
+In this workshop, you will gain experience designing and implementing a strategy for migrating Windows Server and SQL Server workloads to Azure, and enabling on-premises virtual machines management by using Azure Arc.
+
+At the end of the workshop, you will be better able to design and implement an Azure migration strategy for Windows Server and SQL Server workloads using Azure Virtual Machines, Azure SQL Managed Instance (SQL MI), and Azure Arc.
+
 ### Whiteboard Design Session
 
 In this whiteboard design session, you will look at how to design a strategy for migrating existing on-premises Windows Server and SQL Server workloads to Azure. Throughout the whiteboard design session, you will look at the Virtual Machine pricing, integrated management of cloud and on-premises workloads using Azure Arc, and migrating SQL Server workloads to Azure.
 
-At the end of the workshop, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL Managed Instance (SQL MI), and simplifying workload management using Azure Arc.
+At the end of the whiteboard design session, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL Managed Instance (SQL MI), and simplifying workload management using Azure Arc.
+
+Continue to the [Whiteboard design session](Whiteboard%20design%20session) documents folder.
+
+### Hands-on Lab
+
+In this lab, attendees will perform steps toward migrating Tailspin Toys on-premises Windows Server and SQL Server workloads to Azure. Tailspin needs a new Windows Server VM created in Azure for hosting their Web application, an on-premises SQL Server database migrated to Azure SQL Managed Instance, and an on-premises Windows Server VM to be Azure Arc-enabled.
+
+Tailspin already has a Hub and Spoke network setup in Azure with Azure Bastion for enabling remote management of Azure VM using Azure Bastion. The Azure resources provisioned throughout this lab will be deployed into this environment.
+
+At the end of this hands-on lab, you will be better able to setup a Windows Server for application migration to Azure, migrate an on-premises SQL Database to Azure SQL Managed Instance, and Azure Arc-enable an on-premises virtual machine so it can be managed from Azure.
+
+Continue to the [Hands-on lab](Hands-on%20lab) documents folder.
 
 ## Azure services and related products
 
@@ -27,6 +43,8 @@ At the end of the workshop, you will be better able to design a migration strate
 - Azure Arc
 - Azure SQL Managed Instance
 - Azure Networking
+- Microsoft Data Migration Assistant
+- Azure Data Studio - Azure SQL Migration Extension
 
 ## Azure solutions
 
