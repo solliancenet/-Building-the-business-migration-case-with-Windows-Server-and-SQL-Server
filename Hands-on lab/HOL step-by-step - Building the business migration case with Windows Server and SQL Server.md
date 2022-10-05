@@ -41,7 +41,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
         - [Task 5: Backup on-premises SQL Database](#task-5-backup-on-premises-sql-database)
         - [Task 6: Migrate Database to Azure SQL MI](#task-6-migrate-database-to-azure-sql-mi)
     - [Exercise 2: Create VM to Migrate Web Application](#exercise-2-create-vm-to-migrate-web-application)
-        - [Task 1: Create Windows Server 2022 VM for Application Hosting](#task-1-create-windows-server-2022-vm-for-application-hosting)
+        - [Task 1: Create Windows Server 2022 Azure Edition VM for Application Hosting](#task-1-create-windows-server-2022-azure-edition-vm-for-application-hosting)
         - [Task 2: Check Remote Desktop Access](#task-2-check-remote-desktop-access)
     - [Exercise 3: Azure Arc-enable On-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
         - [Task 1: Generate Azure Arc script to add a server](#task-1-generate-azure-arc-script-to-add-server)
@@ -434,11 +434,11 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 Duration: 30 minutes
 
-In this exercise, you will create a new Windows Server 2022 virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure, and then you will use Azure Bastion to connect to the VM over Remote Desktop (RDP). Azure Bastion will allow secure remote connections to the VM for Administrators.
+In this exercise, you will create a new Windows Server 2022: Azure Edition virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure, and then you will use Azure Bastion to connect to the VM over Remote Desktop (RDP). Azure Bastion will allow secure remote connections to the VM for Administrators. Windows Server Azure Edition is a specific image of Windows Server with unique capabilities such as rebootless patching with Hotpatch, available only on Azure.
 
-### Task 1: Create Windows Server 2022 VM for Application Hosting
+### Task 1: Create Windows Server 2022 Azure Edition VM for Application Hosting
 
-In this task, you will create a new Windows Server 2022 virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure.
+In this task, you will create a new Windows Server 2022: Azure Edition virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure.
 
 1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
 
@@ -450,14 +450,14 @@ In this task, you will create a new Windows Server 2022 virtual machine (VM) tha
 
     ![Windows Server is highlighted within the Azure Marketplace](images/azure-marketplace-windows-server.png "Windows Server is highlighted")
 
-5. Choose **Windows Server 2022 Datacenter**, then select **Create**.
+5. Choose **Windows Server 2022 Datacenter: Azure Edition**, then select **Create**.
 
 6. On the **Create a virtual machine** pane, set the following values to configure the new virtual machine:
 
     - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`.
     - **Virtual machine name**: Give the VM a unique name, such as `tailspin-webapp-vm`
     - **Region**: Select the Azure Region that was used to create the resource group
-    - **Image**: Verify the image is set to **Windows Server 2022 Datacenter**
+    - **Image**: Verify the image is set to **Windows Server 2022 Datacenter: Azure Edition - Gen 2**
 
     ![Create a virtual machine with field set](images/create-virtual-machine-windows-server-image-set.png "Create a virtual machine with field set")
 
