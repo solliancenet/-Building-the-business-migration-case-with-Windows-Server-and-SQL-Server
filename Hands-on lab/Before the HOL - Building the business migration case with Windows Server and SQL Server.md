@@ -48,7 +48,7 @@ Duration: 30 minutes
 
 In this task, you will leverage a custom Azure Resource Manager (ARM) template to deploy the existing Azure resources and a simulated on-premises environment for Tailspin Toys.
 
-1. Open a browser using "InPrivate" or "Incognito" mode, and navigate to the ARM template: [ARM Template on GitHub](https://github.com/solliancenet/Building-the-business-migration-case-with-Windows-Server-and-SQL-Server/tree/lab/Hands-on%20lab/resources/deployment)
+1. Open a browser using "InPrivate" or "Incognito" mode, and navigate to the ARM template: [ARM Template on GitHub](https://github.com/solliancenet/Building-the-business-migration-case-with-Windows-Server-and-SQL-Server/tree/lab/Hands-on%20lab/resources/deployment).
 
 2. Select **Deploy to Azure**. This will open a new browser tab to the Azure Portal for custom deployments.
 
@@ -64,10 +64,10 @@ In this task, you will leverage a custom Azure Resource Manager (ARM) template t
 
 5. Agree to the Terms and conditions and select **Create**.
 
-    The deployment is now underway. On average, this process can take 30 minutes to complete. It is important that you monitor the deployment progress to ensure there are no problems. You can monitor progress by selecting the notification bell in the upper right corner and selecting Deployment in progress...
+    The deployment is now underway. On average, this process can take 30 minutes to complete. It is important that you monitor the deployment progress to ensure there are no problems. You can monitor progress by selecting the notification bell in the upper right corner and selecting **Deployment in progress...**
 
->**Note**: While automation can make things simpler and repeatable, sometimes it can fail. If at any time during the ARM template deployment there is a failure, review the failure, delete the Resource Group, and try the ARM template again, adjusting for any possible errors.
+>**Note**: While automation can make things simpler and repeatable, sometimes it can fail. If at any time during the ARM template deployment there is a failure, review the failure, delete the Resource Group, and try the ARM template again, adjusting for errors.
 
-Once the ARM template is done being deployed, the status will change to complete. At this point, things are ready for you to go through the Hands-on lab.
+Once the ARM template is deployed, the status will change to complete. At this point, things are ready for you to go through the Hands-on lab.
 
 You should follow all steps provided *before* performing the Hands-on lab.
