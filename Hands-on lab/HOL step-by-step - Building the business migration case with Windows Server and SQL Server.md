@@ -64,7 +64,7 @@ In this lab, attendees will perform steps toward migrating Tailspin Toy's on-pre
 
 Tailspin already has a Hub and Spoke network setup in Azure with Azure Bastion for enabling remote management of Azure VM using Azure Bastion. The Azure resources provisioned throughout this lab will be deployed into this environment.
 
-At the end of this hands-on lab, you will be better able to setup a Windows Server for application migration to Azure, migrate an on-premises SQL Database to Azure SQL Managed Instance, and Azure Arc-enable an on-premises virtual machine so it can be managed from Azure.
+At the end of this hands-on lab, you will be better able to set up a Windows Server for application migration to Azure, migrate an on-premises SQL Database to Azure SQL Managed Instance, and Azure Arc-enable an on-premises virtual machine so it can be managed from Azure.
 
 ## Solution architecture
 
@@ -90,7 +90,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 ### Task 1: Create subnet and storage account for Azure SQL MI
 
-1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
+1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab set up.
 
 2. Within the Azure Portal, navigate to the Resource Group created for this lab, and go to the `tailspin-spoke-vnet` virtual network.
 
@@ -116,6 +116,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 8. Under **Categories**, select **Storage**, then select **Create** for **Storage account** in the list of popular resources.
 
+    ![Create a Storage account resource](images/2022-10-07-20-33-19.png "Create a Storage account resource")
+
 9. On the **Create a storage account**, enter the following values, then select **Review**:
 
     - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
@@ -140,6 +142,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 2. Within the **Search services and marketplace** field, type **Azure SQL Managed Instance**, press Enter, and select it in the search results.
 
+    ![Azure SQL MI in Azure Marketplace](images/2022-10-07-20-35-13.png "Azure SQL MI in Azure Marketplace")
+
 3. Select **Create**.
 
 4. On the **Create Azure SQL Managed Instance** pane, set the following values:
@@ -147,6 +151,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
     - **Managed Instance name**: Enter a unique name, such as `tailspin-sqlmi`
     - **Region**: Select the Azure Region that was used to create the resource group.
+
+    ![Create Azure SQL Managed Instance pane](images/2022-10-07-20-38-02.png "Create Azure SQL Managed Instance pane")
 
 5. For **Compute + storage**, select **Configure Managed Instance**.
 
@@ -171,7 +177,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 10. Enter a username to use for the **Managed Instance admin login** and a **Password** for this new Administrator user that will be created on the database server.
 
-    > **Note**: Using the `demouser` username that was used previously in the lab, will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`
+    > **Note**: Using the `demouser` username that was used previously in the lab will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`
 
     ![Authentication values are set](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are set")
 
@@ -187,7 +193,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 14. Select **Create**.
 
-    Deploying the new instance of Azure SQL Managed Instance may take about 1 hour to complete. You can continue to Exercise 2, then come back here later to finish Exercise 1.
+    > **Note**: Deploying the new instance of Azure SQL Managed Instance may take about 1 hour to complete. You can continue to Exercise 2, then come back here later to finish Exercise 1.
 
 ### Task 3: Install Data Migration Assistant
 
@@ -203,11 +209,11 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Bastion credentials shown entered](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
-    > **Note**: When the VM was created the credentials were setup as:
+    > **Note**: When the VM was created the credentials were set up as:
     > - **Username**: `demouser`
     > - **Password**: `demo!pass123`
 
-4. In the **tailspin-onprem-sql-vm** virtual machine, go to **Server Manager**, and select **Local Server**
+4. In the **tailspin-onprem-sql-vm** virtual machine, go to **Server Manager**, and select **Local Server**.
 
     ![Server Manager with Local Server highlighted](images/server-manager-local-server-highlighted.png "Server Manager with Local Server highlighted")
 
@@ -225,6 +231,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 8. Select **Run** to run the **.NET Framework 4.8 Runtime** installer once it's finished downloading, and follow the prompts to install the .NET Framework.
 
+    ![.NET Framework 4.8 Setup](images/2022-10-07-21-14-05.png ".NET Framework 4.8 Setup")
+
 9. Using **Internet Explorer**, go to the following link and download the **Microsoft Data Migration Assistant**.
 
     - <https://www.microsoft.com/en-us/download/details.aspx?id=53595>
@@ -237,7 +245,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 1. Run the **Microsoft Data Migration Assistant** that was previously installed.
 
-    ![Data Migartion Assistant window](images/ms-data-migration-assistant-windows.png "Data Migartion Assistant window")
+    ![Data Migration Assistant window](images/ms-data-migration-assistant-windows.png "Data Migration Assistant window")
 
 2. On the left, select the Plus sign (`+`) button to create a new project, and enter the following values, then select **Create**.
 
@@ -251,11 +259,15 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 3. On the **Options** tab, ensure the **Check database compatibility** and **Check feature parity** report types are selected, then select **Next**.
 
+    ![Data Migration Assistant Options pane](images/2022-10-07-21-17-11.png "Data Migration Assistant Options pane")
+
 4. On the **Connect to a server** prompt, enter `localhost` for the     **Server name**, and check the **Trust server certificate** option, then select **Connect**.
 
     ![Connect to a server configured for localhost](images/ms-data-migration-assistant-assessment-connect-to-server-localhost.png "Connect to a server configured for localhost")
 
 5. On the **Add sources** prompt, select the **WideWorldImporters** database, then select **Add**.
+
+    ![Add sources with WideWorldImporters database selected](images/2022-10-07-21-18-32.png "Add sources with WideWorldImporters database selected")
 
 6. Select **Start Assessment** in the lower right.
 
@@ -281,7 +293,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Azure SQL Migration extension highlighted](images/azure-data-studio-extensions-azure-sql-migration.png "Azure SQL Migration extension highlighted")
 
-3. Next, you need to enable Preview Features within Azure Data Studio. Select the Manage icon (shown as the Gear in the lower left corner of Azure Data Studio)
+3. Next, you need to enable Preview Features within Azure Data Studio. Select the Manage icon (shown as the Gear in the lower left corner of Azure Data Studio).
 
     ![The manage menu open with Settings highlighted](images/azure-data-studio-manage-menu-settings.png "The manage menu open with Settings highlighted")
 
@@ -289,13 +301,11 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Azure Data Studio settings pane with Preview Features enabled](images/azure-data-studio-preview-features-enabled.png "Azure Data Studio settings pane with Preview Features enabled")
 
-5. Next, let's connect to the on-premises SQL Server. Select the **Connections** tab on the left side of Azure Data Studio.
-
-6. Select **New Connection**
+5. Next, let's connect to the on-premises SQL Server. Select the **Connections** tab on the left side of Azure Data Studio, then select **New Connection**.
 
     ![Azure Data Studio connections tab with New Connection button shown](images/azure-data-studio-connections-tab-new-connection-button.png "Azure Data Studio connections tab with New Connection button shown")
 
-7. On the **Connection** pane, enter the following values to connect to the on-premises SQL database, then select **Connect**:
+6. On the **Connection** pane, enter the following values to connect to the on-premises SQL database, then select **Connect**:
 
     - **Connection type**: Microsoft SQL Server
     - **Server**: `localhost`
@@ -304,39 +314,41 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Azure Data Studio with Connection pane shown having all values entered](images/azure-data-studio-connection-pane-values-entered.png "Azure Data Studio with Connection pane shown having all values entered")
 
-8. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
+7. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
     ![WideWorlImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorlImporters server with right-click menu shown and Manage option is highlighted")
 
-9. Select **Backup**.
+8. Select **Backup**.
 
     ![Manage database with Backup button highlighted](images/azure-data-studio-database-manage-backup-button.png "Manage database with Backup button highlighted")
 
-10. On the **Backup database** pane, make sure the **Backup type** is set to **Full**, select the **Reliability** option to **Perform checksum before writing to media**, then make a note of the location of the **Backup files**, and select **Backup**.
+9. On the **Backup database** pane, make sure the **Backup type** is set to **Full**, select the **Reliability** option to **Perform checksum before writing to media**, then make a note of the location of the **Backup files**, and select **Backup**.
 
     ![Backup database pane](images/azure-data-studio-backup-full.png "Backup database pane")
 
-11. Open **Internet Explorer**, navigate to the following URL, download **Microsoft Azure Storage Explorer** and install it.
+10. Open **Internet Explorer**, navigate to the following URL, download **Microsoft Azure Storage Explorer** and install it.
 
     <https://azure.microsoft.com/en-us/products/storage/storage-explorer/#overview>
 
-12. Launch **Microsoft Azure Storage Explorer**
+    ![Microsoft Azure Storage Explorer Setup](images/2022-10-07-21-22-14.png "Microsoft Azure Storage Explorer Setup")
 
-13. Select **Sign in with Azure**
+11. Launch **Microsoft Azure Storage Explorer**.
+
+12. Select **Sign in with Azure**.
 
     ![Azure Storage Explorer window with Sign in with Azure button highlighted](images/azure-storage-explorer-with-sign-in-azure-highlighted.png "Azure Storage Explorer window with Sign in with Azure button highlighted")
 
-14. Sign in with your **Microsoft Account**.
+13. Sign in with your **Microsoft Account**.
 
-15. In the **Explorer** pane, expand the Azure Subscription, locate the Storage Account that was previously created (named similar to `tailspinsqlmistorage`), then expand **Blob Container** and select the **sql-backup** container.
+14. In the **Explorer** pane, expand the Azure Subscription, locate the Storage Account that was previously created (named similar to `tailspinsqlmistorage`), then expand **Blob Container** and select the **sql-backup** container.
 
     ![Storage Explorer showing the SQL MI backup storage account expanded](images/azure-storage-explorer-tailspinsqlmistorage-container-expanded.png "Storage Explorer showing the SQL MI backup storage account expanded")
 
-16. In the **sql-backup** container pane, select **Upload**, then select **Upload Files...**.
+15. In the **sql-backup** container pane, select **Upload**, then select **Upload Files...**.
 
     ![Storage Explroer with Upload button highlighted and menu for Upload files showing](images/azure-storage-explorer-tailspinsqlmistorage-upload-button.png "Storage Explroer with Upload button highlighted and menu for Upload files showing")
 
-17. In the **Upload Files** dialog, in the **Selected files** field, select the **Database Backup File** (`.bak`) for the **WideWorldImporters** database that was previously created, then select **Upload**.
+16. In the **Upload Files** dialog, in the **Selected files** field, select the **Database Backup File** (`.bak`) for the **WideWorldImporters** database that was previously created, then select **Upload**.
 
     ![Storage Explorer Upload File dialog with database backup file selected](images/azure-storage-explorer-upload-files.png "Storage Explorer Upload File dialog with database backup file selected")
 
@@ -384,6 +396,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 12. In **Step 6: Azure Database Migration Service**, select **Create new** under **Azure Database Migration Service**.
 
+    ![Step 6 Azure Database Migration Service with Create new highlighted](images/2022-10-07-21-25-58.png "Step 6 Azure Database Migration Service with Create new highlighted")
+
 13. In the **Create Azure Database Migration Service** pane, enter the following values, then select **Create**.
 
     - **Resource group**: Select the Resource Group for this lab. For example: `tailspin-rg`
@@ -401,7 +415,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Step 7 showing summary of configurations chosen](images/azure-data-studio-migrate-step-7.png "Step 7 showing summary of configurations chosen")
 
-17. Azure Data Studio will now show that there is 1 **Database migrations in progress**.
+17. Azure Data Studio will now show **Database migrations in progress - 1**.
 
     ![Azure Data Studio showing there is 1 data migration in progress](images/azure-data-studio-database-migrations-in-progress.png "Azure Data Studio showing there is 1 data migration in progress")
 
@@ -441,57 +455,55 @@ In this exercise, you will create a new Windows Server 2022: Azure Edition virtu
 
 In this task, you will create a new Windows Server 2022: Azure Edition virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure.
 
-1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
+1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab set up.
 
 2. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
 
-3. Within the **Search services and marketplace** field, type **Windows Server** and press Enter to search the marketplace.
-
-4. Select **Windows Server**.
+3. Within the **Search services and marketplace** field, type **Windows Server** and press Enter to search the marketplace, then select **Windows Server**.
 
     ![Windows Server is highlighted within the Azure Marketplace](images/azure-marketplace-windows-server.png "Windows Server is highlighted")
 
-5. Choose **Windows Server 2022 Datacenter: Azure Edition**, then select **Create**.
+4. Choose **Windows Server 2022 Datacenter: Azure Edition**, then select **Create**.
 
-6. On the **Create a virtual machine** pane, set the following values to configure the new virtual machine:
+5. On the **Create a virtual machine** pane, set the following values to configure the new virtual machine:
 
     - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`.
-    - **Virtual machine name**: Give the VM a unique name, such as `tailspin-webapp-vm`
-    - **Region**: Select the Azure Region that was used to create the resource group
-    - **Image**: Verify the image is set to **Windows Server 2022 Datacenter: Azure Edition - Gen 2**
+    - **Virtual machine name**: Give the VM a unique name, such as `tailspin-webapp-vm`.
+    - **Region**: Select the Azure Region that was used to create the resource group.
+    - **Image**: Verify the image is set to **Windows Server 2022 Datacenter: Azure Edition - Gen 2**.
 
     ![Create a virtual machine with field set](images/create-virtual-machine-windows-server-image-set.png "Create a virtual machine with field set")
 
-7. Set the **Size** field by selecting the **Standard_D4s_v5** virtual machine size.
+6. Set the **Size** field by selecting the **Standard_D4s_v5** virtual machine size.
 
     ![VM size is set](images/create-virtual-machine-size-set.png "VM size is set")
 
-8. Set a **Username** and **Password** for the **Administrator account** for the VM.
+7. Set a **Username** and **Password** for the **Administrator account** for the VM.
 
     > **Note**: Be sure to save the Username and Password for the VM, so it can be used later. Recommendation for easy to remember Username is `demouser` and Password is `demo!pass123`.
 
-9. Select **Next** until you are navigated to the **Networking** tab of the ** Create a virtual machine page.
+8. Select **Next** until you are navigated to the **Networking** tab of the ** Create a virtual machine page.
 
     ![Networking tab is selected](images/create-virtual-machine-networking-tab-selected.png "Networking tab is selected")
 
-10. Provision the VM in the Spoke VNet in Azure by selecting the following values under the **Network interface** section:
+9. Provision the VM in the Spoke VNet in Azure by selecting the following values under the **Network interface** section:
 
-    - **Virtual network**: Select the Spoke VNet that was created for this lab. Its name will be similar to `tailspin-spoke-vnet`
+    - **Virtual network**: Select the Spoke VNet that was created for this lab. Its name will be similar to `tailspin-spoke-vnet`.
     - **Subnet**: `default`
     - **Public IP**: `None`
 
     ![Virtual Network, Subnet, and Public IP values are set](images/create-virtual-machine-networking-values-set.png "Virtual Network, Subnet, and Public IP values are set")
 
-11. Set the following values to ensure that HTTPS traffic will be allowed to connect to the VM:
+10. Set the following values to ensure that HTTPS traffic will be allowed to connect to the VM:
 
     - **Public inbound ports**: `Allow selected ports`
     - **Select inbound ports**: `HTTPS (443)`
 
     ![Networking inbound ports set to allow HTTPS traffic](images/create-virtual-network-https-traffic-allowed.png "Networking inbound ports set to allow HTTPS traffic")
 
-12. Select **Review + create** to review the virtual machine settings.
+11. Select **Review + create** to review the virtual machine settings.
 
-13. Select **Create** to begin provisioning the virtual machine.
+12. Select **Create** to begin provisioning the virtual machine.
 
 ### Task 2: Check remote desktop access
 
@@ -505,11 +517,11 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
     ![Bastion is highlighted under Operations section](images/portal-virtual-machine-operations-bastion-link.png "Bastion is highlighted under Operations section")
 
-3. On the **Bastion** pane, enter the **Username** and **Password** that was set for the Administrator User of the VM when it was created, then select **Connect**
+3. On the **Bastion** pane, enter the **Username** and **Password** that was set for the Administrator User of the VM when it was created, then select **Connect**.
 
     ![Bastion pane with username and password entered](images/portal-virtual-machine-operations-bastion-pane.png "Bastion pane with username and password entered")
 
-    > **Note**: The Azure Bastion instance named `tailspin-hub-bastion` was previously created with the Before the Hands-on lab setup. This is a required resource for using Azure Bastion to securely connect to Azure VMs using RDP from within the Azure Portal.
+    > **Note**: The Azure Bastion instance named `tailspin-hub-bastion` was previously created with the Before the Hands-on lab set up. This is a required resource for using Azure Bastion to securely connect to Azure VMs using RDP from within the Azure Portal.
 
 4. A new browser tab will open with Azure Bastion connected to the virtual machine over RDP. To close this session, you can close this browser tab.
 
@@ -521,11 +533,11 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
 Duration: 45 minutes
 
-In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin has on-premises. This VM is being Arc-enabled since there are no plans to migrate it to Azure, but Tailspin would like to simplify the management of all their VMs in a single place. Azure Arc provides the functionality to manage Azure and on-premises VMs in a single place giving Tailspin Toys exactly what they are looking to simplify VM management and administration.
+In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin has on-premises. This VM is being Arc-enabled since there are no plans to migrate it to Azure, but Tailspin would like to simplify the management of all their VMs in a single place. Azure Arc provides the functionality to manage Azure and on-premises VMs in a single place giving Tailspin Toys exactly what they are looking for to simplify VM management and administration.
 
 ### Task 1: Generate Azure Arc script to add server
 
-1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
+1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab set up.
 
 2. In the **Search resources, services, and docs** box at the top of the portal, search for **Azure Arc**, then select the **Azure Arc** service.
 
@@ -537,11 +549,15 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 4. Under **Add a single server** select **Generate script**.
 
+    ![Add servers with Azure Arc with Generate script highlighted](images/2022-10-07-21-36-05.png "Add servers with Azure Arc with Generate script highlighted")
+
 5. On the **Add a server with Azure Arc** pane, read the requirements of Azure Arc that are listed, then select **Next**.
+
+    ![Add a server with Azure Arc requirements](images/2022-10-07-21-37-35.png "Add a server with Azure Arc requirements")
 
 6. On the **Resource details** tab, enter the following values, then select **Next**.
 
-    - **Resource group**: Select the Resource Group created for this lab. For example: `tailspin-rg`
+    - **Resource group**: Select the Resource Group created for this lab. For example: `tailspin-rg`.
     - **Region**: Select the closest region to the geographic location of the server being added to Azure Arc. In this case, use the same Region used for the Resource Group created for the lab.
     - **Operating system**: `Windows`
     - **Connectivity method**: `Public endpoint`
@@ -573,7 +589,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
     ![Bastion credentials shown entered](images/azure-portal-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
-    > **Note**: When the VM was created the credentials were setup as:
+    > **Note**: When the VM was created the credentials were set up as:
     > - **Username**: `demouser`
     > - **Password**: `demo!pass123`
 
@@ -586,11 +602,11 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 6. Once connected to the **OnPremVM** VM within Hyper-V, sign in using the **Administrator** account and the password of `demo!pass123`.
 
     > **Note**: If you encounter that the **OnPremVM** has **No Internet Connection**, go back into the `tailspin-onprem-hyperv-vm` Hyper-V Host VM and perform the following steps:
-    > 1. Open the **Network Connections**
-    > 2. Locate the **Ethernet** connection and right-click it.
-    > 3. Select **Properties**
-    > 4. Select the **Sharing** tab
-    > 5. Disable and re-enable **Internet Connection Sharing** on this connection.
+    > - Open the **Network Connections**
+    > - Locate the **Ethernet** connection and right-click it.
+    > - Select **Properties**
+    > - Select the **Sharing** tab
+    > - Disable and re-enable **Internet Connection Sharing** on this connection.
     >
     > You may see a warning message when disabling it and re-enabling it, but it will still work to restore Internet Connection Sharing with the **OnPremVM** that is connected through the Host VM's network connection.
     >
@@ -604,10 +620,10 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
     <https://go.microsoft.com/fwlink/?LinkId=2085155>
 
-    > **Note**: The .NET Framework installer will display a **Blocking Issues** with a note that another update needs to be installed.
-    > There following 2 updates need to be installed in the following order:
-    > 1. Install KB2919442 from <https://www.microsoft.com/en-us/download/details.aspx?id=42153>
-    > 2. Install KB2919355 from <https://www.microsoft.com/en-us/download/details.aspx?id=42334>
+    > **Note**: The .NET Framework installer will display a **Blocking Issues** box with a note that another update needs to be installed.
+    > The following 2 updates will need to be installed in the following order:
+    > - Install KB2919442 from <https://www.microsoft.com/en-us/download/details.aspx?id=42153>
+    > - Install KB2919355 from <https://www.microsoft.com/en-us/download/details.aspx?id=42334>
     >
     > Be sure to restart the VM after installing the updates, before you continue with the .NET Framework install.
     >
