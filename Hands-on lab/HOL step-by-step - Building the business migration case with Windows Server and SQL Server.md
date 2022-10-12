@@ -80,7 +80,7 @@ The diagram shows an on-premise network connected to Azure using Azure ExpressRo
 
 Refer to the Before the hands-on lab setup guide manual before continuing to the lab exercises.
 
-## Exercise 1: SQL Database Migration
+## Exercise 1: SQL database migration
 
 Duration: 90 minutes
 
@@ -120,7 +120,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 9. On the **Create a storage account**, enter the following values, then select **Review**:
 
-    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
+    - **Resource group**: Select the resource group that you created for this lab, such as `tailspin-rg`
     - **Storage account name**: Enter a unique name for the storage account, similar to `tailspinsqlmistorage`. You can add your initials or date to meet uniqueness requirements.
     - **Region**: Select the Azure Region that was used to create the resource group.
 
@@ -400,7 +400,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 13. In the **Create Azure Database Migration Service** pane, enter the following values, then select **Create**.
 
-    - **Resource group**: Select the Resource Group for this lab. For example: `tailspin-rg`
+    - **Resource group**: Select the Resource Group for this lab, for example: `tailspin-rg`
     - **Name**: `tailspin-sql-migration`
 
     ![Create Database Migration Service dialog with values entered](images/azure-data-studio-migrate-create-migration-service.png "Create Database Migration Service dialog with values entered")
