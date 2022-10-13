@@ -142,6 +142,8 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 1. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
 
+    ![The Home page of the Azure Portal is shown with the 'Create a resource' link highlighted.](images/azure-portal-home-create-resource-link.png "Create a resource on Azure Portal Home page")
+
 2. Within the **Search services and marketplace** field, type **Azure SQL Managed Instance**, press Enter, and select it in the search results.
 
     ![The Azure Marketplace search results for Azure SQL Managed Instance are shown with Azure SQL Managed Instance highlighted.](images/2022-10-07-20-35-13.png "Azure SQL MI in Azure Marketplace")
