@@ -96,7 +96,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 3. Under **Settings**, select the **Subnets** link.
 
-    ![Subnets link highlighted on the tailspin-spoke-vnet pane](images/azure-sql-mi-spoke-vnet-subnets-link.png "Subnets link highlighted on the tailspin-spoke-vnet pane")
+    ![The tailspin-spoke-vnet Virtual network pane is shown with the Subnets link under Settings highlighted.](images/azure-sql-mi-spoke-vnet-subnets-link.png "Virtual network pane with subnets links highlighted")
 
 4. Select **+Subnet** to create a new Subnet.
 
@@ -106,17 +106,17 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     - **Subnet address range**: `10.2.1.0/24`
     - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
 
-    ![Add subnet pane with values entered](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
+    ![Add subnet pane is shown with fields entered with desired values for the subnet to add.](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
 
 6. Select **Save**. The list of Subnets will now look like the following:
 
-    ![List of Subnets for the Spoke VNet in the Azure Portal](images/azure-sql-mi-subnets-list.png "List of Subnets for the Spoke VNet in the Azure Portal")
+    ![The Subnets page of the tailspin-spoke-vnet Virtual network pane now shows the list of subnets that have been created.](images/azure-sql-mi-subnets-list.png "List of subnets in the Virtual network")
 
 7. Go to the **Home** screen in the **Azure Portal**, then select **+ Create a resource**.
 
 8. Under **Categories**, select **Storage**, then select **Create** for **Storage account** in the list of popular resources.
 
-    ![Create a Storage account resource](images/2022-10-07-20-33-19.png "Create a Storage account resource")
+    ![The Azure Marketplace is shown with the Create link highlighted for the Storage account resource.](images/2022-10-07-20-33-19.png "Create a Storage account resource")
 
 9. On the **Create a storage account**, enter the following values, then select **Review**:
 
@@ -124,13 +124,13 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     - **Storage account name**: Enter a unique name for the storage account, similar to `tailspinsqlmistorage`. You can add your initials or date to meet uniqueness requirements.
     - **Region**: Select the Azure Region that was used to create the resource group.
 
-    ![Create a storage account pane with all values entered](images/azure-portal-create-storage-account-sqlmi.png "Create a storage account pane with all values entered")
+    ![The Create a storage account pane is shown with the fields highlighted and all values entered.](images/azure-portal-create-storage-account-sqlmi.png "Create a storage account pane with all values entered")
 
 10. Select **Create** to create the Storage Account.
 
 11. Once the Storage Account is created, navigate to it, then select **Containers**.
 
-    ![Storage Account with Containers link highlighted](images/azure-portal-storage-account-containers-link.png "Storage Account with Containers link highlighted")
+    ![The Storage account pane is shown for the newly creates Storage account with the Containers link highlighted under Data storage.](images/azure-portal-storage-account-containers-link.png "Storage Account with Containers link highlighted")
 
 12. Select **+ Container**.
 
@@ -142,7 +142,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 2. Within the **Search services and marketplace** field, type **Azure SQL Managed Instance**, press Enter, and select it in the search results.
 
-    ![Azure SQL MI in Azure Marketplace](images/2022-10-07-20-35-13.png "Azure SQL MI in Azure Marketplace")
+    ![The Azure Marketplace search results for Azure SQL Managed Instance are shown with Azure SQL Managed Instance highlighted.](images/2022-10-07-20-35-13.png "Azure SQL MI in Azure Marketplace")
 
 3. Select **Create**.
 
@@ -152,11 +152,11 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     - **Managed Instance name**: Enter a unique name, such as `tailspin-sqlmi`
     - **Region**: Select the Azure Region that was used to create the resource group.
 
-    ![Create Azure SQL Managed Instance pane](images/2022-10-07-20-38-02.png "Create Azure SQL Managed Instance pane")
+    ![The Create Azure SQL Managed Instance pane is shown with fields highlighted and all values entered.](images/2022-10-07-20-38-02.png "Create Azure SQL Managed Instance pane")
 
 5. For **Compute + storage**, select **Configure Managed Instance**.
 
-    ![Compute + storage section with Configure Managed Instance link highlighted](images/create-azure-sql-mi-compute-storage-configure-link.png "Compute + storage section with Configure Managed Instance link highlighted")
+    ![The Compute + storage section of the Create Azure SQL Managed Instance pane is shown with the Configure Managed Instance link highlighted.](images/create-azure-sql-mi-compute-storage-configure-link.png "Compute + storage section with Configure Managed Instance link highlighted")
 
 6. For the **Compute + storage** configured select the following values:
 
@@ -165,7 +165,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     - **vCores**: 8 vCores
     - **Storage in GB**: 64 GB
 
-    ![Compute + storage pane with values entered](images/create-azure-sql-mi-compute-storage-values-entered.png "Compute + storage pane with values entered")
+    ![The Compute + storage pane is shown with necessary values selected and highlighted.](images/create-azure-sql-mi-compute-storage-values-entered.png "Compute + storage pane with values entered")
 
 7. Select **Apply**
 
@@ -179,7 +179,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     > **Note**: Using the `demouser` username that was used previously in the lab will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`
 
-    ![Authentication values are set](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are set")
+    ![The Authentication section is shown with the Managed Instance admin login and Password fields entered and highlighted.](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are entered")
 
 11. Select **Next: Networking >**.
 
@@ -187,7 +187,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     - **Virtual network / subnet**: `tailspin-spoke-vnet/AzureSQLMI`
 
-    ![Networking values entered](images/create-azure-sql-mi-networking-values-entered.png "Networking values entered")
+    ![The Networking tab of the Create Azure SQL Managed Instance pane is shown with the tailspin-spoke-vnet/AzureSQLMI subnet selected with the field highlighted.](images/create-azure-sql-mi-networking-values-entered.png "Networking values entered")
 
 13. Select **Review + create**.
 
@@ -199,15 +199,15 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-sql-vm` virtual machine. This is the simulated on-premises SQL Server VM that contains the database to migrate to Azure SQL MI.
 
-    ![Simulated on-premises SQL Server VM](images/azure-portal-onprem-sql-vm.png "Simulated on-premises SQL Server VM")
+    ![The Virtual machine pane for the Simulated on-premises SQL Server VM is shown in the Azure Portal.](images/azure-portal-onprem-sql-vm.png "Simulated on-premises SQL Server VM")
 
 2. On the left, select **Bastion** under **Operations**.
 
-    ![Bastion link is highlighted](images/azure-portal-vm-operations-bastion-link.png "Bastion link is highlighted")
+    ![The Bastion link under Operations is shown.](images/azure-portal-vm-operations-bastion-link.png "Bastion link is highlighted")
 
 3. Enter the **Username** and **Password**, then select **Connect**.
 
-    ![Bastion credentials shown entered](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
+    ![The Bastion pane of the tailspin-onprem-sql-vm Virtual machine is shown with the Username and Password fields entered and highlighted.](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
     > **Note**: When the VM was created the credentials were set up as:
     > - **Username**: `demouser`
@@ -215,15 +215,15 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 4. In the **tailspin-onprem-sql-vm** virtual machine, go to **Server Manager**, and select **Local Server**.
 
-    ![Server Manager with Local Server highlighted](images/server-manager-local-server-highlighted.png "Server Manager with Local Server highlighted")
+    ![The Server Manager window is shown with Local Server selected.](images/server-manager-local-server-highlighted.png "Server Manager with Local Server highlighted")
 
 5. Within **Local Server**, select the `On` text link for the **IE Enhanced Security Configuration** property.
 
-    ![Server Manager with IE Enhanced Security Configuration highlighted](images/server-manager-local-server-ie-enhanced-security-config.png "Server Manager with IE Enhanced Security Configuration highlighted")
+    ![The Local Server pane is shown within Server Manager and the value of On is highlighted for IE Enhanced Security Configuration.](images/server-manager-local-server-ie-enhanced-security-config.png "Server Manager with IE Enhanced Security Configuration highlighted")
 
 6. On the **Internet Explorer Enhanced Security Configuration** dialog, select **Off** for **Administrators**, then select **OK**.
 
-    ![IE Enhanced Security Configuration dialog with Administrators Off property highlighted](images/server-manager-ie-enhanced-security-config-administrators-off-property.png "IE Enhanced Security Configuration dialog with Administrators Off property highlighted")
+    ![The Internet Explorer Enhanced Security Configuration window is shown with the Administrators section having the Off value selected and highlighted.](images/server-manager-ie-enhanced-security-config-administrators-off-property.png "IE Enhanced Security Configuration dialog with Administrators Off property highlighted")
 
 7. In the **tailspin-onprem-sql-vm** virtual machine, open **Internet Explorer** then go to the following link and download the **.NET Framework 4.8 Runtime** installer. This will be needed to install the Microsoft Data Migration Assistant.
 
@@ -231,7 +231,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 8. Select **Run** to run the **.NET Framework 4.8 Runtime** installer once it's finished downloading, and follow the prompts to install the .NET Framework.
 
-    ![.NET Framework 4.8 Setup](images/2022-10-07-21-14-05.png ".NET Framework 4.8 Setup")
+    ![The .NET Framework 4.8 Setup wizard is shown.](images/2022-10-07-21-14-05.png ".NET Framework 4.8 Setup")
 
 9. Using **Internet Explorer**, go to the following link and download the **Microsoft Data Migration Assistant**.
 
@@ -239,13 +239,13 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 10. Select **Run** to run the **Microsoft Data Migration Assistant** installer once it's finished downloading and follow the prompts to install the assistant.
 
-    ![Microsoft Data Migration Assistant Setup wizard](images/microsoft-data-migration-assistant-setup-wizard.png "Microsoft Data Migration Assistant Setup wizard")
+    ![Tne Microsoft Data Migration Assistant Setup wizard is shown.](images/microsoft-data-migration-assistant-setup-wizard.png "Microsoft Data Migration Assistant Setup wizard")
 
 ### Task 4: Assess on-premises database compatibility
 
 1. Run the **Microsoft Data Migration Assistant** that was previously installed.
 
-    ![Data Migration Assistant window](images/ms-data-migration-assistant-windows.png "Data Migration Assistant window")
+    ![The Data Migration Assistant application is shown.](images/ms-data-migration-assistant-windows.png "Data Migration Assistant")
 
 2. On the left, select the Plus sign (`+`) button to create a new project, and enter the following values, then select **Create**.
 
@@ -255,33 +255,33 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     - **Source server type**: SQL Server
     - **Target server type**: Azure SQL Database Managed Instance
 
-    ![Data Migration Assistant New project dialog with values entered](images/ms-data-migration-assistant-new-project.png "Data Migration Assistant New project dialog with values entered")
+    ![The New project dialog is shown with the required values entered in the fields.](images/ms-data-migration-assistant-new-project.png "Data Migration Assistant New project dialog with values entered")
 
 3. On the **Options** tab, ensure the **Check database compatibility** and **Check feature parity** report types are selected, then select **Next**.
 
-    ![Data Migration Assistant Options pane](images/2022-10-07-21-17-11.png "Data Migration Assistant Options pane")
+    ![The Options step is shown with Check database compatibility and Check feature parity options selected.](images/2022-10-07-21-17-11.png "Data Migration Assistant Options pane")
 
 4. On the **Connect to a server** prompt, enter `localhost` for the     **Server name**, and check the **Trust server certificate** option, then select **Connect**.
 
-    ![Connect to a server configured for localhost](images/ms-data-migration-assistant-assessment-connect-to-server-localhost.png "Connect to a server configured for localhost")
+    ![The Connect to a server dialog box is shown with the values entered to connect to localhost and to trust the server certificate.](images/ms-data-migration-assistant-assessment-connect-to-server-localhost.png "Connect to a server configured for localhost")
 
 5. On the **Add sources** prompt, select the **WideWorldImporters** database, then select **Add**.
 
-    ![Add sources with WideWorldImporters database selected](images/2022-10-07-21-18-32.png "Add sources with WideWorldImporters database selected")
+    ![The Add sources dialog box is shown with the WideWorldImporters database selected.](images/2022-10-07-21-18-32.png "Add sources with WideWorldImporters database selected")
 
 6. Select **Start Assessment** in the lower right.
 
-    ![Data Migration Assistant with the Start Assessment button highlighted](images/ms-data-migration-assistant-assessment-start-assessment-button.png "Data Migration Assistant with the Start Assessment button highlighted")
+    ![The Select sources step is shown with the WideWorldImporters database shown as previously selected and the Start Assessment button is highlighted.](images/ms-data-migration-assistant-assessment-start-assessment-button.png "Data Migration Assistant with the Start Assessment button highlighted")
 
 7. On the **Review results** pane, you should see a message that "**There are no feature parity issues with your server instance.**"
 
-    ![Data Migration Assistant showing there are no feature parity issues](images/ms-data-migration-assistant-assessment-no-feature-parity-issues.png "Data Migration Assistant showing there are no feature parity issues")
+    ![The Review results step is shown with the 'There are no feature parity issues with your server instance' message shown.](images/ms-data-migration-assistant-assessment-no-feature-parity-issues.png "Data Migration Assistant showing there are no feature parity issues")
 
 8. On the top left of the **Review results** pane, select **Compatibility issues**.
 
 9. On the **Review results** pane, you should see a message that "**There are no compatibility issues with your database.**"
 
-    ![Data Migration Assistant showing there are no compatibility issues](images/ms-data-migration-assistant-assessment-no-compatibility-issues.png "Data Migration Assistant showing there are no compatibility issues")
+    ![The Review results pane is shown with Compatibility issues selected and showing the 'There are no compatibility issues with your database' message shown.](images/ms-data-migration-assistant-assessment-no-compatibility-issues.png "Data Migration Assistant showing there are no compatibility issues")
 
 10. The Data Migration Assessment is complete. If there were feature parity or compatibility issues found, then you would need to address those before migrating the SQL Server database to Azure SQL MI.
 
@@ -291,19 +291,19 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 2. On the left, select the **Extensions** tab, then select the **Azure SQL Migration** extension and install it.
 
-    ![Azure SQL Migration extension highlighted](images/azure-data-studio-extensions-azure-sql-migration.png "Azure SQL Migration extension highlighted")
+    ![Azure Data Studio is shown displaying the Extensions pane with the Azure SQL Migration extension selected and the Install button is highlighted.](images/azure-data-studio-extensions-azure-sql-migration.png "Azure SQL Migration extension highlighted")
 
 3. Next, you need to enable Preview Features within Azure Data Studio. Select the **Manage** icon (shown as the Gear in the lower left corner of Azure Data Studio) and select **Settings**.
 
-    ![The manage menu open with Settings highlighted](images/azure-data-studio-manage-menu-settings.png "The manage menu open with Settings highlighted")
+    ![The Manage menu is shown with the Settings option highlighted.](images/azure-data-studio-manage-menu-settings.png "The manage menu open with Settings highlighted")
 
 4. On the **Settings** pane, type **Enable Preview Features** in the search box at the top, then check the **Enable unreleased preview features** box for the **Workbench: Enable Preview Features** option that shows in the search results. This will autosave.
 
-    ![Azure Data Studio settings pane with Preview Features enabled](images/azure-data-studio-preview-features-enabled.png "Azure Data Studio settings pane with Preview Features enabled")
+    ![The Settings pane is shown with search results for Enable Preview Features showing the Enable unreleased preview features option selected.](images/azure-data-studio-preview-features-enabled.png "Azure Data Studio settings pane with Preview Features enabled")
 
 5. Next, let's connect to the on-premises SQL Server. Select the **Connections** tab on the left side of Azure Data Studio, then select **New Connection**.
 
-    ![Azure Data Studio connections tab with New Connection button shown](images/azure-data-studio-connections-tab-new-connection-button.png "Azure Data Studio connections tab with New Connection button shown")
+    ![The Connections pane is shown with the New Connection button highlighted.](images/azure-data-studio-connections-tab-new-connection-button.png "Azure Data Studio connections tab with New Connection button shown")
 
 6. On the **Connection** pane, enter the following values to connect to the on-premises SQL database, then select **Connect**:
 
@@ -312,51 +312,51 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     - **Authentication type**: Windows Authentication
     - **Database**: `WideWorldImporters`
 
-    ![Azure Data Studio with Connection pane shown having all values entered](images/azure-data-studio-connection-pane-values-entered.png "Azure Data Studio with Connection pane shown having all values entered")
+    ![The Connection Details pane shown with values entered and fields highlighted.](images/azure-data-studio-connection-pane-values-entered.png "Azure Data Studio with Connection pane shown having all values entered")
 
 7. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
-    ![WideWorldImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option is highlighted")
+    ![The right-click menu for the 'locahost, WideWorldImporters' server is shown with the Manage option highlighted.](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option is highlighted")
 
 8. Select **Backup**.
 
-    ![Manage database with Backup button highlighted](images/azure-data-studio-database-manage-backup-button.png "Manage database with Backup button highlighted")
+    ![The Manage page for the database is shown with the Backup button highlighted.](images/azure-data-studio-database-manage-backup-button.png "Manage database with Backup button highlighted")
 
 9. On the **Backup database** pane, make sure the **Backup type** is set to **Full**, select the **Reliability** option to **Perform checksum before writing to media**, then make a note of the location of the **Backup files**, and select **Backup**.
 
-    ![Backup database pane](images/azure-data-studio-backup-full.png "Backup database pane")
+    ![The Backup database dialog box is shown with the Backup type set to Full and the Reliability set as desired.](images/azure-data-studio-backup-full.png "Backup database pane")
 
 10. Open **Internet Explorer**, navigate to the following URL, download **Microsoft Azure Storage Explorer** and install it.
 
     <https://azure.microsoft.com/en-us/products/storage/storage-explorer/#overview>
 
-    ![Microsoft Azure Storage Explorer Setup](images/2022-10-07-21-22-14.png "Microsoft Azure Storage Explorer Setup")
+    ![The Microsoft Azure Storage Explorer Setup wizard is shown.](images/2022-10-07-21-22-14.png "Microsoft Azure Storage Explorer Setup")
 
 11. Launch **Microsoft Azure Storage Explorer**.
 
 12. Select **Sign in with Azure**.
 
-    ![Azure Storage Explorer window with Sign in with Azure button highlighted](images/azure-storage-explorer-with-sign-in-azure-highlighted.png "Azure Storage Explorer window with Sign in with Azure button highlighted")
+    ![The Azure Storage Explorer window is shown with the Sign in with Azure button highlighted.](images/azure-storage-explorer-with-sign-in-azure-highlighted.png "Azure Storage Explorer Sign in with Azure")
 
 13. Sign in with your **Microsoft Account**.
 
 14. In the **Explorer** pane, expand the Azure Subscription, locate the Storage Account that was previously created (named similar to `tailspinsqlmistorage`), then expand **Blob Container** and select the **sql-backup** container.
 
-    ![Storage Explorer showing the SQL MI backup storage account expanded](images/azure-storage-explorer-tailspinsqlmistorage-container-expanded.png "Storage Explorer showing the SQL MI backup storage account expanded")
+    ![Storage Explorer is displaying the Storage Accounts list with the previously created storage account and the nested Blob Containers tree expanded with the sql-backup container selected.](images/azure-storage-explorer-tailspinsqlmistorage-container-expanded.png "Storage Explorer showing the SQL MI backup storage account expanded")
 
 15. In the **sql-backup** container pane, select **Upload**, then select **Upload Files...**.
 
-    ![Storage Explroer with Upload button highlighted and menu for Upload files showing](images/azure-storage-explorer-tailspinsqlmistorage-upload-button.png "Storage Explroer with Upload button highlighted and menu for Upload files showing")
+    ![The Upload button menu is shown with the Upload files option highlighted.](images/azure-storage-explorer-tailspinsqlmistorage-upload-button.png "Storage Explorer with Upload button highlighted and menu for Upload files showing")
 
 16. In the **Upload Files** dialog, in the **Selected files** field, select the **Database Backup File** (`.bak`) for the **WideWorldImporters** database that was previously created, then select **Upload**.
 
-    ![Storage Explorer Upload File dialog with database backup file selected](images/azure-storage-explorer-upload-files.png "Storage Explorer Upload File dialog with database backup file selected")
+    ![The Upload Files dialog box is shown with the sql database backup file selected within the Selected filed field.](images/azure-storage-explorer-upload-files.png "Storage Explorer Upload File dialog with database backup file selected")
 
 ### Task 6: Migrate database to Azure SQL MI
 
 1. Within **Azure Data Studio**, under the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
-    ![WideWorlImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorlImporters server with right-click menu shown and Manage option is highlighted")
+    ![WideWorldImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option is highlighted")
 
 2. Select the **Azure SQL Migration** option.
 
