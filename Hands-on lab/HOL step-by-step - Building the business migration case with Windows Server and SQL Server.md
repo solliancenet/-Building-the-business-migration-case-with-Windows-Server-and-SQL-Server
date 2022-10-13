@@ -597,13 +597,13 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 ### Task 2: Run script to add server to Azure Arc
 
-1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-hyperv-vm` virtual machine. This is the simulated on-premises Hyper-V host VM.
+1. In the Azure Portal, navigate to the Resource Group for the lab, then select the **`tailspin-onprem-hyperv-vm`** virtual machine resource. This is the simulated on-premises Hyper-V host VM.
 
-    ![The Virtual machine pane in the Azure Portal is shown for the Simulated on-premises hyper-v host vm.](images/azurep-portal-onprem-hyperv-vm.png "Simulated on-premises hyper-v host vm")
+    ![The resource group for the lab is shown with the simulated on-premises Hyper-V Host VM highlighted in the resource list.](images/azure-portal-lab-rg-hyperv-vm.png "Resource group with simulated on-premises Hyper-V Host VM highlighted")
 
 2. On the left, select **Bastion** under **Operations**.
 
-    ![The Bastion link under Operations is shown.](images/azure-portal-vm-operations-bastion-link.png "Bastion link is highlighted")
+    ![The virtual machine pane for the simulated on-premises hyper-v host VM is shown with the Bastion link under Operations highlighted.](images/azure-portal-hyper-v-host-vm-bastion-link.png "Bastion link under Operations")
 
 3. Enter the **Username** and **Password**, then select **Connect**.
 
