@@ -102,9 +102,9 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 5. On the **Add subnet** pane, enter the following values to create a Subnet that will be used by the Azure SQL Managed Instance that will be created later:
 
-    - **Name**: `AzureSQLMI`. 
-    - **Subnet address range**: `10.2.1.0/24`.
-    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`.
+ Add subnet pane   - **Name**: `AzureSQLMI` 
+    - **Subnet address range**: `10.2.1.0/24`
+    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
 
     ![Add subnet pane is shown with fields entered with desired values for the subnet to add.](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
 
@@ -129,10 +129,10 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 10. Select **Create** to create the Storage Account.
 
 11. Once the Storage Account is created, navigate to it, then select **Containers**.
-
+On the Add subnet pane, enter the following values to create a Subnet
     ![The Storage account pane is shown for the newly creates Storage account with the Containers link highlighted under Data storage.](images/azure-portal-storage-account-containers-link.png "Storage Account with Containers link highlighted")
 
-12. Select **+ Container**.
+12. Select **+ Container**
 
 13. On the **New container** pane, enter `sql-backup` in the **Name** field, then select **Create**.
 
@@ -210,8 +210,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     ![The Bastion pane of the tailspin-onprem-sql-vm Virtual machine is shown with the Username and Password fields entered and highlighted.](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
     > **Note**: When the VM was created the credentials were set up as:
-    > - **Username**: `demouser`.
-    > - **Password**: `demo!pass123`.
+    > - **Username**: `demouser`
+    > - **Password**: `demo!pass123`
 
 4. In the **tailspin-onprem-sql-vm** virtual machine, go to **Server Manager**, and select **Local Server**.
 
