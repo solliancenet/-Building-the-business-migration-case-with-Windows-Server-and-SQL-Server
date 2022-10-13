@@ -102,9 +102,9 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 5. On the **Add subnet** pane, enter the following values to create a Subnet that will be used by the Azure SQL Managed Instance that will be created later:
 
- Add subnet pane   - **Name**: `AzureSQLMI` 
-    - **Subnet address range**: `10.2.1.0/24`
-    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
+    Add subnet pane   - **Name**: `AzureSQLMI` 
+        - **Subnet address range**: `10.2.1.0/24`
+        - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
 
     ![Add subnet pane is shown with fields entered with desired values for the subnet to add.](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
 
@@ -606,8 +606,8 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
     ![The Bastion pane is shown for the VM with the Username and Password values entered and fields highlighted.](images/azure-portal-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
     > **Note**: When the VM was created the credentials were set up as:
-    > - **Username**: `demouser`
-    > - **Password**: `demo!pass123`
+    - **Username**: `demouser`
+    - **Password**: `demo!pass123`
 
 4. Once connected to the Hyper-V Host VM, open the **Start menu**, then search for and run the **Hyper-V Manager**.
 
