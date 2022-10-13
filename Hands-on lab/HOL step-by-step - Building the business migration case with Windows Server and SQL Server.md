@@ -102,9 +102,9 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 5. On the **Add subnet** pane, enter the following values to create a Subnet that will be used by the Azure SQL Managed Instance that will be created later:
 
-    - **Name**: `AzureSQLMI` 
-    - **Subnet address range**: `10.2.1.0/24`
-    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`
+    - **Name**: `AzureSQLMI`. 
+    - **Subnet address range**: `10.2.1.0/24`.
+    - **Delegate subnet to a service**: `Microsoft.Sql/managedInstances`.
 
     ![Add subnet pane is shown with fields entered with desired values for the subnet to add.](images/azure-sql-mi-new-subnet.png "Add subnet pane with values entered")
 
@@ -120,7 +120,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 9. On the **Create a storage account**, enter the following values, then select **Review**:
 
-    - **Resource group**: Select the resource group that you created for this lab, such as `tailspin-rg`
+    - **Resource group**: Select the resource group that you created for this lab, such as `tailspin-rg`.
     - **Storage account name**: Enter a unique name for the storage account, similar to `tailspinsqlmistorage`. You can add your initials or date to meet uniqueness requirements.
     - **Region**: Select the Azure Region that was used to create the resource group.
 
@@ -148,8 +148,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 4. On the **Create Azure SQL Managed Instance** pane, set the following values:
 
-    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`
-    - **Managed Instance name**: Enter a unique name, such as `tailspin-sqlmi`
+    - **Resource group**: Select the resource group that you created for this lab. Such as `tailspin-rg`.
+    - **Managed Instance name**: Enter a unique name, such as `tailspin-sqlmi`.
     - **Region**: Select the Azure Region that was used to create the resource group.
 
     ![The Create Azure SQL Managed Instance pane is shown with fields highlighted and all values entered.](images/2022-10-07-20-38-02.png "Create Azure SQL Managed Instance pane")
@@ -167,7 +167,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![The Compute + storage pane is shown with necessary values selected and highlighted.](images/create-azure-sql-mi-compute-storage-values-entered.png "Compute + storage pane with values entered")
 
-7. Select **Apply**
+7. Select **Apply**.
 
 8. Under **Authentication**, set the **Authentication Method** value to **Use both SQL and Azure AD authentication**.
 
@@ -177,7 +177,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 10. Enter a username to use for the **Managed Instance admin login** and a **Password** for this new Administrator user that will be created on the database server.
 
-    > **Note**: Using the `demouser` username that was used previously in the lab will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`
+    > **Note**: Using the `demouser` username that was used previously in the lab will make it easier to remember. However, this does require a password length of 16 characters, so here's an example password that is similar to the previous one used in the lab: `demo!pass1234567`.
 
     ![The Authentication section is shown with the Managed Instance admin login and Password fields entered and highlighted.](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are entered")
 
@@ -185,7 +185,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 12. On the **Networking** pane, enter the following values:
 
-    - **Virtual network / subnet**: `tailspin-spoke-vnet/AzureSQLMI`
+    - **Virtual network / subnet**: `tailspin-spoke-vnet/AzureSQLMI`.
 
     ![The Networking tab of the Create Azure SQL Managed Instance pane is shown with the tailspin-spoke-vnet/AzureSQLMI subnet selected with the field highlighted.](images/create-azure-sql-mi-networking-values-entered.png "Networking values entered")
 
@@ -210,8 +210,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
     ![The Bastion pane of the tailspin-onprem-sql-vm Virtual machine is shown with the Username and Password fields entered and highlighted.](images/azure-portal-sql-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
     > **Note**: When the VM was created the credentials were set up as:
-    > - **Username**: `demouser`
-    > - **Password**: `demo!pass123`
+    > - **Username**: `demouser`.
+    > - **Password**: `demo!pass123`.
 
 4. In the **tailspin-onprem-sql-vm** virtual machine, go to **Server Manager**, and select **Local Server**.
 
@@ -273,13 +273,13 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![The Select sources step is shown with the WideWorldImporters database shown as previously selected and the Start Assessment button is highlighted.](images/ms-data-migration-assistant-assessment-start-assessment-button.png "Data Migration Assistant with the Start Assessment button highlighted")
 
-7. On the **Review results** pane, you should see a message that "**There are no feature parity issues with your server instance.**"
+7. On the **Review results** pane, you should see a message that states "**There are no feature parity issues with your server instance.**"
 
     ![The Review results step is shown with the 'There are no feature parity issues with your server instance' message shown.](images/ms-data-migration-assistant-assessment-no-feature-parity-issues.png "Data Migration Assistant showing there are no feature parity issues")
 
 8. On the top left of the **Review results** pane, select **Compatibility issues**.
 
-9. On the **Review results** pane, you should see a message that "**There are no compatibility issues with your database.**"
+9. On the **Review results** pane, you should see a message that "**There are no compatibility issues with your database**".
 
     ![The Review results pane is shown with Compatibility issues selected and showing the 'There are no compatibility issues with your database' message shown.](images/ms-data-migration-assistant-assessment-no-compatibility-issues.png "Data Migration Assistant showing there are no compatibility issues")
 
@@ -326,7 +326,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![The Backup database dialog box is shown with the Backup type set to Full and the Reliability set as desired.](images/azure-data-studio-backup-full.png "Backup database pane")
 
-10. Open **Internet Explorer**, navigate to the following URL, download **Microsoft Azure Storage Explorer** and install it.
+10. Open **Internet Explorer**, navigate to the following URL, download **Microsoft Azure Storage Explorer**, and install it.
 
     <https://azure.microsoft.com/en-us/products/storage/storage-explorer/#overview>
 
@@ -402,7 +402,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 13. In the **Create Azure Database Migration Service** pane, enter the following values, then select **Create**.
 
-    - **Resource group**: Select the Resource Group for this lab, for example: `tailspin-rg`
+    - **Resource group**: Select the Resource Group for this lab, for example: `tailspin-rg`.
     - **Name**: `tailspin-sql-migration`
 
     ![Create Database Migration Service dialog with values entered](images/azure-data-studio-migrate-create-migration-service.png "Create Database Migration Service dialog with values entered")
