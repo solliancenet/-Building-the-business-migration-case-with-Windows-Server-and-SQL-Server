@@ -28,27 +28,27 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 <!-- TOC -->
 
 - [Building the business migration case with Windows Server and SQL Server hands-on lab step-by-step](#building-the-business-migration-case-with-windows-server-and-sql-server-hands-on-lab-step-by-step)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Overview](#overview)
-    - [Solution architecture](#solution-architecture)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#exercise-1-before-the-hands-on-lab)
-    - [Exercise 1: SQL database migration](#exercise-1-sql-database-migration)
-        - [Task 1: Create subnet and storage account for Azure SQL MI](#task-1-create-subnet-and-storage-account-for-azure-sql-mi)
-        - [Task 2: Create Azure SQL MI](#task-2-create-azure-sql-mi)
-        - [Task 3: Install Data Migration Assistant](#task-3-install-data-migration-assistant)
-        - [Task 4: Assess on-premises database compatibility](#task-4-assess-on-premises-database-compatibility)
-        - [Task 5: Backup on-premises SQL database](#task-5-backup-on-premises-sql-database)
-        - [Task 6: Migrate database to Azure SQL MI](#task-6-migrate-database-to-azure-sql-mi)
-    - [Exercise 2: Create VM to migrate web application](#exercise-2-create-vm-to-migrate-web-application)
-        - [Task 1: Create Windows Server 2022 Azure Edition VM for application hosting](#task-1-create-windows-server-2022-azure-edition-vm-for-application-hosting)
-        - [Task 2: Check remote desktop access](#task-2-check-remote-desktop-access)
-    - [Exercise 3: Azure Arc-enable on-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
-        - [Task 1: Generate Azure Arc script to add a server](#task-1-generate-azure-arc-script-to-add-server)
-        - [Task 2: Run script to add a server to Azure Arc](#task-2-run-script-to-add-server-to-azure-arc)
-        - [Task 3: Verify Azure Arc-enabled VM](#task-3-verify-azure-arc-enabled-vm)
-    - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete resource group to remove the lab environment](#task-1-delete-resource-group-to-remove-the-lab-environment)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+  - [Exercise 1: SQL database migration](#exercise-1-sql-database-migration)
+    - [Task 1: Create subnet and storage account for Azure SQL MI](#task-1-create-subnet-and-storage-account-for-azure-sql-mi)
+    - [Task 2: Create Azure SQL MI](#task-2-create-azure-sql-mi)
+    - [Task 3: Install Data Migration Assistant](#task-3-install-data-migration-assistant)
+    - [Task 4: Assess on-premises database compatibility](#task-4-assess-on-premises-database-compatibility)
+    - [Task 5: Backup on-premises SQL database](#task-5-backup-on-premises-sql-database)
+    - [Task 6: Migrate database to Azure SQL MI](#task-6-migrate-database-to-azure-sql-mi)
+  - [Exercise 2: Create VM to migrate web application](#exercise-2-create-vm-to-migrate-web-application)
+    - [Task 1: Create Windows Server 2022 Azure Edition VM for application hosting](#task-1-create-windows-server-2022-azure-edition-vm-for-application-hosting)
+    - [Task 2: Check remote desktop access](#task-2-check-remote-desktop-access)
+  - [Exercise 3: Azure Arc-enable on-premises VM](#exercise-3-azure-arc-enable-on-premises-vm)
+    - [Task 1: Generate Azure Arc script to add server](#task-1-generate-azure-arc-script-to-add-server)
+    - [Task 2: Run script to add server to Azure Arc](#task-2-run-script-to-add-server-to-azure-arc)
+    - [Task 3: Verify Azure Arc-enabled VM](#task-3-verify-azure-arc-enabled-vm)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete resource group to remove the lab environment](#task-1-delete-resource-group-to-remove-the-lab-environment)
 
 <!-- /TOC -->
 
@@ -183,7 +183,7 @@ On the Add subnet pane, enter the following values to create a Subnet
 
     ![The Authentication section is shown with the Managed Instance admin login and Password fields entered and highlighted.](images/create-azure-sql-mi-authentication-values-entered.png "Authentication values are entered")
 
-11. Select **Next: Networking >**.
+11. Select **Next: Networking**.
 
 12. On the **Networking** pane, enter the following values:
 
