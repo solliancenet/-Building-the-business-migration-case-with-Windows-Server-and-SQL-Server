@@ -136,6 +136,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 13. On the **New container** pane, enter `sql-backup` in the **Name** field, then select **Create**.
 
+    ![The New container dialog is shown with the Name entered with the Name field and Create button highlighted.](images/storage-container-sql-backup-new.png "New container")
+
 ### Task 2: Create Azure SQL MI
 
 1. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
@@ -279,6 +281,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 8. On the top left of the **Review results** pane, select **Compatibility issues**.
 
+    ![The Compatibility issues option is selected on the Review results pane.](images/ms-data-migration-assistant-assessment-no-compatibility-issues-selected.png "Compatibility issues selected")
+
 9. On the **Review results** pane, you should see a message that "**There are no compatibility issues with your database**".
 
     ![The Review results pane is shown with Compatibility issues selected and showing the 'There are no compatibility issues with your database' message shown.](images/ms-data-migration-assistant-assessment-no-compatibility-issues.png "Data Migration Assistant showing there are no compatibility issues")
@@ -287,7 +291,9 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 ### Task 5: Backup on-premises SQL database
 
-1. In the **tailspin-onprem-sql-vm** virtual machine, run the **Azure Data Studio**.
+1. In the **tailspin-onprem-sql-vm** virtual machine, open the **Start menu**, then type **Azure Data Studio** to search the application, then select it to run **Azure Data Studio**.
+
+    ![The Search results in the Start menu showing a search for Azure Data Studio.](images/win-start-menu-search-azure-data-studio.png "Azure Data Studio in Start menu search")
 
 2. On the left, select the **Extensions** tab, then select the **Azure SQL Migration** extension and install it.
 
@@ -372,19 +378,21 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 5. In **Step 2: Assessment results and recommendations**, select the **Azure SQL Managed Instance** option.
 
-    ![](images/azure-data-studio-migrate-step-2-azuresqlmi-selected.png "")
+    ![Step 2 Assessment results and recommendations is shown with the Azure SQL target option of Azure SQL Managed Instance selected.](images/azure-data-studio-migrate-step-2-azuresqlmi-selected.png "Step 2: Assessment results and recommendations")
 
 6. Scroll down and select the **View/Select** button to select a database.
+
+    ![The View/Select button to choose the Azure SQL Managed Instance to migrate to is highlighted.](images/2022-10-13-14-36-48.png "View/Select Azure SQL Managed Instance button")
 
 7. Select the **WideWorldImporters** database, and you should see a message stating "`No issues for migrating to Azure SQL Managed Instance.`", then select the **Select** button.
 
     ![WideWorldImporters database selected and 'no issues' message shown](images/2022-09-23-15-01-58.png "WideWorldImporters database selected and 'no issues' message shown")
 
-8. Select **Next**.
+8. Verify the **Azure SQL Managed Instance** target is selected, notice that it now shows **1 of 1 databases selected**, then select **Next**.
 
     ![Step 2 shown with with Azure SQL Managed Instance selected](images/azure-data-studio-migrate-step-2.png "Step 2 shown with with Azure SQL Managed Instance selected")
 
-9. In **Step 3: Azure SQL target**, enter connection information to your Azure Subscription and for the **Azure SQL Manage Instance** resource that was previously created.
+9. In **Step 3: Azure SQL target**, enter connection information to your Azure Subscription and for the **Azure SQL Manage Instance** resource that was previously created, then select **Next**.
 
     ![Step 3 shown with Azure SQL MI resource selected](images/azure-data-studio-migrate-step-3.png "Step 3 shown with Azure SQL MI resource selected")
 
@@ -505,7 +513,11 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
 
 11. Select **Review + create** to review the virtual machine settings.
 
-12. Select **Create** to begin provisioning the virtual machine.
+    ![The Review + create button for the Create a virtual machine pane is shown and highlighted.](images/create-virtual-network-review-create-button.png "Review + create button")
+
+12. Select **Create** to begin provisioning the virtual machine once the **Validation passed** message is shown.
+
+    ![The Validation passed message is shown and the Create button is highlighted.](images/create-virtual-machine-create-button.png "Validation passed and Create button")
 
 ### Task 2: Check remote desktop access
 
@@ -577,6 +589,8 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 8. On the **Download and run script** tab, select **Download** to download the generated script. By default, the script named `OnboardingScript.ps1` will be saved to the `Downloads` folder.
 
+    ![The Download button is highlighted on the Download and run script tab.](images/azure-arc-download-script.png "Download and run script")
+
 ### Task 2: Run script to add server to Azure Arc
 
 1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-hyperv-vm` virtual machine. This is the simulated on-premises Hyper-V host VM.
@@ -647,21 +661,25 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 ### Task 3: Verify Azure Arc-enabled VM
 
-1. In the Azure Portal, navigate to the Resource Group for the lab, then locate the Azure resource of type **Server - Azure Arc** and select it.
+1. In the Azure Portal, navigate to the Resource Group for the lab.
 
-    The on-premises VM has been Azure Arc-enabled and can be managed alongside other Azure resources. This is enabled by the **Azure Connected Machine Agent** running on the VM that facilitates the interaction between Azure and the Azure Arc-enabled VM.
+    ![The tailspin-rg Resource group for the lab is shown in the Azure Portal.](images/azure-portal-resource-group-tailspin-rg.png "tailspin-rg resource group")
+
+2. Scroll down and locate the Azure resource of type **Server - Azure Arc**. and select it.
 
     ![Azure Resource Group showing resource list with Server - Azure Arc resource highlighted](images/resource-group-showing-server-azure-arc-resource.png "Azure Resource Group showing resource list with Server - Azure Arc resource highlighted")
 
-2. This is the **Server - Azure Arc** pane for the on-premises virtual machine that was just Azure Arc-enabled. The **Status** shows **Connected** to signify that the Azure Arc-enabled virtual machine is connected to Azure. Also, notice that the **Computer Name** and **Operating System** of the virtual machine are displayed.
+    > **Note**: The on-premises VM has been Azure Arc-enabled and can be managed alongside other Azure resources. This is enabled by the **Azure Connected Machine Agent** running on the VM that facilitates the interaction between Azure and the Azure Arc-enabled VM.
+
+3. This is the **Server - Azure Arc** pane for the on-premises virtual machine that was just Azure Arc-enabled. The **Status** shows **Connected** to signify that the Azure Arc-enabled virtual machine is connected to Azure. Also, notice that the **Computer Name** and **Operating System** of the virtual machine are displayed.
 
     ![Azure Portal Server - Azure Arc pane for Azure Arc-enabled virtual machine](images/azure-portal-server-azure-arc-enabled-vm.png "Azure Portal Server - Azure Arc pane for Azure Arc-enabled virtual machine")
 
-3. From here, there are several **Azure Arc** capabilities available to use for managing the Azure Arc-enabled virtual machine.
+4. From here, there are several **Azure Arc** capabilities available to use for managing the Azure Arc-enabled virtual machine.
 
     ![Azure Arc capabilities listed on the Server - Azure Arc pane](images/azure-portal-server-azure-arc-capabilities.png "Azure Arc capabilities listed on the Server - Azure Arc pane")
 
-4. Select **Extensions** under **Settings**. This is where you can install Extensions on the Azure Arc-enabled virtual machine. For example, the **Custom Script Extension for Windows - Azure Arc** extension can be used to download PowerShell scripts and files from Azure storage, and launch a PowerShell script on the machine.
+5. Select **Extensions** under **Settings**. This is where you can install Extensions on the Azure Arc-enabled virtual machine. For example, the **Custom Script Extension for Windows - Azure Arc** extension can be used to download PowerShell scripts and files from Azure storage, and launch a PowerShell script on the machine.
 
     ![Azure Portal Server - Azure Arc pane showing Extensions](images/azure-poral-server-azure-arc-extensions.png "Azure Portal Server - Azure Arc pane showing Extensions")
 
