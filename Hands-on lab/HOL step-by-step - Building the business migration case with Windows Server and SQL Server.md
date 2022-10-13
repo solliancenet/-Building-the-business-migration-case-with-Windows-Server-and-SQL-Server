@@ -322,7 +322,7 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 7. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
-    ![The right-click menu for the 'locahost, WideWorldImporters' server is shown with the Manage option highlighted.](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option is highlighted")
+    ![The right-click menu for the 'localhost, WideWorldImporters' server is shown with the Manage option highlighted.](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option highlighted")
 
 8. Select **Backup**.
 
@@ -362,19 +362,19 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 1. Within **Azure Data Studio**, under the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
-    ![WideWorldImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option is highlighted")
+    ![localhost server is highlighted with right-click menu shown with the Manage option highlighted.](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option is highlighted")
 
 2. Select the **Azure SQL Migration** option.
 
-    ![Manage server pane with Azure SQL Migration option highlighted](images/azure-data-studio-manage-server-pane.png "Manage server pane with Azure SQL Migration option highlighted")
+    ![The Manage server pane is shown with the Azure SQL Migration option highlighted.](images/azure-data-studio-manage-server-pane.png "Manage server pane with Azure SQL Migration option highlighted")
 
 3. Select the **Migrate to Azure SQL** button.
 
-    ![Azure SQL Migration with Migrate to Azure SQL button highlighted](images/azure-data-studio-azure-sql-migration-migrate-button.png "Azure SQL Migration with Migrate to Azure SQL button highlighted")
+    ![The Azure SQL Migration pane is shown with the Migrate to Azure SQL button highlighted.](images/azure-data-studio-azure-sql-migration-migrate-button.png "Azure SQL Migration with Migrate to Azure SQL button highlighted")
 
 4. In **Step 1: Database for assessment**, select the **WideWorldImporters** database, then select **Next**.
 
-    ![Step 1 shown with the WideWorldImporters database selected for assessment](images/azure-data-studio-migrate-step-1.png "Step 1 shown with the WideWorldImporters database selected for assessment")
+    ![Step 1 Database for assessment step is shown with the WideWorldImporters database selected for assessment.](images/azure-data-studio-migrate-step-1.png "Step 1: Databases for assessment")
 
 5. In **Step 2: Assessment results and recommendations**, select the **Azure SQL Managed Instance** option.
 
@@ -386,74 +386,74 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 7. Select the **WideWorldImporters** database, and you should see a message stating "`No issues for migrating to Azure SQL Managed Instance.`", then select the **Select** button.
 
-    ![WideWorldImporters database selected and 'no issues' message shown](images/2022-09-23-15-01-58.png "WideWorldImporters database selected and 'no issues' message shown")
+    ![WideWorldImporters database selected and 'no issues' message shown.](images/2022-09-23-15-01-58.png "No issues found message is shown")
 
 8. Verify the **Azure SQL Managed Instance** target is selected, notice that it now shows **1 of 1 databases selected**, then select **Next**.
 
-    ![Step 2 shown with with Azure SQL Managed Instance selected](images/azure-data-studio-migrate-step-2.png "Step 2 shown with with Azure SQL Managed Instance selected")
+    ![Step 2 Assessment results and recommendations is shown with with Azure SQL Managed Instance option selected.](images/azure-data-studio-migrate-step-2.png "Step 2: Assessment results and recommendations")
 
 9. In **Step 3: Azure SQL target**, enter connection information to your Azure Subscription and for the **Azure SQL Manage Instance** resource that was previously created, then select **Next**.
 
-    ![Step 3 shown with Azure SQL MI resource selected](images/azure-data-studio-migrate-step-3.png "Step 3 shown with Azure SQL MI resource selected")
+    ![Step 3 Azure SQL target is shown with the Azure account entered and the Location, Resource group, and Azure SQL Managed Instance resource selected as the target for the migration.](images/azure-data-studio-migrate-step-3.png "Step 3: Azure SQL target")
 
 10. On **Step 4: Migration mode**, keep **Online migration** selected, then select **Next**.
 
-    ![Step 4 Migration mode with Online migration selected](images/azure-data-studio-migrate-step-4.png "Step 4 Migration mode with Online migration selected")
+    ![Step 4 Migration mode is shown with the Online migration option selected.](images/azure-data-studio-migrate-step-4.png "Step 4: Migration mode")
 
 11. In **Step 5: Database backup**, select **My database backups are in an Azure Storage Blob Container**, select the Azure Storage Account and container created previously, then select **Next**.
 
-    ![Step 5: Database backup with Azure Storage Account and Container selected](images/azure-data-studio-migrate-step-5.png "Step 5: Database backup with Azure Storage Account and Container selected")
+    ![Step 5 Database backup is shown with the 'My database backups are in an Azure Storage Blob Container' option selected, with the Storage account and sql-backup container selected for the location of the source database.](images/azure-data-studio-migrate-step-5.png "Step 5: Database backup")
 
 12. In **Step 6: Azure Database Migration Service**, select **Create new** under **Azure Database Migration Service**.
 
-    ![Step 6 Azure Database Migration Service with Create new highlighted](images/2022-10-07-21-25-58.png "Step 6 Azure Database Migration Service with Create new highlighted")
+    ![Step 6 Azure Database Migration Service is shown with the Create new link under Azure Database Migration Service highlighted.](images/2022-10-07-21-25-58.png "Step 6 Azure Database Migration Service")
 
 13. In the **Create Azure Database Migration Service** pane, enter the following values, then select **Create**.
 
     - **Resource group**: Select the Resource Group for this lab, for example: `tailspin-rg`.
     - **Name**: `tailspin-sql-migration`
 
-    ![Create Database Migration Service dialog with values entered](images/azure-data-studio-migrate-create-migration-service.png "Create Database Migration Service dialog with values entered")
+    ![The Create Database Migration Service dialog is shown with Resource Group and Name for the Azure Database Migration Service to create entered.](images/azure-data-studio-migrate-create-migration-service.png "Create Database Migration Service dialog")
 
 14. Once the Database Migration Service has been created, select **Done**.
 
 15. In **Step 6: Azure Database Migration Service**, select the **Azure Database Migration Service** that was created, then select **Next**.
 
-    ![Step 6 with Azure Database Migration Service selected](images/azure-data-studio-migrate-step-6.png "Step 6 with Azure Database Migration Service selected")
+    ![Step 6 Azure Database Migration Service is shown with the Azure Database Migration Service field now entered.](images/azure-data-studio-migrate-step-6.png "Step 6: Azure Database Migration Service")
 
 16. In **Step 7: Summary**, review all the configurations chosen, then select **Start migration**.
 
-    ![Step 7 showing summary of configurations chosen](images/azure-data-studio-migrate-step-7.png "Step 7 showing summary of configurations chosen")
+    ![Step 7 Summary is shown with all the selected values displayed for review.](images/azure-data-studio-migrate-step-7.png "Step 7: Summary")
 
 17. Azure Data Studio will now show **Database migrations in progress - 1**.
 
-    ![Azure Data Studio showing there is 1 data migration in progress](images/azure-data-studio-database-migrations-in-progress.png "Azure Data Studio showing there is 1 data migration in progress")
+    ![The Azure SQL Migration pane in Azure Data Studio shows there is 1 data migration in progress.](images/azure-data-studio-database-migrations-in-progress.png "Azure Data Studio showing there is 1 data migration in progress")
 
 18. In the Azure Portal, navigate to the **Azure Database Migration Service** that was created (named similar to `tailspin-sql-migration`), then select **Migrations** and the **WideWorldImporters** migration.
 
-    ![Azure Database Migration Service with In-progress migration highlighted](images/azure-database-migration-service-inprogress.png "Azure Database Migration Service with In-progress migration highlighted")
+    ![The Azure Database Migration Service is shown within the Azure Portal displaying the new database migration in the list of Migrations.](images/azure-database-migration-service-inprogress.png "Azure Database Migration Service list of migrations.")
 
 19. The **WideWorldImporters** migration shows the current status of the migration as `InProgress`. Notice the **Currently restoring files** should say **All backups restored** once the database backup has been restored. Then select **Complete cutover** at the top.
 
-    ![WideWorldImporters migration showing status as InProgress](images/wideworldimporters-migration-inprogress.png "WideWorldImporters migration showing status as InProgress")
+    ![The WideWorldImporters migration is shown within the Azure Portal having a migration status of InProgress](images/wideworldimporters-migration-inprogress.png "WideWorldImporters migration showing status as InProgress")
 
 20. In the **Complete cutover** prompt, select the box for **I confirm there are no additional log backups...**, then select **Complete cutover**.
 
-    ![Complete cutover prompt](images/wideworldimporters-migration-complete-cutover.png "Complete cutover prompt")
+    ![The Complete cutover prompt is shown with the confirmation box checked and the Complete cutover button highlighted.](images/wideworldimporters-migration-complete-cutover.png "Complete cutover")
 
 21. The **WideWorldImporters** Migration will now show the status of **Completing**. This will take a few minutes to complete.
 
-    ![WideWorldImporters migration showing status of Completing](images/wideworldimporters-migration-completing.png "WideWorldImporters migration showing status of Completing")
+    ![The WideWorldImporters migration is shown in the Azure Portal having a migration status of Completing.](images/wideworldimporters-migration-completing.png "WideWorldImporters migration showing status of Completing")
 
 22. Once the cutover has been completed, the **WideWorldImporters** migration will show a status of **Succeeded**.
 
-    ![WideWorldImporters migration showing status of succeeded](images/wideworldimporters-migration-succeeded.png "WideWorldImporters migration showing status of succeeded")
+    ![The WideWorldImporters migration is shown in the Azure Portal with a migration status of succeeded.](images/wideworldimporters-migration-succeeded.png "WideWorldImporters migration showing status of succeeded")
 
 23. Within the Azure Portal, navigate to the **Azure SQL Managed Instance** that was created previously.
 
 24. When the SQL Server database migration to Azure SQL MI has completed, you will see the **WideWorldImporters** database shown with an **Online** status.
 
-    ![Azure SQL MI in Azure Portal showing the WideWorldImporters database in Online status](images/azure-portal-sql-mi-database-status-online.png "Azure SQL MI in Azure Portal showing the WideWorldImporters database in Online status")
+    ![The Azure SQL Managed Instance resource is shown in the Azure Portal with the WideWorldImporters migration showing a Status of Online.](images/azure-portal-sql-mi-database-status-online.png "Azure SQL MI in Azure Portal showing the WideWorldImporters database in Online status")
 
 ## Exercise 2: Create VM to migrate web application
 
@@ -471,7 +471,7 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
 
 3. Within the **Search services and marketplace** field, type **Windows Server** and press Enter to search the marketplace, then select **Windows Server**.
 
-    ![Windows Server is highlighted within the Azure Marketplace](images/azure-marketplace-windows-server.png "Windows Server is highlighted")
+    ![Windows Server is highlighted within the Azure Marketplace search results.](images/azure-marketplace-windows-server.png "Windows Server is highlighted")
 
 4. Choose **Windows Server 2022 Datacenter: Azure Edition**, then select **Create**.
 
@@ -482,11 +482,11 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
     - **Region**: Select the Azure Region that was used to create the resource group.
     - **Image**: Verify the image is set to **Windows Server 2022 Datacenter: Azure Edition - Gen 2**.
 
-    ![Create a virtual machine with field set](images/create-virtual-machine-windows-server-image-set.png "Create a virtual machine with field set")
+    ![The Create a virtual machine pane is shown with values entered and filed highlighted.](images/create-virtual-machine-windows-server-image-set.png "Create a virtual machine with field set")
 
 6. Set the **Size** field by selecting the **Standard_D4s_v5** virtual machine size.
 
-    ![VM size is set](images/create-virtual-machine-size-set.png "VM size is set")
+    ![The Virtual Machine Size field is shown with the desired size selected.](images/create-virtual-machine-size-set.png "VM size is set")
 
 7. Set a **Username** and **Password** for the **Administrator account** for the VM.
 
@@ -494,7 +494,7 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
 
 8. Select **Next** until you are navigated to the **Networking** tab of the **Create a virtual machine** page.
 
-    ![Networking tab is selected](images/create-virtual-machine-networking-tab-selected.png "Networking tab is selected")
+    ![The Networking tab of the Create a virtual machine pane is selected.](images/create-virtual-machine-networking-tab-selected.png "Networking tab is selected")
 
 9. Provision the VM in the Spoke VNet in Azure by selecting the following values under the **Network interface** section:
 
@@ -502,14 +502,14 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
     - **Subnet**: `default`
     - **Public IP**: `None`
 
-    ![Virtual Network, Subnet, and Public IP values are set](images/create-virtual-machine-networking-values-set.png "Virtual Network, Subnet, and Public IP values are set")
+    ![The Networking tab has the Network interface values selected for the Virtual network, Subnet, and Public IP to connect to the VM.](images/create-virtual-machine-networking-values-set.png "Virtual Network, Subnet, and Public IP values are set")
 
 10. Set the following values to ensure that HTTPS traffic will be allowed to connect to the VM:
 
     - **Public inbound ports**: `Allow selected ports`
     - **Select inbound ports**: `HTTPS (443)`
 
-    ![Networking inbound ports set to allow HTTPS traffic](images/create-virtual-network-https-traffic-allowed.png "Networking inbound ports set to allow HTTPS traffic")
+    ![The Public inbound ports field is set to Allow selected ports and the Select inbound ports has HTTPS 443 selected.](images/create-virtual-network-https-traffic-allowed.png "Networking inbound ports set to allow HTTPS traffic")
 
 11. Select **Review + create** to review the virtual machine settings.
 
@@ -525,21 +525,21 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
 1. In the Azure Portal, navigate to the newly created **Virtual Machine**.
 
-    ![Virtual machine pane is open](images/web-app-win2022server-virtual-machine-pane.png "Virtual machine pane is open")
+    ![The Virtual machine pane is shown in the Azure Portal for the newly created VM.](images/web-app-win2022server-virtual-machine-pane.png "Virtual machine pane is open")
 
 2. On the left, under the **Operations** section, select **Bastion**.
 
-    ![Bastion is highlighted under Operations section](images/portal-virtual-machine-operations-bastion-link.png "Bastion is highlighted under Operations section")
+    ![The Bastion link under Operations is shown and highlighted.](images/portal-virtual-machine-operations-bastion-link.png "Bastion link")
 
 3. On the **Bastion** pane, enter the **Username** and **Password** that was set for the Administrator User of the VM when it was created, then select **Connect**.
 
-    ![Bastion pane with username and password entered](images/portal-virtual-machine-operations-bastion-pane.png "Bastion pane with username and password entered")
+    ![The Bastion pane for the VM is shown with the username and password fields entered.](images/portal-virtual-machine-operations-bastion-pane.png "Bastion pane with username and password entered")
 
     > **Note**: The Azure Bastion instance named `tailspin-hub-bastion` was previously created with the Before the Hands-on lab set up. This is a required resource for using Azure Bastion to securely connect to Azure VMs using RDP from within the Azure Portal.
 
 4. A new browser tab will open with Azure Bastion connected to the virtual machine over RDP. To close this session, you can close this browser tab.
 
-    ![Browser window open with Azure Bastion connected to the VM](images/browser-azure-bastion-connected-web-app-win2022server.png "Browser window open with Azure Bastion connected to the VM")
+    ![A browser window is shown open with Bastion connected to a remote desktop session to the VM.](images/browser-azure-bastion-connected-web-app-win2022server.png "Browser window open with Azure Bastion connected to the VM")
 
 > **Note**: Now that the Windows Server 2022 VM has been created in Azure, Tailspin Toys will now be able to modify their Continuous Integration and Continuous Deployment (CD/CD) pipelines within Azure DevOps to begin deploying the Web Application code to this virtual machine as they get ready for migrating the application to Azure.
 
@@ -555,19 +555,19 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 2. In the **Search resources, services, and docs** box at the top of the portal, search for **Azure Arc**, then select the **Azure Arc** service.
 
-    ![Azure Portal search for Azure Arc with 'Azure Arc' option highlighted](images/azure-portal-search-azure-arc-service.png "Azure Portal search for Azure Arc with 'Azure Arc' option highlighted")
+    ![An Azure Portal search is shown showing the results for a search for Azure Arc with the Azure Arc service in the results highlighted.](images/azure-portal-search-azure-arc-service.png "Azure Portal search for Azure Arc with 'Azure Arc' option highlighted")
 
 3. On the **Azure Arc** pane, select the **Infrastructure** tab, then select the **Add** button under **Servers**.
 
-    ![Azure Arc pane with Infrastructure tab and Servers Add button highlighted](images/azure-arc-pane-infrastructure-servers-add-button.png "Azure Arc pane with Infrastructure tab and Servers Add button highlighted")
+    ![The Azure Arc pane in the Azure Portal is shown navigated to the Infrastructure pane and the Servers Add button is highlighted.](images/azure-arc-pane-infrastructure-servers-add-button.png "Azure Arc pane showing Infrastructure tab")
 
 4. Under **Add a single server** select **Generate script**.
 
-    ![Add servers with Azure Arc with Generate script highlighted](images/2022-10-07-21-36-05.png "Add servers with Azure Arc with Generate script highlighted")
+    ![The Add servers with Azure Arc pane is shown with the Generate Script button highlighted for the Add a single server option.](images/2022-10-07-21-36-05.png "Add servers with Azure Arc with Generate script")
 
 5. On the **Add a server with Azure Arc** pane, read the requirements of Azure Arc that are listed, then select **Next**.
 
-    ![Add a server with Azure Arc requirements](images/2022-10-07-21-37-35.png "Add a server with Azure Arc requirements")
+    ![The prerequisites tab is shown for the Add a server with Azure Arc pane with the requirements listed.](images/2022-10-07-21-37-35.png "Add a server with Azure Arc requirements")
 
 6. On the **Resource details** tab, enter the following values, then select **Next**.
 
@@ -576,7 +576,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
     - **Operating system**: `Windows`
     - **Connectivity method**: `Public endpoint`
 
-    ![Resource details tab with values entered](images/2022-09-22-21-13-42.png "Resource details tab with values entered")
+    ![The Resource details tab of the Add a server with Azure Arc pane is displayed with values entered.](images/2022-09-22-21-13-42.png "Resource details tab with values entered")
 
 7. On the **Tags** tab, enter the following tag values to identify this server, then select **Next**:
 
@@ -585,7 +585,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
     - **StateOrDistrict**: `WI`
     - **CountryOrRegion**: `USA`
 
-    ![Tags tab with all tag values entered](images/azure-arc-add-server-tags-tab.png "Tags tab with all tag values entered")
+    ![The Tags tab of the Add a server with Azure Arc pane is shown with the tag values entered.](images/azure-arc-add-server-tags-tab.png "Tags tab with all tag values entered")
 
 8. On the **Download and run script** tab, select **Download** to download the generated script. By default, the script named `OnboardingScript.ps1` will be saved to the `Downloads` folder.
 
@@ -595,15 +595,15 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 1. In the Azure Portal, navigate to the Resource Group for the lab, then navigate to the `tailspin-onprem-hyperv-vm` virtual machine. This is the simulated on-premises Hyper-V host VM.
 
-    ![Simulated on-premises hyper-v host vm](images/azurep-portal-onprem-hyperv-vm.png "Simulated on-premises hyper-v host vm")
+    ![The Virtual machine pane in the Azure Portal is shown for the Simulated on-premises hyper-v host vm.](images/azurep-portal-onprem-hyperv-vm.png "Simulated on-premises hyper-v host vm")
 
 2. On the left, select **Bastion** under **Operations**.
 
-    ![Bastion link is highlighted](images/azure-portal-vm-operations-bastion-link.png "Bastion link is highlighted")
+    ![The Bastion link under Operations is shown.](images/azure-portal-vm-operations-bastion-link.png "Bastion link is highlighted")
 
 3. Enter the **Username** and **Password**, then select **Connect**.
 
-    ![Bastion credentials shown entered](images/azure-portal-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
+    ![The Bastion pane is shown for the VM with the Username and Password values entered and fields highlighted.](images/azure-portal-vm-bastion-username-password-entered.png "Bastion credentials shown entered")
 
     > **Note**: When the VM was created the credentials were set up as:
     > - **Username**: `demouser`
@@ -613,7 +613,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 5. Within the **Hyper-V Manager**, double-click the **OnPremVM** VM to connect to it.
 
-    ![Hyper-V Manager list of VMs with OnPremVM shown](images/hyper-v-manager-vm-list.png "Hyper-V Manager list of VMs with OnPremVM shown")
+    ![The Hyper-V Manager is shown with the list of virtual machines displayed with the OnPremVM highlighted.](images/hyper-v-manager-vm-list.png "Hyper-V Manager list of VMs with OnPremVM shown")
 
 6. Once connected to the **OnPremVM** VM within Hyper-V, sign in using the **Administrator** account and the password of `demo!pass123`.
 
@@ -626,7 +626,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
     >
     > You may see a warning message when disabling it and re-enabling it, but it will still work to restore Internet Connection Sharing with the **OnPremVM** that is connected through the Host VM's network connection.
     >
-    > ![Ethernet connection properties on the Hyper-V Host VM showing Internet Connection Sharing option highlighted](images/windows-hyperv-network-connections-internet-connection-sharing.png "Ethernet connection properties on the Hyper-V Host VM showing Internet Connection Sharing option highlighted")
+    > ![The Ethernet connection properties on the Hyper-V Host VM showing Internet Connection Sharing option highlighted.](images/windows-hyperv-network-connections-internet-connection-sharing.png "Ethernet Properties for Internet Connection Sharing")
 
 7. Within the **OnPremVM**, open **Internet Explorer**, go to the following link to download the Windows Update for installing **PowerShell 5.1**, and run it. This will install PowerShell 5.1 on the Windows Server 2012 R2 VM, since this is the version of PowerShell required by the Azure Arc script.
 
@@ -643,7 +643,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
     >
     > Be sure to restart the VM after installing the updates, before you continue with the .NET Framework install.
     >
-    > ![Blocking issue warning with message highlighted](images/dot-net-framwork-blocking-issue.png "Blocking issue warning with message highlighted")
+    > ![The blocking issue warning of the .NET Framework installer is shown with the message for the blocking issue highlighted.](images/dot-net-framwork-blocking-issue.png "Blocking issue warning with message highlighted")
 
 9. Within the **OnPremVM**, open the **Windows PowerShell ISE**, and create a new script file.
 
@@ -657,7 +657,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 12. When the script finishes executing successfully, a message stating "**Connected machine to Azure**" will be shown, along with the Azure Portal resource URL for the Azure Arc-enabled Server.
 
-    ![Azure Arc script successful with Connected machine to Azure message](images/azure-arc-enabled-script-successful.png "Azure Arc script successful with Connected machine to Azure message")
+    ![The command line output of the Azure Arc script is shown that includes the Connected machine to Azure message showing the script executed successfully.](images/azure-arc-enabled-script-successful.png "Azure Arc script successful with Connected machine to Azure message")
 
 ### Task 3: Verify Azure Arc-enabled VM
 
@@ -667,21 +667,21 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 2. Scroll down and locate the Azure resource of type **Server - Azure Arc**. and select it.
 
-    ![Azure Resource Group showing resource list with Server - Azure Arc resource highlighted](images/resource-group-showing-server-azure-arc-resource.png "Azure Resource Group showing resource list with Server - Azure Arc resource highlighted")
+    ![The resources in the resource group is shown with the resource of type Server - Azure Arc highlighted.](images/resource-group-showing-server-azure-arc-resource.png "Azure Resource Group showing resource list with Server - Azure Arc resource")
 
     > **Note**: The on-premises VM has been Azure Arc-enabled and can be managed alongside other Azure resources. This is enabled by the **Azure Connected Machine Agent** running on the VM that facilitates the interaction between Azure and the Azure Arc-enabled VM.
 
 3. This is the **Server - Azure Arc** pane for the on-premises virtual machine that was just Azure Arc-enabled. The **Status** shows **Connected** to signify that the Azure Arc-enabled virtual machine is connected to Azure. Also, notice that the **Computer Name** and **Operating System** of the virtual machine are displayed.
 
-    ![Azure Portal Server - Azure Arc pane for Azure Arc-enabled virtual machine](images/azure-portal-server-azure-arc-enabled-vm.png "Azure Portal Server - Azure Arc pane for Azure Arc-enabled virtual machine")
+    ![The Server - Azure Arc pane in the Azure Portal is shown for the on-premises VM with status, computer name, and operating system values highlighted within the Essentials section.](images/azure-portal-server-azure-arc-enabled-vm.png "Azure Portal Server - Azure Arc pane for Azure Arc-enabled virtual machine")
 
 4. From here, there are several **Azure Arc** capabilities available to use for managing the Azure Arc-enabled virtual machine.
 
-    ![Azure Arc capabilities listed on the Server - Azure Arc pane](images/azure-portal-server-azure-arc-capabilities.png "Azure Arc capabilities listed on the Server - Azure Arc pane")
+    ![The Capabilities section of the Server- Azure Arc pane is shown with the list of capabilities to choose from.](images/azure-portal-server-azure-arc-capabilities.png "Azure Arc capabilities listed on the Server - Azure Arc pane")
 
 5. Select **Extensions** under **Settings**. This is where you can install Extensions on the Azure Arc-enabled virtual machine. For example, the **Custom Script Extension for Windows - Azure Arc** extension can be used to download PowerShell scripts and files from Azure storage, and launch a PowerShell script on the machine.
 
-    ![Azure Portal Server - Azure Arc pane showing Extensions](images/azure-poral-server-azure-arc-extensions.png "Azure Portal Server - Azure Arc pane showing Extensions")
+    ![The Extensions pane for the Server - Azure Arc resource is shown with the Extensions link under Settings highlighted.](images/azure-poral-server-azure-arc-extensions.png "Azure Portal Server - Azure Arc pane showing Extensions")
 
 ## After the hands-on lab
 
@@ -695,14 +695,14 @@ Duration: 15 minutes
 
 3. Select the **Resource group** you created.
 
-    ![Resource group list in Azure Portal](images/azure-portal-resource-groups.png "Resource group list in Azure Portal")
+    ![The Azure Portal is showing the list of resource groups in the Azure Subscription with the resource group for this lab highlighted.](images/azure-portal-resource-groups.png "Resource group list in Azure Portal")
 
 4. Select **Delete Resource group**.
 
-    ![Resource group pane with Delete button highlighted](images/azure-portal-resource-group-delete-button.png "Resource group pane with Delete button highlighted")
+    ![The Resource group pane in the Azure Portal for the resource group for this lab is shown with the Delete resource group button highlighted.](images/azure-portal-resource-group-delete-button.png "Resource group pane with Delete button highlighted")
 
 5. Enter the name of the **Resource group** and select **Delete**.
 
-    ![Delete Resource group confirmation prompt](images/azure-portal-resource-group-delete-confirm.png "Delete Resource group confirmation prompt")
+    ![The confirmation box for deleting the resource group is shown with the resource group name entered into the 'Type the resource group name' field to confirm the delete operation and the Delete button is highlighted.](images/azure-portal-resource-group-delete-confirm.png "Delete Resource group confirmation prompt")
 
 You should follow all steps provided *after* attending the Hands-on lab.
