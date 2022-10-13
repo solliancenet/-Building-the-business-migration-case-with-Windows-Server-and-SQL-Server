@@ -293,7 +293,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Azure SQL Migration extension highlighted](images/azure-data-studio-extensions-azure-sql-migration.png "Azure SQL Migration extension highlighted")
 
-3. Next, you need to enable Preview Features within Azure Data Studio. Select the Manage icon (shown as the Gear in the lower left corner of Azure Data Studio).
+3. Next, you need to enable Preview Features within Azure Data Studio. Select the **Manage** icon (shown as the Gear in the lower left corner of Azure Data Studio) and select **Settings**.
 
     ![The manage menu open with Settings highlighted](images/azure-data-studio-manage-menu-settings.png "The manage menu open with Settings highlighted")
 
@@ -316,7 +316,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 7. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
-    ![WideWorlImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorlImporters server with right-click menu shown and Manage option is highlighted")
+    ![WideWorldImporters server with right-click menu shown and Manage option is highlighted](images/azure-data-studio-servers-right-click-manage-shown.png "WideWorldImporters server with right-click menu shown and Manage option is highlighted")
 
 8. Select **Backup**.
 
@@ -372,6 +372,8 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 5. In **Step 2: Assessment results and recommendations**, select the **Azure SQL Managed Instance** option.
 
+    ![](images/azure-data-studio-migrate-step-2-azuresqlmi-selected.png "")
+
 6. Scroll down and select the **View/Select** button to select a database.
 
 7. Select the **WideWorldImporters** database, and you should see a message stating "`No issues for migrating to Azure SQL Managed Instance.`", then select the **Select** button.
@@ -386,7 +388,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Step 3 shown with Azure SQL MI resource selected](images/azure-data-studio-migrate-step-3.png "Step 3 shown with Azure SQL MI resource selected")
 
-10. On **Step 4: Migration mode**, select **Next**.
+10. On **Step 4: Migration mode**, keep **Online migration** selected, then select **Next**.
 
     ![Step 4 Migration mode with Online migration selected](images/azure-data-studio-migrate-step-4.png "Step 4 Migration mode with Online migration selected")
 
@@ -482,7 +484,7 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
 
     > **Note**: Be sure to save the Username and Password for the VM, so it can be used later. Recommendation for easy to remember Username is `demouser` and Password is `demo!pass123`.
 
-8. Select **Next** until you are navigated to the **Networking** tab of the ** Create a virtual machine page.
+8. Select **Next** until you are navigated to the **Networking** tab of the **Create a virtual machine** page.
 
     ![Networking tab is selected](images/create-virtual-machine-networking-tab-selected.png "Networking tab is selected")
 
