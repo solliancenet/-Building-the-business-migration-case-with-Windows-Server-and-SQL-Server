@@ -471,6 +471,8 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
 
 2. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
 
+    ![The Home page of the Azure Portal is shown with the 'Create a resource' link highlighted.](images/azure-portal-home-create-resource-link.png "Create a resource on Azure Portal Home page")
+
 3. Within the **Search services and marketplace** field, type **Windows Server** and press Enter to search the marketplace, then select **Windows Server**.
 
     ![Windows Server is highlighted within the Azure Marketplace search results.](images/azure-marketplace-windows-server.png "Windows Server is highlighted")
