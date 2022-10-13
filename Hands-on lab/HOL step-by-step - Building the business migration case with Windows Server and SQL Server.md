@@ -273,13 +273,13 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
     ![Data Migration Assistant with the Start Assessment button highlighted](images/ms-data-migration-assistant-assessment-start-assessment-button.png "Data Migration Assistant with the Start Assessment button highlighted")
 
-7. On the **Review results** pane, you should see a message that "**There are no feature parity issues with your server instance**".
+7. On the **Review results** pane, you should see a message that "**There are no feature parity issues with your server instance.**"
 
     ![Data Migration Assistant showing there are no feature parity issues](images/ms-data-migration-assistant-assessment-no-feature-parity-issues.png "Data Migration Assistant showing there are no feature parity issues")
 
 8. On the top left of the **Review results** pane, select **Compatibility issues**.
 
-9. On the **Review results** pane, you should see a message that "**There are no compatibility issues with your database**".
+9. On the **Review results** pane, you should see a message that "**There are no compatibility issues with your database.**"
 
     ![Data Migration Assistant showing there are no compatibility issues](images/ms-data-migration-assistant-assessment-no-compatibility-issues.png "Data Migration Assistant showing there are no compatibility issues")
 
