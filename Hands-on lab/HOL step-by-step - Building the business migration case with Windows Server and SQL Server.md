@@ -90,7 +90,7 @@ In this exercise, you will go through the steps necessary to migrate Tailspin To
 
 ### Task 1: Create subnet and storage account for Azure SQL MI
 
-1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab set up.
+1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
 
 2. Within the Azure Portal, navigate to the Resource Group created for this lab, and go to the `tailspin-spoke-vnet` virtual network.
 
@@ -243,7 +243,7 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 10. Select **Run** to run the **Microsoft Data Migration Assistant** installer once it's finished downloading and follow the prompts to install the assistant.
 
-    ![Tne Microsoft Data Migration Assistant Setup wizard is shown.](images/microsoft-data-migration-assistant-setup-wizard.png "Microsoft Data Migration Assistant Setup wizard")
+    ![The Microsoft Data Migration Assistant Setup wizard is shown.](images/microsoft-data-migration-assistant-setup-wizard.png "Microsoft Data Migration Assistant Setup wizard")
 
 ### Task 4: Assess on-premises database compatibility
 
@@ -295,7 +295,7 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 1. In the **tailspin-onprem-sql-vm** virtual machine, open the **Start menu**, then type **Azure Data Studio** to search the application, then select it to run **Azure Data Studio**.
 
-    ![The Search results in the Start menu showing a search for Azure Data Studio.](images/win-start-menu-search-azure-data-studio.png "Azure Data Studio in Start menu search")
+    ![The Search results in the Start menu show a search for Azure Data Studio.](images/win-start-menu-search-azure-data-studio.png "Azure Data Studio in Start menu search")
 
 2. On the left, select the **Extensions** tab, then select the **Azure SQL Migration** extension and install it.
 
@@ -320,7 +320,7 @@ On the Add subnet pane, enter the following values to create a Subnet
     - **Authentication type**: Windows Authentication
     - **Database**: `WideWorldImporters`
 
-    ![The Connection Details pane shown with values entered and fields highlighted.](images/azure-data-studio-connection-pane-values-entered.png "Azure Data Studio with Connection pane shown having all values entered")
+    ![The Connection Details pane is shown with values entered and fields highlighted.](images/azure-data-studio-connection-pane-values-entered.png "Azure Data Studio with Connection pane shown having all values entered")
 
 7. In the list of servers, right-click the **localhost, WideWorldImporters** server, then select **Manage**.
 
@@ -380,7 +380,7 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 5. In **Step 2: Assessment results and recommendations**, select the **Azure SQL Managed Instance** option.
 
-    ![Step 2 Assessment results and recommendations is shown with the Azure SQL target option of Azure SQL Managed Instance selected.](images/azure-data-studio-migrate-step-2-azuresqlmi-selected.png "Step 2: Assessment results and recommendations")
+    ![Step 2 Assessment results and recommendations are shown with the Azure SQL target option of Azure SQL Managed Instance selected.](images/azure-data-studio-migrate-step-2-azuresqlmi-selected.png "Step 2: Assessment results and recommendations")
 
 6. Scroll down and select the **View/Select** button to select a database.
 
@@ -392,7 +392,7 @@ On the Add subnet pane, enter the following values to create a Subnet
 
 8. Verify the **Azure SQL Managed Instance** target is selected, notice that it now shows **1 of 1 databases selected**, then select **Next**.
 
-    ![Step 2 Assessment results and recommendations is shown with with Azure SQL Managed Instance option selected.](images/azure-data-studio-migrate-step-2.png "Step 2: Assessment results and recommendations")
+    ![Step 2 Assessment results and recommendations are shown with Azure SQL Managed Instance option selected.](images/azure-data-studio-migrate-step-2.png "Step 2: Assessment results and recommendations")
 
 9. In **Step 3: Azure SQL target**, enter connection information to your Azure Subscription and for the **Azure SQL Manage Instance** resource that was previously created, then select **Next**.
 
@@ -494,7 +494,7 @@ In this task, you will create a new Windows Server 2022: Azure Edition virtual m
 
 7. Set a **Username** and **Password** for the **Administrator account** for the VM.
 
-    > **Note**: Be sure to save the Username and Password for the VM, so it can be used later. Recommendation for easy to remember Username is `demouser` and Password is `demo!pass123`.
+    > **Note**: Be sure to save the Username and Password for the VM, so it can be used later. A recommendation for easy to remember Username is `demouser` and Password is `demo!pass123`.
 
 8. Select **Next** until you are navigated to the **Networking** tab of the **Create a virtual machine** page.
 
@@ -539,7 +539,7 @@ In this task, you will test Remote Desktop (RDP) connectivity to the newly creat
 
     ![The Bastion pane for the VM is shown with the username and password fields entered.](images/portal-virtual-machine-operations-bastion-pane.png "Bastion pane with username and password entered")
 
-    > **Note**: The Azure Bastion instance named `tailspin-hub-bastion` was previously created with the Before the Hands-on lab set up. This is a required resource for using Azure Bastion to securely connect to Azure VMs using RDP from within the Azure Portal.
+    > **Note**: The Azure Bastion instance named `tailspin-hub-bastion` was previously created with the Before the Hands-on lab setup. This is a required resource for using Azure Bastion to securely connect to Azure VMs using RDP from within the Azure Portal.
 
 4. A new browser tab will open with Azure Bastion connected to the virtual machine over RDP. To close this session, you can close this browser tab.
 
@@ -671,7 +671,7 @@ In this exercise, you will Azure Arc-enable a Windows Server VM that Tailspin ha
 
 2. Scroll down and locate the Azure resource of type **Server - Azure Arc**. and select it.
 
-    ![The resources in the resource group is shown with the resource of type Server - Azure Arc highlighted.](images/resource-group-showing-server-azure-arc-resource.png "Azure Resource Group showing resource list with Server - Azure Arc resource")
+    ![The resources in the resource group are shown with the resource of type Server - Azure Arc highlighted.](images/resource-group-showing-server-azure-arc-resource.png "Azure Resource Group showing resource list with Server - Azure Arc resource")
 
     > **Note**: The on-premises VM has been Azure Arc-enabled and can be managed alongside other Azure resources. This is enabled by the **Azure Connected Machine Agent** running on the VM that facilitates the interaction between Azure and the Azure Arc-enabled VM.
 
