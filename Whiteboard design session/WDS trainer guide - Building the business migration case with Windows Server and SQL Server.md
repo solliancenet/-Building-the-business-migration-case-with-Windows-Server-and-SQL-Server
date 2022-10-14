@@ -171,9 +171,9 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 ## Abstract and learning objectives
 
-In this whiteboard design session, you will look at how to design a strategy for migrating existing on-premises Windows Server and SQL Server workloads to Azure. Throughout the whiteboard design session, you will look at the Virtual Machine pricing, integrated management of cloud and on-premises workloads using Azure Arc, and migrating SQL Server workloads to Azure.
+In this whiteboard design session, you will learn to design a strategy for migrating existing on-premises Windows Server and SQL Server workloads to Azure. Throughout the whiteboard design session, you will look at the virtual machine (VM) pricing, integrated management of cloud, and on-premises workloads using Azure Arc, and migrating SQL Server workloads to Azure.
 
-At the end of the workshop, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL Managed Instance (SQL MI), and simplifying workload management using Azure Arc.
+At the end of the workshop, you will be better able to design a migration strategy for Windows Server workloads to Azure VMs, SQL Server workloads to Azure SQL Managed Instance (SQL MI), and simplify workload management using Azure Arc.
 
 ## Step 1: Review the customer case study
 
@@ -193,9 +193,9 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 
 ### Customer situation
 
-Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises data-center and they are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
+Tailspin Toys is a global manufacturer of children’s toys that was founded in 1957 with its global headquarters located in Milwaukee, WI. Their mission-critical workloads are currently hosted in an on-premises datacenter and they are beginning a journey to modernize and migrate into the cloud using Microsoft Azure.
 
-During the Envision Workshop, Kaylee Frye, CTO of Tailspin Toys, see the value of digital transformation, adopting the Microsoft Azure cloud, and modernizing their infrastructure. She has already had the Technical Architects at Tailspin Toys begin assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
+During the Envision Workshop, Kaylee Frye, CTO of Tailspin Toys, saw the value of digital transformation, adopting the Microsoft Azure cloud, and modernizing their infrastructure. She has already had the Technical Architects at Tailspin Toys begin assessing their current environment and what it will take to migrate to the cloud. They are looking to optimize their technology investments by reducing technical debt, streamlining operations, and simplifying their DevOps workflow. According to Kaylee Frye, "Our development teams have already begun adopting DevOps strategies and implemented CI/CD (continuous integration and continuous delivery) pipelines with Azure DevOps. We really look forward to better streamlining IT operations as we adopt Microsoft Azure for the infrastructure too."
 
 Tailspin has already completed the first round of analysis to identify the applications and workloads to migrate first. These workloads are hosted using SQL Server and Windows Server VMs. They have compiled an initial list of servers they believe can be migrated now, in addition to some they’ll need to retain on-premises.
 
@@ -203,18 +203,18 @@ Their on-premises environment consists of over 250 servers and VMs, although, th
 
 The first workload they want to migrate to Azure consists of:
 
-- Web Application Front-end
+- Web Application Front End
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
-    - each with 2 CPU cores and 16 GB Memory
-- REST API Back-end
+    - Each with 2 CPU cores and 16 GB Memory
+- REST API Back End
   - ASP.NET MVC using .NET Framework 4.7
   - 2x Windows Server 2012 VMs
-    - each with 4 CPU cores and 32 GB Memory
+    - Each with 4 CPU cores and 32 GB Memory
 - Application Databases
   - SQL Server 2012
   - Data replication using SQL Availability Groups across 2x Windows Server 2012 VMs
-    - each with 8 CPU cores and 64 GB Memory
+    - Each with 8 CPU cores and 64 GB Memory
   - 3x databases with the following storage sizes
     - Database 1: 1.2 TB
     - Database 2: 435 GB
@@ -228,9 +228,9 @@ They have identified several different types of on-premises workloads that may n
 - 4x Ubuntu 18.04 Linux VMs running nginx hosting multiple small .NET Core web applications
 - Legacy applications for supply chain management and other business critical systems that must remain on-premises until we can rebuild them to run in the cloud.
 
-The Virtual Machines hosted in their on-premises data-center are hosted using Windows Hyper-V. Some of the smaller .NET Core web applications in the identified workloads are planned to be phased out, so the VMs hosting those workloads will remain on-premises.
+The virtual machines hosted in their on-premises datacenter are hosted using Windows Hyper-V. Some of the smaller .NET Core web applications in the identified workloads are planned to be phased out, so the VMs hosting those workloads will remain on-premises.
 
-In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises data-center along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
+In preparations for their cloud adoption journey, Tailspin has already had an Azure ExpressRoute circuit provisioned to connect to their on-premises datacenter along with a Hub and Spoke Virtual Network topology in Azure. The ExpressRoute circuit is configured with 2 Gbps bandwidth to connect to the Azure Networking that has been set up in the North Central US region. This will provide them with the necessary Azure networking infrastructure to migrate their workloads. Since they are new to Azure, they will need some additional help in the migrations and modernization of their Windows Server and SQL Server workloads.
 
 ### Customer needs
 
@@ -244,15 +244,15 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 
 ### Customer objections
 
-1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
+1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to ensure compatibility?
 
 2. What kind of downtime will be incurred when migrating the Windows Server and SQL Server workloads to Azure?
 
-3. Will we be able to roll back to the on-premises VMs if the migration fails?
+3. What are the options to roll back to the on-premises VMs if the migration fails?
 
-4. We know there are workloads that will not be migrated to Azure. What's the best way to handle managing all our VMs across on-premises and Azure?
+4. What's the best way to handle managing all our VMs across on-premises and Azure? We do have workloads that will not be migrated to Azure.
 
-5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. What can you do to ensure estimates reflect our EA discount?
 
 6. Securing and monitoring our on-premises workloads is extremely important. What options does Azure offer to extend this into the cloud?
 
@@ -261,10 +261,10 @@ In preparations for their cloud adoption journey, Tailspin has already had an Az
 ### Infographic for common scenarios
 
 **Hub-spoke network topology in Azure**
-![Hub-spoke network topology in Azure](images/diagram-azure-vnet-hub-spoke.png "The hub virtual network acts as a central point of connectivity to many spoke virtual networks. The hub can also be used as the connectivity point to your on-premises networks. The spoke virtual networks peer with the hub and can be used to isolate workloads.")
+![The image shows how on-premises network on the left connects through Azure ExpressRoute to the Hub VNet with Azure Bastion and Azure Firewall. On the right is multiple Spoke VNet that connect to the Hub VNet through VNet Peering and hosts multiple VM workloads.](images/diagram-azure-vnet-hub-spoke.png "Hub-spoke network topology in Azure")
 
 **Azure Arc control plan**
-![Azure Arc control plan](images/diagram-azure-arc-control-plane.png "Azure Arc simplifies governance and management by delivering a consistent multi-cloud and on-premises management platform. Azure Arc provides a centralized, unified way to manage your entire environment together by projecting your existing on-premises resources into Azure Resource Manager.")
+![The image shows Azure with Azure Resource Manager in the center for managing Azure resources. On the left is customers who connect to Azure to manage their resources. On the right is Azure Arc enabling the Azure Arc-enabled workloads on-premises to be managed by Azure Resource Manager along-side Azure workloads.](images/diagram-azure-arc-control-plane.png "Azure Arc control plan")
 
 ## Step 2: Design a proof of concept solution
 
@@ -286,23 +286,31 @@ Directions: With your team, answer the following questions and be prepared to pr
 
 Directions: With your team, respond to the following questions:
 
+_High-level architecture_
+
+Design an migration solution that addresses the needs and requirements of the organization. Provide details of your implementation. Make sure to document your design with a diagram along with addressing the questions. Address the requirements in the following areas:
+
+_Migration_
+
 1. How will you migrate the on-premises workloads to Azure?
 
 2. How will you migrate the SQL Server workloads to Azure?
 
-3. Which workloads should remain on-premises and which should be considered to be migrated at a later time?
+_On-premises Workload Management_
 
-4. How will they reduce the burden of managing both on-premises and Azure workloads?
+1. Which workloads should remain on-premises and which migrated at a later date?
 
-**Pricing**
+2. How will they reduce the burden of managing both on-premises and Azure workloads?
 
-Provide an estimated cost for the workloads being migrated in your solution.
+_Pricing_
 
-- Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, and Azure resource costs
+1. What is the estimated cost for the workloads after being migrated to Azure?
 
-- What's the best option for hosting the SQL Server workloads?
+    - Be sure to cover all aspects of the design, including the primary site, disaster recovery (DR) solution, backup solution, and monitoring costs
 
-- Have you included all appropriate cost-saving measures?
+    - What's the best option for hosting the SQL Server workloads?
+
+    - Have you included all appropriate cost-saving measures?
 
 **Prepare**
 
@@ -410,39 +418,47 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 
 ## Preferred solution
 
-![Preferred Solution Diagram](images/PreferredSolutionDiagram.png "Diagram showing on-premises network connected to Azure using Azure ExpressRoute with a Hub and Spoke network in Azure. The Spoke VNet contains the migrated Front-end, Back-end, and SQL Database workloads running within Subnets inside the Spoke VNet in Azure.")
+Design an migration solution that addresses the needs and requirements of the organization. Provide details of your implementation. Make sure to document your design with a diagram along with addressing the questions.
+
+_High-level architecture_
+
+![The image shows how on-premises network on the left connects through Azure ExpressRoute to the Hub VNet with Azure Bastion and Azure Firewall. On the right is the Spoke VNet that is connected to the Hub VNet through VNet Peering and hosts the VM workloads.](images/PreferredSolutionDiagram.png "Preferred Solution Diagram")
 
 These are the components of the preferred solution diagram:
 
 - Tailspin has Hub and Spoke networking setup with Azure ExpressRoute connected to Azure.
-- The Web application front-end, REST API back-end, and SQL Server Databases have been migrated to Azure and are running in Virtual Machines hosted within a Spoke Vnet in Azure that is peered with the Hub Vnet.
+- The Web Application Front End, REST API Back End, and SQL Server Databases have been migrated to Azure and are running in Azure Virtual Machines hosted within a Spoke VNet in Azure that is peered with the Hub VNet.
 - Each application in Azure is contained within its own Subnet with Network Security Groups securing them accordingly.
 - The on-premises VMs are Azure Arc-enabled so they can be managed with a single pane of glass along with the Azure VMs using the Azure Portal.
-- Other components that may be setup according to the clients requirements are:
+- Other components that may be set up according to the clients requirements are:
   - Azure Bastion for secure Remote Desktop access to Azure VMs
-  - Azure Firewall to protect the Web Application front-end (a common component to use in a secure Azure networking model)
+  - Azure Firewall to protect the Web Application Front End (a common component to use in a secure Azure networking model)
   - Azure Monitor setup to implement monitoring of Azure VMs
 
 These are some reasons for the chosen options in the preferred solution:
 
-- New Azure VMs for the Web application front-end and REST API back-end workloads migrated to Azure are used since they also need to be upgraded to the latest version of Windows Server.
+- New Azure VMs for the Web Application Front End and REST API Back End workloads migrated to Azure are used since they also need to be upgraded to the latest version of Windows Server.
 - The SQL Server databases are migrated to Azure SQL Managed Instance (SQL MI) so moving the existing SQL Server VMs does not apply to this scenario. Also, SQL MI provides near 100% compatibility with on-premises SQL Server while providing a managed VM, in addition to Virtual Network integration support for security.
 - The Network File Share and Ubuntu VMs are not migrated to Azure, as Tailspin Toys expressed that some of these servers either will not be migrated, or they will be in a future phase of the overall migration plan.
-- The Windows Domain Controllers are kept on-premises as this likely is the best solution for Tailspin Toys. Doing otherwise, would require additional scoping and work as part of a future phase of the overall migration plan.
+- The Windows Domain Controllers are kept on-premises as this likely is the best solution for Tailspin Toys. Doing otherwise would require additional scoping and work as part of a future phase of the overall migration plan.
+
+_Migration_
 
 1. How will you migrate the on-premises workloads to Azure?
 
-   Since it is recommended to upgrade the version of Windows Server from 2012 to 2022, it will be necessary to create new servers. In this case, Azure Migrate won't be able to be used to lift and shift the on-premises VMs into Azure. For this reason, the Azure VMs will be created new and the application workloads will be installed and configured on the new VMs.
+   Since it is recommended to upgrade the version of Windows Server from 2012 to 2022, it will be necessary to create new servers. In this case, Azure Migrate can not be used to move the on-premises VMs into Azure as-is. New Azure VMs need to be created with the application workloads deployed to these new Azure VMs.
 
    Application deployment automation is already being done using Azure DevOps Pipelines, so there should be minimal effort necessary to extend those pipelines to deploy to the new Azure VMs.
 
 2. How will you migrate the SQL Server workloads to Azure?
 
-   For the SQL Server databases, Tailspin should use the Microsoft Data Migration Assistant (DMA) to assess database migration readiness. Using DMA to examine the existing on-premises databases will report any compatibility issues ahead of attempting the migration. Typically, SQL Server databases can be migrated to Azure SQL Database or Azure SQL Database Managed Instances. Also, Azure SQL Managed Instances offers greater compatibility with the on-premises SQL Server. SQL Server in Azure VMs could be used, however this will negate the advantages of using a managed service that eliminates the requirement for ongoing VM maintenance.
+   For the SQL Server databases, Tailspin should use the Microsoft Data Migration Assistant (DMA) to assess database migration readiness. Using DMA to examine the existing on-premises databases will report any compatibility issues ahead of attempting the migration. Typically, SQL Server databases can be migrated to Azure SQL Database or Azure SQL Database Managed Instances. Also, Azure SQL Managed Instances offers greater compatibility with the on-premises SQL Server. SQL Server in Azure VMs could be used; however this will negate the advantages of using a managed service that eliminates the requirement for ongoing VM maintenance.
 
-3. Which workloads should remain on-premises and which should be considered to be migrated at a later time?
+_On-premises Workload Management_
 
-   Among the workloads that have been identified for advice on migration to Azure, the Windows Domain Controllers are recommended to keep in the on-premises data-center at this time.
+1. Which workloads should remain on-premises and which migrated at a later date?
+
+   Among the workloads that have been identified for advice on migration to Azure, the Windows Domain Controllers are recommended to keep in the on-premises datacenter at this time.
 
    It is recommended to migrate the on-premises Network File Shares and Ubuntu VMs to Azure in a later phase of their Azure adoption. A phased approach to the migration process will enable each workload to be methodically migrated to Azure while limiting the risk of downtime across the organization.
 
@@ -450,17 +466,17 @@ These are some reasons for the chosen options in the preferred solution:
 
    It is recommended to migrate the on-premises Ubuntu 18.04 Linux VMs to Azure. These could be migrated similarly to the Windows Server VMs, and the server requirements will need to be discussed with Tailspin. As was mentioned, they may be phasing out some of their web applications, as a result it may not be necessary to migrate all their on-premises servers.
 
-4. How will they reduce the burden of managing both on-premises and Azure workloads?
+2. How will they reduce the burden of managing both on-premises and Azure workloads?
 
    After some of the VMs are migrated to Azure, and others are still on-premises, it may be more burdensome to manage all their workloads in one place. For this, the use of Azure Arc is recommended. Azure Arc will enable Tailspin to centrally manage all their VMs in Azure and on-premises. Azure Arc supports managing both Windows and Linux servers and VMs.
 
    The on-premises Windows and Linux VMs can be Azure Arc-enabled by installing the Azure Connected Machine agent. The agent brings with it the ability to manage the VMs with Azure Arc, as well as all the great features the service has to offer.
 
-**Pricing**
+_Pricing_
 
-1. Provide an estimated cost for the workloads being migrated in your solution.
+1. What is the estimated cost for the workloads after being migrated to Azure?
 
-    - Be sure to cover all aspects of the design, including the primary site, DR solution, backup solution, and Azure resource costs
+    - Be sure to cover all aspects of the design, including the primary site, disaster recover (DR) solution, backup solution, and monitoring costs
 
     - What's the best option for hosting the SQL Server workloads?
 
@@ -470,28 +486,28 @@ These are some reasons for the chosen options in the preferred solution:
 
     Pricing Azure solutions is a complex task. The example solution below includes many assumptions, for example on virtual machine size. These need to be validated with Tailspin Toys.
 
-    Since Tailspin Toys and their current on-premises data-center is in Milwaukee, WI. The nearest Azure Region to use will be North Central US. Their secondary Azure region for DR will be South Central US, as that's the Azure region pair for North Central US.
+    Since Tailspin Toys and their current on-premises datacenter is in Milwaukee, WI. The nearest Azure Region to use will be North Central US. Their secondary Azure region for DR will be South Central US, as that's the Azure region pair for North Central US.
 
-    The following pricing estimates are for their primary region. There is some additional discussion with Tailspin Toys to determine the extent of Disaster Recovery (DR) they require for this initial set of workloads being migrated to Azure.
+    The following pricing estimates are for their primary region. There will need to be additional discussions with Tailspin Toys to determine the extent of Disaster Recovery (DR) they require for this initial set of workloads being migrated to Azure.
 
-    _Web Application Front-end_
-    |    |            |            |            |
-    |----------|:-------------:|:-------------:|:-------------:|
+    _Web Application Front End_
+
     | **Component** | **Region** | **Details / Assumptions** | **Est. Monthly Cost (USD)** |
+    |----------|:-------------:|:-------------:|:-------------:|
     | Web VMs | North Central US | 2x D4s v5 VMs (4 vCores, 16 GiB RAM) & Windows Server 2022 | $140.00 each |
 
-    _REST API Back-end_
-    |    |            |            |            |
-    |----------|:---:|:-------------:|:-------------:|
+    _REST API Back End_
+
     | **Component** | **Region** | **Details / Assumptions** | **Est. Monthly Cost (USD)** |
+    |----------|:---:|:-------------:|:-------------:|
     | Web VMs | North Central US | 2x D8s v5 VMs (8 vCores, 32 GiB RAM) & Windows Server 2022 | $280.00 each|
 
-    > **Note:** Some discussion with Tailspin Toys may be needed to determine if additional changes to the choice of VM sizes and number of VMs could further lower hosting costs. Load balancing across a larger number of smaller VMs may help lower costs. Also, it's possible Azure App Service (PaaS services) could be an additional option for hosting the Front-end Web application and the Back-end REST API depending on the client's needs.
+    > **Note:** Some discussion with Tailspin Toys may be needed to determine if additional changes to the choice of VM sizes and number of VMs could further lower hosting costs. Load balancing across a larger number of smaller VMs may help lower costs. Also, it's possible Azure App Service (PaaS services) could be an additional option for hosting the Web Application Front End and the REST API Back End depending on the client's needs.
 
     _Application Databases_
-    |     |            |            |            |
-    |----------|:---:|:-------------:|:-------------:|
+
     | **Component** | **Region** | **Details / Assumptions** | **Est. Monthly Cost (USD)** |
+    |----------|:---:|:-------------:|:-------------:|
     | Azure SQL Managed Instance | North Central US | 16 vCores Premium-series General Purpose (7 GB RAM/vCore) & 2 TB storage| $1,265.92 |
 
     > **Note:** Azure SQL Managed Instance should be configured with the Azure Hybrid Benefit to save up to 55% with the SQL Server licenses they already own.
@@ -499,17 +515,17 @@ These are some reasons for the chosen options in the preferred solution:
     _Total Cost of Migrated Workloads to Azure_
 
     This is the total estimated monthly cost for all the Windows Server and SQL Server workloads migrated to Azure.
-    |           |                         |
+
+    | **Component** | **Est. Monthly Cost (USD)** |
     |-----------|:-----------------------:|
-    | Component | Est. Monthly Cost (USD) |
-    | Front-end Web VMs | 2x $140.00 |
-    | Back-end VMs | 2x $280.00 |
+    | Front End Web VMs | 2x $140.00 |
+    | Back End VMs | 2x $280.00 |
     | SQL MI | $1,265.92 |
-    | **TOTAL**| **$2,105.92** |
+    | **Total**| **$2,105.92** |
 
 ## Checklist of preferred objection handling
 
-1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to choose, and how do you know it'll be compatible?
+1. It appears there are multiple options for hosting SQL databases in Azure. What's the best option to ensure compatibility?
 
    Microsoft Azure does provide multiple options for hosting SQL databases. Azure SQL refers to a family of managed, secure, and intelligent products that use the SQL Server database engine in the Azure cloud. There is some overlap between the different options available, with each targeting different use cases, scenarios, and business motivations.
 
@@ -529,35 +545,35 @@ These are some reasons for the chosen options in the preferred solution:
 
    To ensure data consistency during the migration, there will be a short window of downtime required at the database level when the cutover to the new servers is performed. Data migration using DMS supports online migration, allowing the applications to be kept online while data is synchronized.
 
-3. Will we be able to rollback to the on-premises VMs if the migration fails?
+3. What are the options to roll back to the on-premises VMs if the migration fails?
 
    The migration process will be designed to create new application deployments within their CI/CD pipelines to release to the new Windows Server 2022 VMs in Azure in parallel to the existing on-premises VMs. This will allow traffic to be cut over to the new VMs when ready.
 
    In the event of an unexpected issue during migration, the existing on-premises VMs, application deployments, and databases will remain in place as a fallback. If there is an issue detected during the cutover process, the on-premises servers will be able to immediately pick up where they left off.
 
-4. We know there are workloads that will not be migrated to Azure. What's the best way to handle managing all our VMs across on-premises and Azure?
+4. What's the best way to handle managing all our VMs across on-premises and Azure? We do have workloads that will not be migrated to Azure.
 
-   Azure Arc provides the ability to use a single pane of glass to manage all your VMs and servers across on-premises and Azure.
+   Azure Arc provides the ability manage all your on-premises and Azure VMs from a single place.
 
-   Azure Arc-enabled servers lets you manage Windows and Linux physical servers and virtual machines hosted outside of Azure, such as on-premises VMs. This management experience is designed to be consistent with how you manage native Azure virtual machines, using standard Azure constructs such as Azure Policy and applying tags.
+   Azure Arc-enabled servers let you manage Windows and Linux physical servers and virtual machines hosted outside of Azure, such as on-premises VMs. This management experience is designed to be consistent with how you manage native Azure virtual machines, using standard Azure constructs such as Azure Policy and applying tags.
 
-5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. Any cost estimates need to reflect their EA discount.
+5. Tailspin has negotiated an Enterprise Agreement (EA) with Microsoft for their Azure consumption. What can you do to ensure estimates reflect our EA discount?
 
    We absolutely want to take advantage of these savings for them! The cost estimates from the Azure Pricing Calculator can be tailored to reflect their EA discount.
 
 6. Securing and monitoring our on-premises workloads is extremely important. What options does Azure offer to extend this into the cloud?
 
-   Microsoft Defender for Cloud is a solution for cloud security posture management (CSPM) and cloud workload protection (CWP) that finds weak spots across your cloud configuration, helps strengthen the overall security posture of your environment, and can protect workloads across multicloud and hybrid environments from evolving threats.
+   Microsoft Defender for Cloud is a solution for cloud security posture management (CSPM) and cloud workload protection (CWP) that finds weak spots across your cloud configuration, helps strengthen the overall security posture of your environment, and can protect workloads across multi-cloud and hybrid environments from evolving threats.
 
    Azure Monitor collects monitoring telemetry from a variety of on-premises and Azure sources. Management tools, such as those in Azure Security Center and Azure Automation, also push log data to Azure Monitor. The service aggregates and stores this telemetry in a log data store that’s optimized for cost and performance. Analyze data, set up alerts, get end-to-end views of your applications, and use machine learning–driven insights to quickly identify and resolve problems.
 
 7. Would there be further savings from the use of PaaS services?
 
-   Further evaluation of the front-end and back-end .NET Framework applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduces the management burden over IaaS VMs and does support hosting applications build with .NET Framework, and .NET Core, among other development languages.
+   Further evaluation of the front end and back end .NET Framework applications will be necessary to determine the requirements for hosting these applications using Azure App Service. Azure App Service Web Apps provide a PaaS hosting option for applications that further reduce the management burden over IaaS VMs and does support hosting applications built with .NET Framework, and .NET Core, among other development languages.
 
    Azure Kubernetes Service (AKS) is another potential option for hosting applications. For Tailspin Toys, this may not be the best option as it would require further redesign and architecture of the applications to host in AKS. If Azure App Service doesn't meet the requirements of Tailspin Toys applications, then AKS may offer an alternative that fits better.
 
-   If Tailspin Toys is looking to redesign the back-end REST API applications, then Azure Functions would be a service to consider. The applications would not be able to be hosted in Azure Functions as they are currently written. Redesigning and rewriting the REST APIs would be required to move them to serverless Azure Functions hosting.
+   If Tailspin Toys is looking to redesign the back end REST API applications, then Azure Functions would be a service to consider. The applications would not be able to be hosted in Azure Functions as they are currently written. Redesigning and rewriting the REST APIs would be required to move them to serverless Azure Functions hosting.
 
 ## Customer quote (to be read back to the attendees at the end)
 
