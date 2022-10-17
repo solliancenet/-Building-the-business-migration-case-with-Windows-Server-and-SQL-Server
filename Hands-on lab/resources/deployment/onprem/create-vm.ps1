@@ -48,7 +48,7 @@ Configuration Main
 
                 mkdir "C:\git"
                 cd "C:\git"
-                git clone "https://github.com/microsoft/MCW-Building-the-business-migration-case-with-Windows-Server-and-SQL-Server.git"
+                git clone --quiet --single-branch "https://github.com/microsoft/MCW-Building-the-business-migration-case-with-Windows-Server-and-SQL-Server.git"
 
                 $downloadedFile = "C:\git\MCW-Building-the-business-migration-case-with-Windows-Server-and-SQL-Server\Hands-on lab\resources\deployment\onprem\OnPremWinServerVM.zip"
                 $vmFolder = "C:\VM"
